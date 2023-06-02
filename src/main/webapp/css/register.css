@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.container-regi {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 1200px;
+}
+h1.title-regi {
+	font-family: 'TheJamsil5Bold';
+	text-align: center;
+}
