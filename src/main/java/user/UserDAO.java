@@ -86,7 +86,50 @@ public class UserDAO {
 	}
 	
 	
+	//아이디 찾기
+	public String idFind(String uname, String tel) {
+		String uid = null;
+		
+		try {
+			getCon();
+			String sql = "select uid from user where uname=? and tel=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, uname);
+			pstmt.setString(2, tel);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				uid = rs.getString("uid");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return uid;
+	}
 	
+	
+	//비밀번호 찾기
+		public String pwFind(String uid, String tel) {
+			String upass = null;
+			
+			try {
+				getCon();
+				String sql = "select upass from user where uid=? and tel=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.setString(2, tel);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					upass = rs.getString("upass");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return upass;
+		}
 	
 	
 	
