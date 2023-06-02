@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-<form action="registerProc" method="post">
+<form action="registerProc.jsp" method="post">
 	<div>
 	<label>아이디</label>
 	<input type="text" name="uid" />
@@ -55,13 +55,9 @@
 	</div>
 	
 	<div>
-	<label>주소</label>
-	<input type="text" name="addr" />
-	</div>
-	
-	<div>
 	<label>성별</label>
-	<input type="checkbox" name="gender" />
+	<input type="checkbox" name="gender" value="female"/> 여성
+	<input type="checkbox" name="gender" value="male"/> 남성
 	</div>
 	
 	<div>
