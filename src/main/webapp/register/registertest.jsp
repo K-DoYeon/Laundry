@@ -8,10 +8,11 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-<form action="registerProc.jsp" method="post">
+<form action="registerProc.jsp" method="post" name="registerFrom">
 	<div>
 	<label>아이디</label>
 	<input type="text" name="uid" />
+	<input type="button" value="중복확인" onclick="idCheck()">
 	</div>
 	
 	<div>
@@ -67,5 +68,6 @@
 	
 	<input type="submit" value="가입하기" />
 </form>
+<script src="../js/idcheck.js"></script>
 </body>
 </html>

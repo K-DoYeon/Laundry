@@ -60,4 +60,38 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-}
+	
+	
+	//아이디 중복확인
+	public int duplicate(String uid) {
+		int count = 0;
+		
+		try {
+			getCon();
+			String sql = "select count(uid) as count from user where uid=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, uid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				count = rs.getInt("count");
+			}
+		}catch(Exception e) {
+			System.out.println("아이디 중복확인 실패 : " + e);
+		}
+		
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}//userDAO
