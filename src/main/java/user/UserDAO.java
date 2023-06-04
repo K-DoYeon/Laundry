@@ -132,6 +132,30 @@ public class UserDAO {
 		}
 	
 	
+		
+		public int login(String uid, String upass) {
+			
+			try {
+				getCon();
+				String sql = "select * from user where uid = ? and upass = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.setString(2, upass);
+				
+				rs = pstmt.executeQuery(); 
+				
+				if (rs.next())
+					return 1; //로그인 성공
+				else {
+					return 0; //로그인 실패
+				}
+									
+			}catch(Exception e) {
+				e.printStackTrace();
+				
+			}
+			return -2; //DB 오류 
+		}
 	
 	
 	
