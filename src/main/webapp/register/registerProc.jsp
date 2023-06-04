@@ -13,7 +13,7 @@
 	UserDAO udao = new UserDAO();
 	udao.insert(bean);
 	
-	response.sendRedirect("main.jsp");
+	response.sendRedirect("login.jsp");
 %>
 </body>
 </html>
