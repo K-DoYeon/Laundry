@@ -58,6 +58,7 @@ public class BoardDAO {
 			}
 		}
 		
+		
 		// 모든 게시글 리턴
 		public Vector<BoardBean> getAllBoard(){
 			Vector<BoardBean> v = new Vector<>();

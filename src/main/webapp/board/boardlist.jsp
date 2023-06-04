@@ -68,7 +68,7 @@
         </button>
 	   </div>
 	   <div class="write-button">
-	        <button onclick="location.href='BoardWrite.jsp'">글쓰기</button>
+	        <button onclick="location.href='qnaWrite.jsp'">글쓰기</button>
 	   </div>
 	</div>
 	

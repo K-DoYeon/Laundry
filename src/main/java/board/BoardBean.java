@@ -11,7 +11,6 @@ public class BoardBean {
 	private int readcount;
 	private int replycount;
 	private int like;
-	
 	public int getNum() {
 		return num;
 	}
@@ -63,8 +62,8 @@ public class BoardBean {
 	public int getReplycount() {
 		return replycount;
 	}
-	public void setReplycount(int replycount) {
-		this.replycount = replycount;
+	public void setReplycount(int relpycount) {
+		this.replycount = relpycount;
 	}
 	public int getLike() {
 		return like;
@@ -72,6 +71,7 @@ public class BoardBean {
 	public void setLike(int like) {
 		this.like = like;
 	}
+	
 	
 	
 }
