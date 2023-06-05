@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.choi-body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+button a{
+	color : #fff;
+	border : none;
+}
+button a:hover{
+	color : #fff;
+	text-decoration:none;
+}
+.choi-qna{
+	text-align : right;
+}
+.choi-qna-btn{
+	background-color : #58A3BC;
+	color : #fff;
+	font-family: 'IMHyemin'
+}
+.choi-qna-btn:hover{
+	background-color : #3E83A8;
+	color : #fff;
+}
+.choi-menu{
+	justify-content : space-between;
+}
