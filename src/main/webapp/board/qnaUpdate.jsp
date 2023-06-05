@@ -13,16 +13,7 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
 
-<title>Q&A Board</title>
-
-<%
-	//.trim을 이용해 공백 제거 정수 이용
-	int num = Integer.parseInt(request.getParameter("num").trim());
-	
-	BoardDAO dao = new BoardDAO();
-	BoardBean bean = dao.getOneBoard(num);
-	
-%>
+<title>Q&A Update</title>
 <style>
 @font-face {
     font-family: 'IM_Hyemin-Bold';
@@ -65,8 +56,16 @@ button a:hover{
 }
 </style>
 </head>
-<body class = "choi-body">
-	<article>
+<body>
+<%
+	//.trim을 이용해 공백 제거 정수 이용
+	int num = Integer.parseInt(request.getParameter("num"));
+	
+	BoardDAO dao = new BoardDAO();
+	BoardBean bean = dao.getOneBoard(num);
+	
+%>
+<article>
 		<div class="container" role="main">
 			<h2 class = "text-center">QnA</h2>
 				<div class="mb-3 mt-4 subject">
@@ -93,42 +92,6 @@ button a:hover{
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
 			</div>			
-		
-		
-		<!-- 댓글  -->
-	<div class="container">
-    <form id="commentForm" name="commentForm" method="post">
-    <br><br>
-        <div>
-            <div>
-                <span><strong>Comments</strong></span> <span id="cCnt"></span>
-            </div>
-            <div>
-                <table class="table">                    
-                    <tr>
-                        <td>
-                            <textarea class="form-control" rows="1" name="content" id="content" placeholder = "관리자만 사용 가능합니다."></textarea>
-                            <br>
-                            <div class ="choi-qna">
-								<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">등록</button>
-							</div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <input type="hidden"  />        
-    </form>
-</div>
-<div class="container">
-    <form id="comment" name="comment" method="post">
-        <div id="commentList">
-        </div>
-    </form>
-</div>
-		</div>
-	</article>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../js/boardlist.js"></script>
+
 </body>
 </html>

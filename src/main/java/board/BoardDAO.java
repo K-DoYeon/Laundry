@@ -36,17 +36,14 @@ public class BoardDAO {
 			
 			try {
 				//게시글 전체값을 데이터 테이블에 저장
-				String sql = "insert into board"
-							+"(uid, upass, level, subject, content, wdate, readcount, replaycount, like)"
-							+"values"
-							+"(?, ?, ?, ?, ?, sysdate(), 0, 0, 0)";
+				String sql = "insert into board values(num, ?, ?, 0, ?, ?, sysdate(), 0, 0, 1)";
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, bean.getUid());
 				pstmt.setString(2, bean.getUpass());
-				pstmt.setInt(3, bean.getLevel());
-				pstmt.setString(4, bean.getSubject());
-				pstmt.setString(5, bean.getContent());
+				//pstmt.setInt(3, bean.getLevel());
+				pstmt.setString(3, bean.getSubject());
+				pstmt.setString(4, bean.getContent());
 				
 				pstmt.executeUpdate();
 				
@@ -215,4 +212,111 @@ public class BoardDAO {
 			return boardlist;
 		}
 	
+	//qnaBoard 게시글 리턴
+		public BoardBean getOneBoard(int num) {
+			//리턴타입 선언
+			BoardBean bean = new BoardBean();
+			getCon();
+			
+			try {
+				
+				//조회수쿼리
+				String readcount = "update board set readcount = readcount + 1 where num = ?";
+				pstmt=con.prepareStatement(readcount);
+				pstmt.setInt(1, num);
+				pstmt.executeUpdate();
+				
+				//쿼리준비
+				String sql = "select * from board where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				//쿼리 결과 리턴
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+					bean.setNum(rs.getInt(1));
+					bean.setSubject(rs.getString(2));
+					bean.setUid(rs.getString(3));
+					bean.setWdate(rs.getString(4).toString());
+					bean.setReadcount(rs.getInt(5));
+					bean.setContent(rs.getString(6));
+				}
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return bean;
+		}
+		
+		//qnaBoardupdate 게시글 리턴
+			public BoardBean getOneUpdateBoard(int num) {
+				//리턴타입 선언
+				BoardBean bean = new BoardBean();
+				getCon();
+					
+				try {
+						
+					//쿼리준비
+					String sql = "select * from board where num=?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					//쿼리 결과 리턴
+					rs=pstmt.executeQuery();
+					
+					if(rs.next()) {
+						bean.setNum(rs.getInt(1));
+						bean.setSubject(rs.getString(2));
+						bean.setUid(rs.getString(3));
+						bean.setWdate(rs.getString(4).toString());
+						bean.setReadcount(rs.getInt(5));
+						bean.setContent(rs.getString(6));
+						bean.setUpass(rs.getString(7));
+					}
+				con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return bean;
+			}		
+			
+			
+		//update시 필요한 패스워드값
+			public String uPass(int num) {
+				String pass = "";
+				getCon();
+				
+				try {
+					String sql = "select*from board where num = ?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					rs= pstmt.executeQuery();
+					
+					if(rs.next()) {
+						pass=rs.getString(1);
+					}
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return pass;
+				
+			}
+			
+		//게시글 수정 메소드
+			public void updateBoard(BoardBean bean) {
+				getCon();
+				
+				try {
+					String sql = "update board set subject =?, content =?, where num =? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bean.getSubject());
+					pstmt.setString(2, bean.getContent());
+					pstmt.setInt(3, bean.getNum());
+					
+					pstmt.executeUpdate();
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 }

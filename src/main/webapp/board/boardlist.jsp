@@ -101,7 +101,7 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 		
 		<div>
         	<p class="faq-text"><%=bean.getContent() %></p>
-			<p class="faq-plus"><a href="">더보기..</a></p>
+			<p class="faq-plus"><a href="qnaBoard.jsp">더보기..</a></p>
 		</div>
         <button class="faq-toggle">
           <i class="fas fa-chevron-down"></i>
