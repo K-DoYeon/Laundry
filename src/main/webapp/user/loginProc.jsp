@@ -14,16 +14,18 @@
 		UserDAO udao = new UserDAO();
 		UserBean ubean = new UserBean();
 		
-		session.setAttribute("uid", request.getParameter("uid"));
 		ubean.setUid((String) request.getParameter("uid"));
 		ubean.setUpass((String) request.getParameter("upass"));
+		ubean.setImg((String) request.getParameter("img"));
 		
 		int result = udao.login(ubean.getUid(), ubean.getUpass());
+		String img = udao.userImg(ubean.getUid(), ubean.getUpass());
 		if(result == 1){
 			session.setAttribute("uid",ubean.getUid());//세션부여
+			session.setAttribute("img", img);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href='main.jsp'");//로그인에 성공하면 main페이지로
+			script.println("location.href='../main/main.jsp'");//로그인에 성공하면 main페이지로
 			script.println("</script>");
 		}
 		else if(result == 0){

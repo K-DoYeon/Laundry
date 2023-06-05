@@ -4,4 +4,42 @@
 body {
 	box-sizing: border-box;	
 	font-family: 'IMHyemin', 'TheJamsil', sans-serif;
+	margin: 0;
+}
+a, a:hover {
+	color: #000;
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+
+.container-header {
+	width: 1300px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "TheJamsil";
+}
+.gnb-header,
+.welcome-header {
+	display: flex;
+    align-items: center;
+}
+.user-header {
+	margin: 4px 10px 0 0;
+    display: flex;
+    align-items: center;
+}
+.gnb-header li {
+	width: 150px;
+}
+.userImg-header {
+	border: 1px solid rgba(0, 0, 0, 0.01);
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    border-radius: 50%;
 }
