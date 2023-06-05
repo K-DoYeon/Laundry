@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.container-my {
+	width: 1300px;
+	margin: 0 auto;
+}
+.userInfo-my {
+	height: 200px;
+	background: #F7F7F7;
+}
