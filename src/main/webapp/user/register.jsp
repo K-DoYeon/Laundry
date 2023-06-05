@@ -10,7 +10,7 @@
 			<input type="hidden" name="img" value="../img/default.png">
 			<div class="select-regi">
 				<label class="selectName-regi">아이디</label>
-				<input type="text" class="selectVal-regi" name="uid"  maxlength="16" placeholder="아이디를 입력해주세요" required />
+				<input type="text" class="selectVal-regi readonly-regi" onclick="idCheck();" name="uid"  maxlength="16" placeholder="아이디를 입력해주세요" required readonly/>
 				<input type="button" value="중복확인" onclick="idCheck()" class="idCheck-regi">
 			</div>
 			

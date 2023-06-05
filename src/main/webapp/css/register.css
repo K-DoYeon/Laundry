@@ -95,3 +95,8 @@ h1.title-regi {
     font-weight: bold;
     cursor: pointer;
 }
+
+.readonly-regi{
+	outline: none;
+	background: #ddd;
+}
