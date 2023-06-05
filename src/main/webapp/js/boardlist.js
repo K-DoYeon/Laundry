@@ -50,3 +50,20 @@ function dodel(){
 		 top=${top}`
     );
 }
+
+function choimod(){
+	const url = "boardModity.jsp";
+	const width=500, height=350;
+	let left = (document.body.offsetWidth / 2) - (width / 1.5);
+	let top = (document.body.offsetHeight / 2) - (height);
+	left += window.screenLeft;
+	
+	window.open(
+		url, 
+		"popup", 
+		`width=${width}, 
+		 height=${height}, 
+		 left=${left}, 
+		 top=${top}`
+    );
+}
