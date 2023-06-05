@@ -9,33 +9,33 @@
 		<form action="registerProc.jsp" method="post" name="registerFrom">
 			<div class="select-regi">
 				<label class="selectName-regi">아이디</label>
-				<input type="text" class="selectVal-regi" name="uid"  maxlength="16" placeholder="아이디를 입력해주세요" />
+				<input type="text" class="selectVal-regi" name="uid"  maxlength="16" placeholder="아이디를 입력해주세요" required />
 				<input type="button" value="중복확인" onclick="idCheck()" class="idCheck-regi">
 			</div>
 			
 			<div class="select-regi">
 				<label class="selectName-regi">비밀번호</label>
-				<input type="password" name="upass" class="selectVal-regi" maxlength="16" placeholder="비밀번호를 입력해주세요" />
+				<input type="password" name="upass" class="selectVal-regi" maxlength="16" placeholder="비밀번호를 입력해주세요" required />
 			</div>
 			
 			<div class="select-regi">
 				<label class="selectName-regi">비밀번호확인</label>
-				<input type="password" name="upasscheck" class="selectVal-regi" maxlength="16" placeholder="비밀번호를 한번 더 입력해주세요" />
+				<input type="password" name="upasscheck" class="selectVal-regi" maxlength="16" placeholder="비밀번호를 한번 더 입력해주세요" required />
 			</div>
 			
 			<div class="select-regi">
 				<label class="selectName-regi">이름</label>
-				<input type="text" name="uname" class="selectVal-regi" placeholder="이름을 입력해주세요" />
+				<input type="text" name="uname" class="selectVal-regi" placeholder="이름을 입력해주세요" required />
 			</div>
 			
 			<div class="select-regi">
 				<label class="selectName-regi">이메일</label>
-				<input type="email" name="uemail" class="selectVal-regi" placeholder="이메일형식으로 입력해주세요" />
+				<input type="email" name="uemail" class="selectVal-regi" placeholder="이메일형식으로 입력해주세요" required />
 			</div>
 			
 			<div class="select-regi">
 				<label class="selectName-regi">휴대폰</label>
-				<input type="text" name="tel" class="selectVal-regi" placeholder="숫자만 입력해주세요" />
+				<input type="text" name="tel" class="selectVal-regi" placeholder="숫자만 입력해주세요" required />
 			</div>
 			
 			<div class="select-regi">
@@ -48,7 +48,7 @@
 				<label class="selectName-regi addrName-regi">주소</label>
 				<div class="selectValBox-regi">
 					<input type="text" name="addr" class="selectVal-regi addrVal-regi" id="address" readonly />
-					<input type="text" name="detailaddr" class="selectVal-regi" id="detailaddr" placeholder="상세주소를 입력해주세요"  />
+					<input type="text" name="detailaddr" class="selectVal-regi" id="detailaddr" placeholder="상세주소를 입력해주세요" required />
 				</div>
 			</div>
 			
@@ -61,7 +61,7 @@
 			
 			<div class="select-regi formLine-regi">
 				<label class="selectName-regi">생년월일</label>
-				<input type="text" name="birth" placeholder="YYYYMMDD" class="selectVal-regi" />
+				<input type="text" name="birth" placeholder="YYYYMMDD" class="selectVal-regi" required />
 			</div>
 			
 			<div class="select-regi agreement-regi">

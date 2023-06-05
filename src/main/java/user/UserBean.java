@@ -7,7 +7,7 @@ public class UserBean {
 	private String upasscheck;
 	private String uname;
 	private String uemail;
-	private int tel;
+	private String tel;
 	private int postcode;
 	private String addr;
 	private String detailaddr;
@@ -53,10 +53,10 @@ public class UserBean {
 	public void setUemail(String uemail) {
 		this.uemail = uemail;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public int getPostcode() {
