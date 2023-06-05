@@ -148,6 +148,41 @@ public class BoardDAO {
 			return boardlist;
 		}
 		
+		//게시글 검색
+		public ArrayList<BoardBean> getSearch(String searchField, String searchText){
+			getCon();
+			ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+			String sql = "select * from board where" + searchField.trim();
+			try {
+				if(searchText != null && !searchText.equals("")) {
+					sql += " like '%" + searchText.trim() + "%' order by num desc";
+				}
+				pstmt = con.prepareStatement(sql);
+				System.out.println(pstmt);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					BoardBean bean = new BoardBean();
+					bean.setNum(rs.getInt(1));
+					bean.setUid(rs.getString(2));
+					bean.setUpass(rs.getString(3));
+					bean.setLevel(rs.getInt(4));
+					bean.setSubject(rs.getString(5));
+					bean.setContent(rs.getString(6));
+					bean.setWdate(rs.getString(7));
+					bean.setReadcount(rs.getInt(8));
+					bean.setReplycount(rs.getInt(9));
+					bean.setLike(rs.getInt(10));
+					list.add(bean);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
+		
+		
 		//페이징 처리
 		public ArrayList<BoardBean> getBoardList(int startRow, int pageSize){
 			ArrayList<BoardBean> boardlist = new ArrayList<BoardBean>();
