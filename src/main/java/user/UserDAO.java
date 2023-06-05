@@ -43,7 +43,7 @@ public class UserDAO {
 			pstmt.setString(3, bean.getUpasscheck());
 			pstmt.setString(4, bean.getUname());
 			pstmt.setString(5, bean.getUemail());
-			pstmt.setInt(6, bean.getTel());
+			pstmt.setString(6, bean.getTel());
 			pstmt.setInt(7, bean.getPostcode());
 			pstmt.setString(8, bean.getAddr());
 			pstmt.setString(9, bean.getDetailaddr());
