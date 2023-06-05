@@ -60,104 +60,105 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
 	//아이디 중복확인
-		public int duplicate(String uid) {
-			int count = 0;
+	public int duplicate(String uid) {
+		int count = 0;
+		
+		try {
+			getCon();
+			String sql = "select count(uid) as count from user where uid=?";
 			
-			try {
-				getCon();
-				String sql = "select count(uid) as count from user where uid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, uid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
 				
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, uid);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					
-					count = rs.getInt("count");
-				}
-			}catch(Exception e) {
-				System.out.println("아이디 중복확인 실패 : " + e);
+				count = rs.getInt("count");
 			}
-			
-			return count;
+		}catch(Exception e) {
+			System.out.println("아이디 중복확인 실패 : " + e);
 		}
 		
+		return count;
+	}
+	
+	
+	//아이디 찾기
+	public String idFind(String uname, String tel) {
+		String uid = null;
 		
-		//아이디 찾기
-		public String idFind(String uname, String tel) {
-			String uid = null;
+		try {
+			getCon();
+			String sql = "select uid from user where uname=? and tel=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, uname);
+			pstmt.setString(2, tel);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				uid = rs.getString("uid");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return uid;
+	}
+	
+	
+	//비밀번호 찾기
+		public String pwFind(String uid, String tel) {
+			String upass = null;
 			
 			try {
 				getCon();
-				String sql = "select uid from user where uname=? and tel=?";
+				String sql = "select upass from user where uid=? and tel=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, uname);
+				pstmt.setString(1, uid);
 				pstmt.setString(2, tel);
 				
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {
-					uid = rs.getString("uid");
+					upass = rs.getString("upass");
 				}
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			return uid;
+			return upass;
 		}
+	
+	
 		
-		
-		//비밀번호 찾기
-			public String pwFind(String uid, String tel) {
-				String upass = null;
-				
-				try {
-					getCon();
-					String sql = "select upass from user where uid=? and tel=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, uid);
-					pstmt.setString(2, tel);
-					
-					rs = pstmt.executeQuery();
-					
-					if(rs.next()) {
-						upass = rs.getString("upass");
-					}
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-				return upass;
-			}
-		
-		
+		public int login(String uid, String upass) {
 			
-			public int login(String uid, String upass) {
+			try {
+				getCon();
+				String sql = "select * from user where uid = ? and upass = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.setString(2, upass);
 				
-				try {
-					getCon();
-					String sql = "select * from user where uid = ? and upass = ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, uid);
-					pstmt.setString(2, upass);
-					
-					rs = pstmt.executeQuery(); 
-					
-					if (rs.next())
-						return 1; //로그인 성공
-					else {
-						return 0; //로그인 실패
-					}
-										
-				}catch(Exception e) {
-					e.printStackTrace();
-					
+				rs = pstmt.executeQuery(); 
+				
+				if (rs.next())
+					return 1; //로그인 성공
+				else {
+					return 0; //로그인 실패
 				}
-				return -2; //DB 오류 
+									
+			}catch(Exception e) {
+				e.printStackTrace();
+				
 			}
-		
-		
-		
-		
-		
-	}//userDAO
+			return -2; //DB 오류 
+		}
+	
+	
+	
+	
+	
+}//userDAO
