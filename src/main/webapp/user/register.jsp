@@ -7,6 +7,7 @@
 		<h1 class="title-regi">회원가입</h1>
 	
 		<form action="registerProc.jsp" method="post" name="registerFrom">
+			<input type="hidden" name="img" value="../img/default.png">
 			<div class="select-regi">
 				<label class="selectName-regi">아이디</label>
 				<input type="text" class="selectVal-regi" name="uid"  maxlength="16" placeholder="아이디를 입력해주세요" required />

@@ -49,7 +49,11 @@ public class UserDAO {
 			pstmt.setString(9, bean.getDetailaddr());
 			pstmt.setString(10, bean.getGender());
 			pstmt.setInt(11, bean.getBirth());
-			pstmt.setInt(12, bean.getLevel());
+			
+			String addr = bean.getAddr();
+			int level = calculateLevel(addr);
+			pstmt.setInt(12, level);
+			
 			pstmt.setInt(13, bean.getVip());
 			pstmt.setString(14, bean.getImg());
 			
@@ -59,6 +63,17 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private int calculateLevel(String address) {
+		int level = 0;
+		
+		if (address.contains("서울")) {
+			level = 1;
+		} else {
+			level = 2;
+		}
+		return level;
 	}
 	
 	
@@ -134,14 +149,12 @@ public class UserDAO {
 	
 		
 		public int login(String uid, String upass) {
-			
 			try {
 				getCon();
 				String sql = "select * from user where uid = ? and upass = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, uid);
 				pstmt.setString(2, upass);
-				
 				rs = pstmt.executeQuery(); 
 				
 				if (rs.next())
@@ -158,7 +171,23 @@ public class UserDAO {
 		}
 	
 	
-	
-	
+		public String userImg(String uid, String upass) {
+			String img = null;
+			try {
+				getCon();
+				String sql = "select img from user where uid = ? and upass = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				pstmt.setString(2, upass);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					img = rs.getString("img");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return img;
+		}
 	
 }//userDAO
