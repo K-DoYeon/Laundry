@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../css/login.css">
 	<div class="container-login">
 		<h1 class="title-login">로그인</h1>
-		<form action="loginProc.jsp" method="post" name="loginFrom">
+		<form action="loginProc.jsp" method="post" name="loginform">
 			<div class="Box-login">
 				<label class="Title-login">아이디</label>
 				<input type="text" id="uid" name="uid" maxlength="16" placeholder="아이디를 입력해주세요" />
@@ -16,8 +16,8 @@
 			</div>
 			
 			<div class="findIdPw-login">
-				<a href="idFind.jsp" class="find-login">아이디찾기</a> |
-				<a href="pwFind.jsp" class="find-login">비밀번호찾기</a>
+				<a href="#" onclick ="idFind();"><span>아이디 찾기</span></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="#" onclick ="pwFind();"><span>비밀번호 찾기</span></a>
 			</div>
 			
 			<div class="submitBtnBox-login">
@@ -28,5 +28,7 @@
 			<a href="register.jsp" class="register-login">회원가입</a>
 		</div>
 	</div>
+	
+	<script src="../js/idfind.js"></script>
 </body>
 </html>

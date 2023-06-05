@@ -37,7 +37,7 @@
 		
 		<div class="center_jeon">
 			<input type="button" id="back" class="idfindresult_button_jeon" value="다시 찾기" onClick="history.back();">
-			<input type="button" id="login" class="idfindresult_button_jeon" value="로그인" onClick="login()"/>
+			<input type="button" id="login" class="idfindresult_button_jeon" value="로그인" onClick="self.close();"/>
 		</div>
 		
 		<%

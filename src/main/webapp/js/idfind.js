@@ -42,11 +42,6 @@ function join(){
 	window.location.href = "register.jsp";
 }
 
-//로그인으로 이동
-function login(){
-	window.location.href = "login.jsp";
-}
-
 
 
 
@@ -93,13 +88,13 @@ function pwFind(){
 
 //찾은 아이디를 로그인창에 적용
 function uidapply(uid){
-		opener.document.login.uid.value=uid;
+		opener.document.loginform.uid.value=uid;
 		window.close(); //창닫기
 	}//apply function 종료
 	
 	
 //찾은 비밀번호를 로그인창에 적용
 function upassapply(upass){
-		opener.document.login.upass.value=upass;
+		opener.document.loginform.upass.value=upass;
 		window.close(); //창닫기
 	}//apply function 종료

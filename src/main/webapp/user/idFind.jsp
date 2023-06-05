@@ -21,7 +21,7 @@
 		</div>
 		<div class="center_jeon">
 			<input type="button" id="idfind_button_jeon" value="찾기" onClick="id_search();">
-			<input type="button" id="idfind_button_jeon" value="취소" onClick="history.back()">
+			<input type="button" id="idfind_button_jeon" value="취소" onClick="self.close();">
 		</div>
 	</form>
 	<script src="../js/idfind.js"></script>
