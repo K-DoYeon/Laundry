@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="../css/login.css">
 	<div class="container-login">
 		<h1 class="title-login">로그인</h1>
-		<form action="loginProc.jsp" method="post" name="loginform">
+		<form action="CookieSessionSet.jsp" method="post" name="loginform">
 			<div class="Box-login">
 				<label class="Title-login">아이디</label>
 				<input type="text" id="uid" name="uid" maxlength="16" value="<%=(uid==null? "" : uid)%>" placeholder="아이디를 입력해주세요" />
@@ -30,7 +30,6 @@
 				<label class="Title-login">비밀번호</label>
 				<input type="password" id="upass" name="upass" maxlength="16" placeholder="비밀번호를 입력해주세요" />
 			</div>
-			
 			<br>
 			<div>
 				<input type="checkbox" name="rememberId" value="keep" <%=(rememberId==null ? "": "checked=\"checked\"")%>/>  아이디 기억하기

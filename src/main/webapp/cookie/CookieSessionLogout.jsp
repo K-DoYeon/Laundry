@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="true"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Insert title here</title>
 </head>
 <body>
 	<%
@@ -29,6 +29,9 @@
 				}
 			}
 	%>
+	
+	<h3>[<%=uid %>]님 정상적으로 로그아웃 되었습니다.</h3>
+
 	<%
 		if(rememberId != null && rememberId.equals("temp")){
 			if(cookies!=null && cookies.length>0){
@@ -41,11 +44,8 @@
 			}
 		}
 	%>
-	<%session.invalidate(); %>
-	
-	<script>
-		alert("로그아웃 되었습니다.");
-		location.href='../main/main.jsp';
-	</script>
+	<form action="CookieSessionLogin.jsp" method="post">
+		<input type="submit" value="로그인 페이지로 이동">
+	</form>
 </body>
 </html>

@@ -20,6 +20,30 @@
 		
 		int result = udao.login(ubean.getUid(), ubean.getUpass());
 		String img = udao.userImg(ubean.getUid(), ubean.getUpass());
+		
+		
+		String rememberId = request.getParameter("rememberId");
+		String uid = request.getParameter("uid");
+		Cookie cookieRememberId;
+		Cookie cookieId;
+		Cookie cookieLoginStatus;
+		
+		if(rememberId != null && rememberId.equals("keep")){
+			cookieRememberId = new Cookie("rememberId","keep");
+		}else{
+			cookieRememberId = new Cookie("rememberId", "temp");
+		}
+		cookieId = new Cookie("uid", uid);
+		cookieLoginStatus = new Cookie ("loginStatus","login");
+		
+		response.addCookie(cookieRememberId);
+		response.addCookie(cookieId);
+		response.addCookie(cookieLoginStatus);
+		
+		out.println(cookieRememberId.getValue());
+		
+		
+		
 		if(result == 1){
 			session.setAttribute("uid",ubean.getUid());//세션부여
 			session.setAttribute("img", img);

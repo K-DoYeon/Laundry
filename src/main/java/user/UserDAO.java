@@ -49,7 +49,11 @@ public class UserDAO {
 			pstmt.setString(9, bean.getDetailaddr());
 			pstmt.setString(10, bean.getGender());
 			pstmt.setInt(11, bean.getBirth());
-			pstmt.setInt(12, bean.getLevel());
+			
+			String addr = bean.getAddr();
+			int level = calculateLevel(addr);
+			pstmt.setInt(12, level);
+			
 			pstmt.setInt(13, bean.getVip());
 			pstmt.setString(14, bean.getImg());
 			
@@ -59,6 +63,17 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private int calculateLevel(String address) {
+		int level = 0;
+		
+		if (address.contains("서울")) {
+			level = 1;
+		} else {
+			level = 2;
+		}
+		return level;
 	}
 	
 	
