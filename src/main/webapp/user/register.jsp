@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="submitBtnBox-regi">
-				<input type="submit" class="submitBtn-regi" value="가입하기" />
+				<input type="submit" class="submitBtn-regi" onsubmit='return registerProc()' value="가입하기" />
 			</div>
 		</form>
 		
