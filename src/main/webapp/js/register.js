@@ -56,3 +56,12 @@ $('.agreementBox-regi .checkVal-regi').on('click', function(){
    		$('#allcheck-regi').prop('checked', true);
     }
 });
+
+$('.submitBtnBox-regi').on('click', function registerProc() {
+	if($('#allcheck-regi').is(":checked") == false){
+		alert("동의버튼을 눌러주세요.");
+		return false;
+	}else if($('#allcheck-regi').is(":checked") == true){
+		return;
+	}
+});
