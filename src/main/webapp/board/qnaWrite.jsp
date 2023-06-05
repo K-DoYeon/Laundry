@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="board.BoardBean, board.BoardDAO" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,62 +13,51 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-      crossorigin="anonymous"
-    />
-<title>Q&A</title>
-<script>
-	$(document).on('click', '#btnSave', function(e){
-		e.preventDefault();
-		$("#form").submit();
-	});
 
-	$(document).on('click', '#btnList', function(e){
-		e.preventDefault();
-		location.href="${pageContext.request.contextPath}/board/getBoardList";
-	});
-</script>
+
+<title>Q&A Write</title>
+
 <%
 	String uid = request.getParameter("uid");
 %>
 <style>
-
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
   padding-top: 70px;
   padding-bottom: 30px;
+  font-family: 'IM_Hyemin-Bold';
 }
 
 button a{
-	color : #28527A;
+	color : #fff;
 	border : none;
 }
-button a:hover{
+.choi-qna{
+	text-align : right;
+}
+.choi-qna-btn{
+	background-color : #58A3BC;
 	color : #fff;
-	text-decoration:none;
+	font-family: 'IM_Hyemin-Bold';
 }
-.qna{
-	text-align : center;
-}
-.qna-btn{
-	background-color : #FAE57C;
-	color : #28527A;
-	font-weight : bold;
-}
-.qna-btn:hover{
-	background-color : #28527A;
+.choi-qna-btn:hover{
+	background-color : #3E83A8;
 	color : #fff;
+	font-family: 'IM_Hyemin-Bold';	
 }
 
 </style>
 </head>
-<body>
+<body class = "choi-body">
 	<article>
-		<div class="container" role="main">
-			<h2>QnA</h2>
-			<form name="form" id="form" role="form" method="post" action="qnaWriteProc.jsp">
+		<div class="container">
+			<h2 class = "text-center">QnA</h2>
+			<form action="qnaWriteProc.jsp" name="form" id="form" role="form" method="post">
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
@@ -79,13 +69,12 @@ button a:hover{
 				<div class="mb-3">
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-				</div>		
-				
-			</form>
-			<div class ="qna">
-				<button type="button" class="btn btn-sm qna-btn" id="btnSave" value ="submit">저장</button>
-				<button type="button" class="btn btn-sm qna-btn" id="btnList"><a href = "boardlist.jsp">목록</a></button>
+				</div>								
+			<div class ="choi-qna">
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "boardlist.jsp">목록</a></button>
 			</div>
+			</form>
 		</div>
 	</article>
 </body>
