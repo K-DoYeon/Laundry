@@ -12,6 +12,7 @@
 </head>
 <body>
 	<%
+	UserBean ubean = new UserBean();
 	String uid = (String) session.getAttribute("uid");
 	String img = (String) session.getAttribute("img");
 	%>
@@ -41,10 +42,24 @@
 				%>
 				
 					<div class="welcome-header">
-						<p class="user-header">
+					<%
+						if(ubean.getLevel() == 99){
+					%>
+						<a class="user-header" href="#">
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
-						</p>
+						</a>
+					<%
+						} else {
+					%>
+						<a class="user-header" href="../user/myPage.jsp">
+							<img class="userImg-header" src="<%=img %>">
+							<span><%=uid%></span>
+						</a>
+					<%
+						}
+					%>
+						
 						<a href="../user/logout.jsp">Logout <i class="ri-login-box-line"></i></a>
 					</div>
 				
