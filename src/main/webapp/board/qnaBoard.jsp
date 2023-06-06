@@ -16,12 +16,13 @@
 <title>Q&A Board</title>
 
 <%
-	//.trim을 이용해 공백 제거 정수 이용
-	int num = Integer.parseInt(request.getParameter("num").trim());
-	
-	BoardDAO dao = new BoardDAO();
-	BoardBean bean = dao.getOneBoard(num);
-	
+
+	String num = getInitParameter("num");
+	String uid = getInitParameter("uid");
+	String wdate = getInitParameter("wdate");
+	String readcount = getInitParameter("readcount");
+	String content = getInitParameter("content");
+	String subject = getInitParameter("subject");
 %>
 <style>
 @font-face {
@@ -66,27 +67,28 @@ button a:hover{
 </style>
 </head>
 <body class = "choi-body">
+<jsp:include page="/include/header.jsp" />
 	<article>
 		<div class="container" role="main">
 			<h2 class = "text-center">QnA</h2>
 				<div class="mb-3 mt-4 subject">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=bean.getSubject() %>" readonly>
+					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=subject%>" readonly>
 				</div>
 				<div class="mb-3 d-flex menu">
 					<div>
-						<label for="reg_id"><%=bean.getNum() %> /</label>
-						<label for="reg_id"><%=bean.getUid() %></label>
+						<label for="reg_num"><%=num %> /</label>
+						<label for="reg_id"><%=uid %></label>
 					</div>
 					<div>
-						<label for="reg_id"><%=bean.getWdate() %> /</label>
-						<label for="reg_id"><%=bean.getReadcount()%></label>
+						<label for="reg_wdate"><%=wdate %> /</label>
+						<label for="reg_readcount"><%=readcount%></label>
 					</div>
 				</div>	
 				
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
+					<textarea class="form-control" rows="5" name="content" id="content" readonly><%=content%></textarea>
 				</div>		
 				
 			<div class ="choi-qna">
