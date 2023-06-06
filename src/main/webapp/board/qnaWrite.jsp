@@ -8,6 +8,14 @@
 <meta charset="UTF-8">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>
+	$(document).on('click', '#btnSave', function(e){
+		e.preventDefault();	
+		$("#form").submit();
+	});
+
+
+</script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" 
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
@@ -19,6 +27,10 @@
 
 <%
 	String uid = request.getParameter("uid");
+/* 	int level = Integer.parseInt(request.getParameter("level"));
+	int readcount = Integer.parseInt(request.getParameter("readcount"));
+	int replycount = Integer.parseInt(request.getParameter("replycount"));
+	int like = Integer.parseInt(request.getParameter("like")); */
 %>
 <style>
 @font-face {
@@ -32,7 +44,9 @@ body {
   padding-bottom: 30px;
   font-family: 'IM_Hyemin-Bold';
 }
-
+.container{
+	margin-top : 50px;
+}
 button a{
 	color : #fff;
 	border : none;
@@ -50,31 +64,50 @@ button a{
 	color : #fff;
 	font-family: 'IM_Hyemin-Bold';	
 }
-
+.justify{
+	justify-content : space-between;
+	width : 50%
+}
 </style>
 </head>
-<body class = "choi-body">
+<body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 	<article>
 		<div class="container">
 			<h2 class = "text-center">QnA</h2>
-			<form action="qnaWriteProc.jsp" name="form" id="form" role="form" method="post">
+			<form action="qnaWriteProc.jsp" id = "form" name = "form" method="post">
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
 				</div>
-				<div class="mb-3">
-					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="uid" id="uid" placeholder="<%=uid %>" readonly />
+				<div class="mb-3 d-flex justify">
+					<div>
+						<label for="uid">작성자</label>
+						<input type="text" class="form-control" name="uid" id="uid" placeholder="<%=uid %>" readonly />
+					</div>
+					<div>
+						<label for="upass">비밀번호</label>
+						<input type="passowrd" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
+					</div>
+				
 				</div>			
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-				</div>								
+					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"  ></textarea>
+
+				</div>
+				<!--1. int 값들과 level input type hidden으로 해서 넣기 
+				2. pass 넣기 -->
+			</form>									
 			<div class ="choi-qna">
+					<input type = "hidden" name = "level" id="level" />
+					<input type = "hidden" name = "readcount" id="readcount" />
+					<input type = "hidden" name = "replycount" id="replycount"/>
+					<input type = "hidden" name = "like" id="like" />
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "boardlist.jsp">목록</a></button>
 			</div>
-			</form>
+			
 		</div>
 	</article>
 </body>

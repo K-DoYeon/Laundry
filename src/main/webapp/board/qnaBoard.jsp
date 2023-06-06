@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@page import="board.BoardDAO, board.BoardBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +16,11 @@
 <title>Q&A Board</title>
 
 <%
-	String num = request.getParameter("num");
-	String uid = request.getParameter("uid");
-	String wdate = request.getParameter("wdate");
-	String readcount = request.getParameter("readcount");
-	String content = request.getParameter("content");
-	String subject = request.getParameter("subject");
+	//.trim을 이용해 공백 제거 정수 이용
+	int num = Integer.parseInt(request.getParameter("num").trim());
+	
+	BoardDAO dao = new BoardDAO();
+	BoardBean bean = dao.getOneBoard(num);
 %>
 <style>
 @font-face {
@@ -35,7 +34,10 @@
   padding-bottom: 30px;
   font-family: 'IM_Hyemin-Bold';
 }
-
+.form-control:disabled, .form-control[readonly]{
+	backgrond-color : #fff;
+	opacity : 1;
+}
 button a{
 	color : #fff;
 	border : none;
@@ -66,33 +68,32 @@ button a:hover{
 	<article>
 		<div class="container" role="main">
 			<h2 class = "text-center">QnA</h2>
-			<form name="form" id="form" role="form" method="post" action="qnaWriteProc.jsp">
 				<div class="mb-3 mt-4 subject">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=subject %>">
+					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=bean.getSubject() %>" readonly>
 				</div>
 				<div class="mb-3 d-flex menu">
 					<div>
-						<label for="reg_id"><%=num %> /</label>
-						<label for="reg_id"><%=uid %></label>
+						<label for="reg_id"><%=bean.getNum() %> /</label>
+						<label for="reg_id"><%=bean.getUid() %></label>
 					</div>
 					<div>
-						<label for="reg_id"><%=wdate %> /</label>
-						<label for="reg_id"><%=readcount %></label>
+						<label for="reg_id"><%=bean.getWdate() %> /</label>
+						<label for="reg_id"><%=bean.getReadcount()%></label>
 					</div>
 				</div>	
 				
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content"><%=content %></textarea>
+					<textarea class="form-control" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
 				</div>		
 				
-			</form>
 			<div class ="choi-qna">
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
 			</div>			
-		
+
+
 		<!-- 댓글  -->
 	<div class="container">
     <form id="commentForm" name="commentForm" method="post">
@@ -105,7 +106,7 @@ button a:hover{
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea class="form-control" rows="3" name="content" id="content"></textarea>
+                            <textarea class="form-control" rows="1" name="content" id="content" placeholder = "관리자만 사용 가능합니다."></textarea>
                             <br>
                             <div class ="choi-qna">
 								<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">등록</button>
