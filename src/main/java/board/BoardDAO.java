@@ -221,7 +221,7 @@ public class BoardDAO {
 			try {
 				
 				//조회수쿼리
-				String readcount = "update board set readcount = readcount + 1 where num = ?";
+				String readcount = "update board set readcount = readcount+1 where num = ?";
 				pstmt=con.prepareStatement(readcount);
 				pstmt.setInt(1, num);
 				pstmt.executeUpdate();
