@@ -90,9 +90,8 @@ button a:hover{
 			</form>
 			<div class ="choi-qna">
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</a></button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
 			</div>			
-		</form>
 		
 		<!-- 댓글  -->
 	<div class="container">
