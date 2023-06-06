@@ -120,7 +120,7 @@ public class BoardDAO {
 		}
 		
 		public ArrayList<BoardBean> getBoardList(){
-			ArrayList<BoardBean> boardlist = new ArrayList<BoardBean>();
+			ArrayList<BoardBean> list = new ArrayList<BoardBean>();
 			getCon();
 			try {
 				String sql = "select * from board order by num desc";
@@ -140,26 +140,27 @@ public class BoardDAO {
 					bBean.setReplycount(rs.getInt(9));
 					bBean.setLike(rs.getInt(10));
 					
-					boardlist.add(bBean);
+					list.add(bBean);
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			return boardlist;
+			return list;
 		}
 		
 		//게시글 검색
 		public ArrayList<BoardBean> getSearch(String searchField, String searchText){
-			getCon();
 			ArrayList<BoardBean> list = new ArrayList<BoardBean>();
-			String sql = "select * from board where" + searchField.trim();
+			getCon();
+			String sql = "select * from board where " + searchField.trim();
 			try {
 				if(searchText != null && !searchText.equals("")) {
-					sql += " like '%" + searchText.trim() + "%' order by num desc";
+					sql +=" like '%"+searchText.trim()+ "%' order by num desc";
 				}
 				pstmt = con.prepareStatement(sql);
-				System.out.println(pstmt);
+				System.out.println(sql);
 				rs = pstmt.executeQuery();
+				
 				while(rs.next()) {
 					BoardBean bean = new BoardBean();
 					bean.setNum(rs.getInt(1));
