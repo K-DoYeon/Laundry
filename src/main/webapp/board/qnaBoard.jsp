@@ -99,35 +99,42 @@ button a:hover{
 		
 		<!-- 댓글  -->
 	<div class="container">
-    <form id="commentForm" name="commentForm" method="post">
+    <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp">
     <br><br>
         <div>
-            <div>
-                <span><strong>Comments</strong></span> <span id="cCnt"></span>
+            <div class="do-comment">
+                <span>Comments</span>
             </div>
-            <div>
-                <table class="table">                    
-                    <tr>
-                        <td>
-                            <textarea class="form-control" rows="1" name="content" id="content" placeholder = "관리자만 사용 가능합니다."></textarea>
-                            <br>
-                            <div class ="choi-qna">
-								<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">등록</button>
-							</div>
-                        </td>
-                    </tr>
-                </table>
+
+<%
+
+	String id = (String) session.getAttribute("uid");
+	String pw = (String) session.getAttribute("upass");
+	int level = (Integer) session.getAttribute("level");
+	if(level == 99){
+	
+%>
+	<input type="hidden" name="id" values="<%=id %>">
+            <div class="do-commentbox">
+                <div class="do-left">
+					<p>ID : <span class="id"><%=id%></span></p>
+                	<p>PW : <span class="pw"><%out.print(pw); %></span></p>
+                </div>
+                <div class="do-right">
+                	<textarea rows="3" cols="120" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
+                </div>
             </div>
-        </div>
-        <input type="hidden"  />        
+            
+            <div class ="choi-qna">
+				<button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button>
+			</div>
+        </div>       
     </form>
 </div>
-<div class="container">
-    <form id="comment" name="comment" method="post">
-        <div id="commentList">
-        </div>
-    </form>
-</div>
+<%
+	}
+%>
+
 		</div>
 	</article>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
