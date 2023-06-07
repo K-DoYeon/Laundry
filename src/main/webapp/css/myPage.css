@@ -4,15 +4,18 @@
 	margin: 0 auto;
 }
 .userInfo-my {
-	height: 400px;
+	height: 350px;
 	background: #F7F7F7;
 	display: flex;
 	align-items: center;
 }
+.userInfo-my p {
+	margin: 0;
+}
 .userInfoBox-my {
 	margin: 0 auto;
 	width: 1300px;
-	height: 300px;
+	height: 240px;
 	display: flex;
     justify-content: space-between;
 }
@@ -29,10 +32,11 @@
 }
 .stamp-my,
 .coupon-my {
-	width: 270px;
+	width: 190px;
 	background: #fff;
+	padding: 40px;
 }
-.level-my {
+.vip-my {
 	width: 270px;
 	background: #fff;
 	border-top-right-radius: 10px;
@@ -43,8 +47,8 @@
 	align-items: center;
 }
 .userImgScale-my {
-	width: 120px;
-    height: 120px;
+	width: 100px;
+    height: 100px;
     object-fit: cover;
 }
 .userName-my {
@@ -74,4 +78,20 @@
 .userBtn-my a.updateUser-my {
     background: #58A3BC;
     color: #fff;
+}
+.Title-my {
+	display: flex;
+    align-items: center;
+}
+.Title-my i {
+	margin-left: 4px;
+	font-size: 26px;
+}
+.Count-my {
+	font-size: 28px;
+	font-weight: bold;
+}
+.stamp-my p, 
+.coupon-my p {
+	font-size: 20px;
 }
