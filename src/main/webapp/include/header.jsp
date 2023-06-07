@@ -15,6 +15,7 @@
 	UserBean ubean = new UserBean();
 	String uid = (String) session.getAttribute("uid");
 	String img = (String) session.getAttribute("img");
+	Integer level = (Integer) session.getAttribute("level");
 	%>
 	<header>
 		<div class="container-header">
@@ -43,7 +44,7 @@
 				
 					<div class="welcome-header">
 					<%
-						if(ubean.getLevel() == 99){
+						if(level == 99){
 					%>
 						<a class="user-header" href="#">
 							<img class="userImg-header" src="<%=img %>">
