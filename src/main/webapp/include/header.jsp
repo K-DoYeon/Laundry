@@ -26,7 +26,7 @@
 				<ul class="gnb-header">
 					<li><a href="#">예약</a></li>
 					<li><a href="#">PR</a></li>
-					<li><a href="#">커뮤니티</a></li>
+					<li><a href="../board/boardlist.jsp">커뮤니티</a></li>
 					<li><a href="#">회사소개</a></li>
 				</ul>
 
