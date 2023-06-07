@@ -120,7 +120,7 @@ button a:hover{
    if(level == 99){
    
 %>
-   <input type="hidden" name="id" values="<%=id %>">
+   <input type="hidden" name="id" value="<%=id %>">
             <div class="do-commentbox">
                 <div class="do-left">
                <p>ID : <span class="id"><%=id%></span></p>
