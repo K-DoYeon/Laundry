@@ -20,6 +20,7 @@
 		
 		int result = udao.login(ubean.getUid(), ubean.getUpass());
 		String img = udao.userImg(ubean.getUid(), ubean.getUpass());
+		int level = udao.userLevel(ubean.getUid());
 		
 		
 		String rememberId = request.getParameter("rememberId");
@@ -47,6 +48,7 @@
 		if(result == 1){
 			session.setAttribute("uid",ubean.getUid());//세션부여
 			session.setAttribute("img", img);
+			session.setAttribute("level", level);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href='../main/main.jsp'");//로그인에 성공하면 main페이지로
@@ -55,7 +57,7 @@
 		else if(result == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('비밀번호가 틀립니다.')");
+			script.println("alert('아이디 / 비밀번호를 확인해주세요')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
