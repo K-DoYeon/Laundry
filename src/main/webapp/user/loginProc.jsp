@@ -49,6 +49,7 @@
 			session.setAttribute("uid",ubean.getUid());//세션부여
 			session.setAttribute("img", img);
 			session.setAttribute("level", level);
+			session.setAttribute("upass", ubean.getUpass());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href='../main/main.jsp'");//로그인에 성공하면 main페이지로
