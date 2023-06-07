@@ -18,16 +18,22 @@
 				</div>
 				<div class="userBtn-my">
 					<a href="updatePw.jsp" class="updatePw-my">비밀번호 수정</a>
-					<a href="updateUser.jsp" class="updateUser-my">회원정보 수정</a>
+					<a onclick="pwCheck()" class="updateUser-my">회원정보 수정</a>
 				</div>
 			</div>
 			<div class="stamp-my">
-				<h2>스탬프</h2>
-				<p><span><count>개</span></p>
+				<a class="Title-my" href="stamp.jsp">
+					<h2>스탬프</h2> <i class="ri-arrow-right-s-line"></i>
+				</a>
+				<p><span class="Count-my">0</span>개</p>
 			</div>
 			<div class="coupon-my">
+				<a class="Title-my">
+					<h2>무료배송 쿠폰</h2>
+				</a>
+				<p><span class="Count-my">0</span>개</p>
 			</div>
-			<div class="level-my">
+			<div class="vip-my">
 			</div>
 		</div>
 	</div>
