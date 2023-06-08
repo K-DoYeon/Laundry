@@ -52,7 +52,7 @@ function dodel(){
 }
 
 function choimod(){
-	const url = "boardModity.jsp";
+	const url = "boardModify.jsp";
 	const width=500, height=350;
 	let left = (document.body.offsetWidth / 2) - (width / 1.5);
 	let top = (document.body.offsetHeight / 2) - (height);
@@ -66,4 +66,8 @@ function choimod(){
 		 left=${left}, 
 		 top=${top}`
     );
+}
+
+function windowClose(){
+	window.close();
 }

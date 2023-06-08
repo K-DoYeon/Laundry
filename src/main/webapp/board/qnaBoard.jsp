@@ -17,12 +17,11 @@
 
 <%
 
-   String num = getInitParameter("num");
-   String uid = getInitParameter("uid");
-   String wdate = getInitParameter("wdate");
-   String readcount = getInitParameter("readcount");
-   String content = getInitParameter("content");
-   String subject = getInitParameter("subject");
+	int num = Integer.parseInt(request.getParameter("num"));
+
+	BoardDAO dao = new BoardDAO();
+	BoardBean bean = dao.getOneBoard(num);
+
 %>
 <style>
 @font-face {
@@ -82,26 +81,26 @@ button a:hover{
          <h2 class = "text-center">QnA</h2>
             <div class="mb-3 mt-4 subject">
                <label for="title">제목</label>
-               <input type="text" class="form-control" name="subject" id="subject" placeholder="<%=subject%>" readonly>
-            </div>
+               <input type="text" class="form-control" name="subject" id="subject" placeholder="<%=bean.getSubject()%>" readonly>
+            </div> 
             <div class="mb-3 d-flex menu">
                <div>
-                  <label for="reg_num"><%=num %> /</label>
-                  <label for="reg_id"><%=uid %></label>
+                  <label for="reg_num"><%=bean.getNum() %> /</label>
+                  <label for="reg_id"><%=bean.getUid() %></label>
                </div>
                <div>
-                  <label for="reg_wdate"><%=wdate %> /</label>
-                  <label for="reg_readcount"><%=readcount%></label>
+                  <label for="reg_wdate"><%=bean.getWdate() %> /</label>
+                  <label for="reg_readcount"><%=bean.getReadcount() %></label>
                </div>
             </div>   
             
             <div class="mb-3">
                <label for="content">내용</label>
-               <textarea class="form-control" rows="5" name="content" id="content" readonly><%=content%></textarea>
+               <textarea class="form-control" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
             </div>      
             
          <div class ="choi-qna">
-            <button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
+            <button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit" onclick="location.href='qnaUpdate.jsp?num=<%=bean.getNum() %>'">수정</button>
             <button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
          </div>         
       

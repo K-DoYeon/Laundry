@@ -213,42 +213,47 @@ public class BoardDAO {
 			return boardlist;
 		}
 	
-	//qnaBoard 게시글 리턴
-		public BoardBean getOneBoard(int num) {
-			//리턴타입 선언
-			BoardBean bean = new BoardBean();
-			getCon();
-			
-			try {
-				
-				//조회수쿼리
-				String readcount = "update board set readcount = readcount+1 where num = ?";
-				pstmt=con.prepareStatement(readcount);
-				pstmt.setInt(1, num);
-				pstmt.executeUpdate();
-				
-				//쿼리준비
-				String sql = "select * from board where num=?";
-				pstmt=con.prepareStatement(sql);
-				pstmt.setInt(1, num);
-				//쿼리 결과 리턴
-				rs=pstmt.executeQuery();
-				
-				if(rs.next()) {
-					bean.setNum(rs.getInt(1));
-					bean.setSubject(rs.getString(2));
-					bean.setUid(rs.getString(3));
-					bean.setWdate(rs.getString(4).toString());
-					bean.setReadcount(rs.getInt(5));
-					bean.setContent(rs.getString(6));
+		//qnaBoard 게시글 리턴
+				public BoardBean getOneBoard(int num) {
+					//리턴타입 선언
+					BoardBean bean = new BoardBean();
+					getCon();
+					
+					try {
+
+						//조회수쿼리
+						String readsql = "update board set readcount = readcount + 1 where num = ?";
+						pstmt = con.prepareStatement(readsql);
+						pstmt.setInt(1, num);
+						pstmt.executeUpdate();
+						pstmt.clearParameters();
+						//쿼리준비
+						String sql = "select * from board where num = ?";
+						pstmt=con.prepareStatement(sql);
+						pstmt.setInt(1, num);
+						//쿼리 결과 리턴
+						rs=pstmt.executeQuery();
+						
+						if(rs.next()) {
+							bean.setNum(rs.getInt(1));
+							bean.setUid(rs.getString(2));
+							bean.setUpass(rs.getString(3));
+							bean.setLevel(rs.getInt(4));
+							bean.setSubject(rs.getString(5));
+							bean.setContent(rs.getString(6));
+							bean.setWdate(rs.getString(7));
+							bean.setReadcount(rs.getInt(8));
+							bean.setReplycount(rs.getInt(9));
+							bean.setLike(rs.getInt(10));
+						}
+						System.out.println("연결성공!!!!!!!!!!!");
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.out.println("연결실패!!!!!!!!!!!!!1");
+					}
+					return bean;
 				}
-				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return bean;
-		}
-		
+				
 		//qnaBoardupdate 게시글 리턴
 			public BoardBean getOneUpdateBoard(int num) {
 				//리턴타입 선언
@@ -320,4 +325,6 @@ public class BoardDAO {
 					e.printStackTrace();
 				}
 			}
+			
+		
 }
