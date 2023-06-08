@@ -145,6 +145,32 @@ public class BoardDAO {
 			return list;
 		}
 		
+		/****************************list********************************/
+		/**************************comment*******************************/
+				
+				public int write(String content, String upass, String uid) {
+					getCon();
+					
+					try {
+						String sql = "insert into comment values(num,?,?,?,sysdate(),0,0)";
+						pstmt = con.prepareStatement(sql);
+						
+						pstmt.setString(1, uid);
+						pstmt.setString(2, upass);
+						pstmt.setString(3, content);
+						
+						System.out.println(pstmt);
+						
+						return pstmt.executeUpdate();
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return -1;
+				}
+				
+		/**************************comment*******************************/
+		
 		//게시글 검색
 		public ArrayList<BoardBean> getSearch(String searchField, String searchText){
 			ArrayList<BoardBean> list = new ArrayList<BoardBean>();
