@@ -73,7 +73,7 @@ button a:hover{
 	
 %>
 <article>
-<form action ="boardModify.jsp" id = "form" method = "post">
+<form action ="qnaUpdateProc.jsp" id = "form" method = "post">
 		<div class="container" role="main">
 			<h2 class = "text-center">QnA</h2>
 				<div class="mb-3 mt-4 subject">
