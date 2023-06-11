@@ -63,10 +63,27 @@
 		</div>
 	</div>
 	<div class="container-my">
-		<div class="banner-my">
+		<div class="couponBox-my">
+			<h2 class="stampTitle-my">STAMP</h2>
+			<div class="bubble-my">
+			</div>
+			<div class="bubbleMono-my">
+				<%
+					for(int i = 0; i < 5; i++) {
+				%>
+					<img alt="bubble_mono" src="../img/bubble_mono.png">
+				<%
+					}
+				%>
+			</div>
 		</div>
 		
-		<div class="reservationList-my">
+		<div class="banner-my">
+			<img alt="banner" src="../img/banner.png" class="bannerImg-my">
+		</div>
+		
+		<div class="reviewList-my">
+			<h2 class="reviewTitle-my">내가 쓴 후기</h2>
 		</div>
 	</div>
 
