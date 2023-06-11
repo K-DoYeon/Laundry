@@ -8,6 +8,7 @@
 	UserBean ubean = new UserBean();
 	String uid = (String) session.getAttribute("uid");
 	String img = (String) session.getAttribute("img");
+	Integer vip = (Integer) session.getAttribute("vip");
 	%>
 	<div class="userInfo-my">
 		<div class="userInfoBox-my">
@@ -26,15 +27,39 @@
 					<h2>스탬프</h2> <i class="ri-arrow-right-s-line"></i>
 				</a>
 				<p><span class="Count-my">0</span>개</p>
+				<img alt="stamp" src="../img/stamp.png" class="stampImg-my">
 			</div>
 			<div class="coupon-my">
 				<a class="Title-my">
 					<h2>무료배송 쿠폰</h2>
 				</a>
 				<p><span class="Count-my">0</span>개</p>
+				<img alt="coupon" src="../img/coupon.png" class="couponImg-my">
 			</div>
+			
+			<%
+				if (vip == 0) {
+			%>
 			<div class="vip-my">
+				<a class="Title-my">
+					<h2>회원등급</h2>
+				</a>
+				<img alt="normal" src="../img/normal.png" class="vipImg-my">
+				<p><span class="point-my">일반</span>회원</p>
 			</div>
+			<%
+				} else {
+			%>
+			<div class="vip-my">
+				<a class="Title-my">
+					<h2>회원등급</h2>
+				</a>
+				<img alt="vip" src="../img/vip.png" class="vipImg-my">
+				<p><span class="point-my">VIP</span>회원</p>
+			</div>
+			<%
+				}
+			%>
 		</div>
 	</div>
 	<div class="container-my">

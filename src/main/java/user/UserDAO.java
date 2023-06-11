@@ -207,5 +207,23 @@ public class UserDAO {
 			}
 			return level;
 		}
+		
+		public int userVip(String uid) {
+			int vip = 0;
+			try {
+				getCon();
+				String sql = "select vip from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					vip = rs.getInt("level");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return vip;
+		}
 	
 }//userDAO
