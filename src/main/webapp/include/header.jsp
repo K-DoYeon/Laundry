@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@page import="user.UserDAO"%>
 <%@page import="user.UserBean"%>
 <!DOCTYPE html>
@@ -49,6 +50,9 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
+						<a class="user-admin" href="../user/memberlist.jsp">
+							회원관리
+						</a>
 					<%
 						} else {
 					%>
@@ -56,6 +60,7 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
+						
 					<%
 						}
 					%>
