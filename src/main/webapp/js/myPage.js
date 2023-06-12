@@ -1,6 +1,6 @@
 //비밀번호 확인 popup
-function pwCheck(){
-	const url = "pwCheck.jsp";
+function userCheck(){
+	const url = "userCheck.jsp";
 	const width=500, height=300;
 	let left = (document.body.offsetWidth / 2) - (width / 2);
 	let top = 200;
@@ -13,11 +13,7 @@ function pwCheck(){
 		`width=${width}, 
 		 height=${height}, 
 		 left=${left}, 
-		 top=${top}`);
+		 top=${top}`
+	);
 }
 
-
-//회원가입으로 이동
-function updatePw(){
-	window.location.href = "updatePw.jsp";
-}

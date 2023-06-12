@@ -337,5 +337,22 @@ public class UserDAO {
 			return flag; //DB 오류 
 		}
 		
-	
+		public String userPass(String uid) {
+			String upass = null;
+			try {
+				getCon();
+				String sql = "select upass from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					upass = rs.getString("upass");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return upass;
+		}
+		
 }//userDAO
