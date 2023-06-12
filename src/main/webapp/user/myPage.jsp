@@ -71,7 +71,7 @@
 				<%
 					for(int i = 0; i < 5; i++) {
 				%>
-					<img alt="bubble_mono" src="../img/bubble_mono.png">
+					<img alt="bubble_mono" src="../img/bubble_mono.png" class="bubbleImg-my">
 				<%
 					}
 				%>

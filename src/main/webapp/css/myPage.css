@@ -136,7 +136,7 @@
 
 /***** STAMP *****/
 .couponBox-my {
-	height: 350px;
+	height: 330px;
 	background: #F7F7F7;
 	border-radius: 20px;
 	margin: 50px 0;
@@ -151,7 +151,7 @@
 .bubbleMono-my {
 	display: flex;
     flex-wrap: nowrap;
-    width: 1000px;
+    width: 93px;
     justify-content: space-around;
     margin: 12px auto 0;
 }
@@ -165,4 +165,7 @@
 .reviewTitle-my {
 	font-size: 30px;
 	font-weight: 900;
+}
+.bubbleImg-my {
+	width: 145px;
 }
