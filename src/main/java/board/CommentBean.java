@@ -8,6 +8,8 @@ public class CommentBean {
 	private String wdate;
 	private int ref;
 	private int like;
+	private int commentAvailable;
+	
 	
 	public int getCommentid() {
 		return commentid;
@@ -51,6 +53,12 @@ public class CommentBean {
 	}
 	public void setLike(int like) {
 		this.like = like;
+	}
+	public int getCommentAvailable() {
+		return commentAvailable;
+	}
+	public void setCommentAvailable(int commentAvailable) {
+		this.commentAvailable = commentAvailable;
 	}
 	
 }

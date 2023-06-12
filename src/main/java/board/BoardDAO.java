@@ -166,6 +166,7 @@ public class BoardDAO {
 							comment.setWdate(rs.getString(5));
 							comment.setRef(rs.getInt(6));
 							comment.setLike(rs.getInt(7));
+							comment.setCommentAvailable(rs.getInt(8));
 							
 							return comment;
 						}
@@ -180,7 +181,7 @@ public class BoardDAO {
 					getCon();
 					
 					try {
-						String sql = "insert into comment values(commentid,?,?,?,sysdate(),?,0)";
+						String sql = "insert into comment values(commentid,?,?,?,sysdate(),?,0,1)";
 						pstmt = con.prepareStatement(sql);
 						
 						pstmt.setString(1, uid);
@@ -200,7 +201,7 @@ public class BoardDAO {
 				
 				public ArrayList<CommentBean> getList(int ref){
 					getCon();
-					String sql = "select * from comment where ref = ? order by commentid desc";
+					String sql = "select * from comment where ref = ? and commentAvailabel = 1;";
 					ArrayList<CommentBean> list = new ArrayList<CommentBean>();
 					try {
 						
@@ -218,6 +219,7 @@ public class BoardDAO {
 							comment.setWdate(rs.getString(5));
 							comment.setRef(rs.getInt(6));
 							comment.setLike(rs.getInt(7));
+							comment.setCommentAvailable(rs.getInt(8));
 							
 							list.add(comment);
 						}
