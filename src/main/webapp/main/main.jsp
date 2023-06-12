@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
-
-
 <%
 		Cookie[] cookies = request.getCookies();
 		String loginStatus = null;
@@ -16,6 +14,7 @@
 					loginStatus = cookies[i].getValue();
 				}
 				if(cookies[i].getName().equals("rememberId")){
+					
 					rememberId = cookies[i].getValue();
 				}
 				if(cookies[i].getName().equals("uid")){
@@ -24,6 +23,10 @@
 			}
 		}
 	%>
+
+	<div class="main-container">
+		
+	</div>
 	
 
 </body>
