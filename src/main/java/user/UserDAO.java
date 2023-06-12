@@ -254,5 +254,23 @@ public class UserDAO {
 			}
 			return img;
 		}
+		
+		public int userLevel(String uid) {
+			int level = 0;
+			try {
+				getCon();
+				String sql = "select level from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					level = rs.getInt("level");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return level;
+		}
 	
 }//userDAO
