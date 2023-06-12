@@ -135,7 +135,7 @@ CommentBean cmt = new CommentBean();
 
 	<input type="hidden" name="ref" value="bean.getNum()">
 
-   <input type="hidden" name="ref" value="<%=ref %>">
+   <input type="hidden" name="ref" value="">
 
 
 <%
