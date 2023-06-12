@@ -54,7 +54,7 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
-						<a class="user-admin" href="../user/memberlist.jsp">
+						<a class="user-admin" href="../user/memberList.jsp">
 							회원관리
 						</a>
 					<%
