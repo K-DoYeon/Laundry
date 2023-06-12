@@ -35,12 +35,14 @@
 	width: 190px;
 	background: #fff;
 	padding: 40px;
+	position: relative;
 }
 .vip-my {
-	width: 270px;
+	width: 210px;
 	background: #fff;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
+	padding: 30px;
 }
 .userImgTop-my {
 	display: flex;
@@ -89,9 +91,81 @@
 }
 .Count-my {
 	font-size: 28px;
-	font-weight: bold;
+	font-weight: 900;
 }
 .stamp-my p, 
 .coupon-my p {
-	font-size: 20px;
+	font-size: 28px;
+	color: #58A3BC;
+	margin-top: 8px;
+}
+.Count-my {
+	font-size: 36px;	
+	font-weight: bold;
+}
+.userInfo-my h2 {
+	margin: 0;
+}
+.stampImg-my {
+	position: absolute;
+    right: 25px;
+    bottom: 52px;
+    rotate: 30deg;
+    scale: 120%;
+}
+.couponImg-my {
+	position: absolute;
+    right: 25px;
+    bottom: 52px;
+    rotate: -30deg;
+    scale: 110%;
+}
+.vipImg-my {
+	scale: 78%;
+	margin-left: -18px;
+}
+.point-my {
+	font-size: 40px;
+	font-weight: 900;
+}
+.vip-my p {
+	color: #58A3BC;
+    font-size: 32px;
+    margin-top: -30px;
+}
+
+/***** STAMP *****/
+.couponBox-my {
+	height: 330px;
+	background: #F7F7F7;
+	border-radius: 20px;
+	margin: 50px 0;
+}
+.stampTitle-my {
+	font-size: 30px;
+	font-weight: 900;
+	margin: 0;
+    padding: 27px 40px;
+}
+.bubble-my,
+.bubbleMono-my {
+	display: flex;
+    flex-wrap: nowrap;
+    width: 93px;
+    justify-content: space-around;
+    margin: 12px auto 0;
+}
+.banner-my {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	margin: 30px 0 100px;
+}
+.reviewTitle-my {
+	font-size: 30px;
+	font-weight: 900;
+}
+.bubbleImg-my {
+	width: 145px;
 }
