@@ -15,7 +15,7 @@
 BoardBean bean = new BoardBean();
 BoardDAO bdao = new BoardDAO();
 
-int result = bdao.update(comment.getCommentid(), comment.getRef(), comment.getContent());
+int result = bdao.update(comment.getRef(), comment.getCommentid(), comment.getContent());
 if(result == -1){
 	PrintWriter script=response.getWriter();
 	script.println("<script>");

@@ -147,8 +147,8 @@ CommentBean cmt = new CommentBean();
    
 %>
                   <div class="do-re-right">
-                     <a href="commentUpdate.jsp?commentid=<%=list.get(i).getCommentid() %>" class="edit">수정
-                           <input type="hidden" name="userID" value="">
+                     <a href="commentUpdate.jsp?ref=<%=bean.getNum() %>&commentid=<%=list.get(i).getCommentid() %>" class="edit">수정
+                           <input type="hidden" name="uid" value="<%= id %>">
                         </a>
                         <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="" class="delete">삭제
                            <input type="hidden" name="userID" value="">

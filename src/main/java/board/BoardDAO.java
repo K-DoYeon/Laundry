@@ -259,7 +259,7 @@ public class BoardDAO {
                return null;
             }
             
-            public int update(int commentid, int ref, String content) {
+            public int update(int ref,int commentid, String content) {
             	getCon();
             	String sql="update comment set content = ? where ref = ? and commentid = ?";
             	try {
