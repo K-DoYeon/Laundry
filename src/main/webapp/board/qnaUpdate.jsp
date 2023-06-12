@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="board.BoardDAO, board.BoardBean"%>
+<%@page import="board.BoardDAO, board.BoardBean, java.io.PrintWriter"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,9 +71,13 @@ button a:hover{
 	BoardDAO dao = new BoardDAO();
 	BoardBean bean = dao.getOneBoard(num);
 	
+/* 	String uid = null;
+	if(session.getAttribute("uid") != null){
+		uid = (String)session.getAttribute("uid");
+	} */
 %>
 <article>
-<form action ="qnaUpdateProc.jsp" id = "form" method = "post">
+<form action ="boardModify.jsp" id = "form" method = "post">
 		<div class="container" role="main">
 			<h2 class = "text-center">QnA</h2>
 				<div class="mb-3 mt-4 subject">
@@ -97,7 +101,7 @@ button a:hover{
 				</div>		
 				
 			<div class ="choi-qna">
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit" onclick = "choimod();">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit" >수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
 			</div>			
 </form>	

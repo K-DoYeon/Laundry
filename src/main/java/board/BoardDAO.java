@@ -318,7 +318,7 @@ public class BoardDAO {
 				getCon();
 				
 				try {
-					String sql = "select*from board where num = ?";
+					String sql = "select upass form board where num = ?";
 					pstmt=con.prepareStatement(sql);
 					pstmt.setInt(1, num);
 					rs= pstmt.executeQuery();
@@ -352,5 +352,13 @@ public class BoardDAO {
 				}
 			}
 			
-		
+//		//업데이트 메소드
+//			public int update(int num, String content) {
+//				getCon();
+//				try {
+//					String sql = "update board set  "
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
 }

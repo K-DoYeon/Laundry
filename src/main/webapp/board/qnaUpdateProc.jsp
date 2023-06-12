@@ -22,11 +22,11 @@
 		//수정되면 boardlist로 이동
 		response.sendRedirect("boardlist.jsp");
 	//비밀번호가 다르다면
-	}else{  
+	
 %>
 	<script type = "text/javascript">
 		alert("패스워드가 일치하지 않습니다.")
-		history.back();
+		history.go(-1);
 	</script>
 <%
 	}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="board.BoardBean, board.BoardDAO" %>
+<%@page import="java.util.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -25,13 +26,6 @@
 
 <title>Q&A Write</title>
 
-<%
-	String uid = request.getParameter("uid");
-/* 	int level = Integer.parseInt(request.getParameter("level"));
-	int readcount = Integer.parseInt(request.getParameter("readcount"));
-	int replycount = Integer.parseInt(request.getParameter("replycount"));
-	int like = Integer.parseInt(request.getParameter("like")); */
-%>
 <style>
 @font-face {
     font-family: 'IM_Hyemin-Bold';
@@ -66,12 +60,13 @@ button a{
 }
 .justify{
 	justify-content : space-between;
-	width : 50%
+
 }
 </style>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
+
 	<article>
 		<div class="container">
 			<h2 class = "text-center">QnA</h2>
@@ -83,7 +78,7 @@ button a{
 				<div class="mb-3 d-flex justify">
 					<div>
 						<label for="uid">작성자</label>
-						<input type="text" class="form-control" name="uid" id="uid" placeholder="<%=uid %>" readonly />
+						<input type="text" class="form-control" name="uid" id="uid" placeholder="아이디를 입력하세요" />
 					</div>
 					<div>
 						<label for="upass">비밀번호</label>
@@ -94,7 +89,6 @@ button a{
 				<div class="mb-3">
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"  ></textarea>
-
 				</div>
 				<!--1. int 값들과 level input type hidden으로 해서 넣기 
 				2. pass 넣기 -->
