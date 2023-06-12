@@ -52,5 +52,4 @@ public class CommentBean {
 		this.like = like;
 	}
 	
-	
 }

@@ -71,3 +71,10 @@ function choimod(){
 function windowClose(){
 	window.close();
 }
+
+function emulAcceptCharset(form) {
+    if (form.canHaveHTML) { // detect IE
+        document.charset = form.acceptCharset;
+    }
+    return true;
+}

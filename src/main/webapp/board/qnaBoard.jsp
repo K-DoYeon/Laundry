@@ -1,8 +1,15 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="board.BoardDAO, board.BoardBean"%>
+<%@page import="board.BoardDAO, board.BoardBean, board.CommentBean"%>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="../css/boardqna.css">
 <head>
 <meta charset="UTF-8">
 <!-- jQuery -->
@@ -69,7 +76,7 @@ button a:hover{
 <jsp:include page="/include/header.jsp" />
    <article>
    
-   <%
+<%
 
    String id = (String) session.getAttribute("uid");
    String pw = (String) session.getAttribute("upass");
@@ -104,15 +111,45 @@ button a:hover{
             <button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
          </div>         
       
-      
       <!-- 댓글  -->
-   <div class="container">
-    <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp">
-    <br><br>
-        <div>
-            <div class="do-comment">
-                <span>Comments</span>
+      <div class="container">
+      	<div class="do-comment">
+			<span>Comments</span>
+        </div>
+<%
+	BoardDAO cdao = new BoardDAO();
+    ArrayList<CommentBean> list = cdao.getList(bean.getNum());
+    for(int i = 0; i<list.size(); i++){	   
+%>
+            <div class="do-reply-con">
+            	<div class="do-reply">
+            		<div class="do-re-left">
+	            		<span><%=list.get(i).getUid() %> / </span>
+	            		<span><%=list.get(i).getWdate().substring(0,11) %></span>
+            		</div>
+            		<div class="do-re-right">
+	            		<a href="#" class="edit">수정
+                  			<input type="hidden" name="userID" value="">
+                  		</a>
+                  		<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="" class="delete">삭제
+                  			<input type="hidden" name="userID" value="">
+                  		</a>
+            		</div>
+            	</div>
+            	<div class="do-reply-item">
+            		<p><%=list.get(i).getContent() %></p>
+            	</div>
+            	
             </div>
+<%
+    }
+%>
+		</div>
+
+      
+   <div class="container">
+    <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
+            
 
 <%
 
@@ -122,18 +159,18 @@ button a:hover{
    <input type="hidden" name="id" value="<%=id %>">
             <div class="do-commentbox">
                 <div class="do-left">
-               <p>ID : <span class="id"><%=id%></span></p>
+               		<p>ID : <span class="id"><%=id%></span></p>
                    <p>PW : <span class="pw"><%=pw%></span></p>
                 </div>
                 <div class="do-right">
-                   <textarea rows="3" cols="120" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
+                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
                 </div>
             </div>
             
             <div class ="choi-qna">
-            <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button>
-         </div>
-        </div>       
+            <input type="submit">
+            <!-- <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button> -->
+         </div>    
     </form>
 </div>
 <%
@@ -142,6 +179,7 @@ button a:hover{
 
       </div>
    </article>
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/boardlist.js"></script>
 </body>

@@ -34,7 +34,8 @@
 		}else{
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			
+			script.println("location.href=document.referrer;");
+			script.println("</script>");
 		}
 	}
 %>

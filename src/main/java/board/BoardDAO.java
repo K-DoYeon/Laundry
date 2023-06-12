@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -148,6 +149,7 @@ public class BoardDAO {
 		/****************************list********************************/
 		/**************************comment*******************************/
 				
+		
 				public int write(String content, String upass, String uid) {
 					getCon();
 					
@@ -169,7 +171,37 @@ public class BoardDAO {
 					return -1;
 				}
 				
-		/**************************comment*******************************/
+				public ArrayList<CommentBean> getList(int num){
+					getCon();
+					
+					ArrayList<CommentBean> list = new ArrayList<CommentBean>();
+					try {
+						String sql = "select * from comment order by num desc";
+						pstmt = con.prepareStatement(sql);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							CommentBean comment = new CommentBean();
+							
+							comment.setNum(rs.getInt(1));
+							comment.setUid(rs.getString(2));
+							comment.setUpass(rs.getString(3));
+							comment.setContent(rs.getString(4));
+							comment.setWdate(rs.getString(5));
+							comment.setRef(rs.getInt(6));
+							comment.setLike(rs.getInt(7));
+							
+							list.add(comment);
+						}
+						
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					return list;
+				}
+				
+		/**************************search*******************************/
 		
 		//게시글 검색
 		public ArrayList<BoardBean> getSearch(String searchField, String searchText){
