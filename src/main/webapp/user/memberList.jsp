@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="../css/bootstrap.css" />
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="container lmember">
-	<h1 class="mt-3 mb-3 text-center">회원목록 (관리자 전용)</h1>
+	<h1 class="mt-3 mb-3 text-center">회원목록</h1>
 	<div class="text-end">
 		총 회원 : <%=maxColumn %>명
 	</div>
@@ -112,9 +112,9 @@ for(int i=0; i < size; i++){
 				}
 			%>
 			<select name="level" class="level" onchange="memLevel(this, <%=level %>, <%=num %>);">
-				<option value="0" <%=selected1 %> >서울지역</option>
-				<option value="1" <%=selected2 %> >타지역</option>
-				<option value="2" <%=selected3 %> >VIP회원</option>
+				<option value="0" <%=selected1 %> >VIP회원</option>
+				<option value="1" <%=selected2 %> >서울지역</option>
+				<option value="2" <%=selected3 %> >타지역</option>
 				<option value="3" <%=selected4 %> >관리자</option>
 			</select>
 		</td>
@@ -145,7 +145,7 @@ for(int i=0; i < size; i++){
 					if (mypg == i) act = "active";
 				
 			%>
-				<li class="page-item <%=act %>"> <a href="?fname=member/memberlist&page=<%=i %>" class="page-link"><%=i %></a></li>
+				<li class="page-item <%=act %>"> <a href="?user/memberlist&page=<%=i %>" class="page-link"><%=i %></a></li>
 			<%
 				}
 				
@@ -160,3 +160,5 @@ for(int i=0; i < size; i++){
 		</ul>
 	</div>
 </div>
+
+<script src="../js/memberlist.js"></script>

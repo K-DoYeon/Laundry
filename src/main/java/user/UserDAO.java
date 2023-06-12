@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+
+
 
 
 
@@ -78,6 +81,27 @@ public class UserDAO {
 		return level;
 	}
 	
+	// 멤버 수정
+	public int update(int level, int num) {
+		int flag = 0;
+		getCon();
+		try {
+			String sql = "update user set level=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, level);
+			pstmt.setInt(2, num);
+			
+			flag = pstmt.executeUpdate();
+			
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+	
 	// select
 	public Vector<UserBean> getSelect(int limitNum, int listNum) {
 		Vector<UserBean> data = new Vector<>();
@@ -109,6 +133,7 @@ public class UserDAO {
 				data.add(ubean);
 			}
 			
+			con.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,28 +142,26 @@ public class UserDAO {
 		return data;
 	}
 	
-	// AllSelect
+	//AllSelect
 	public int getAllSelect() {
-		Connection conn = null;
-		Statement st = null;
-		ResultSet rs = null;
-		String sql = null;
 		int allCount = 0;
-		sql = "select count(*) from user";
+		Statement st = null;
+		getCon();
 		
 		try {
-			getCon();
-			st = conn.createStatement();
+			
+			String sql = "select count(*) from user";
+			st = con.createStatement();
 			rs = st.executeQuery(sql);
 			while (rs.next()) {
 				allCount = rs.getInt(1);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return allCount;
-		
 	}
 	
 	
