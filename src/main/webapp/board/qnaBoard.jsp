@@ -28,7 +28,24 @@
 
 	BoardDAO dao = new BoardDAO();
 	BoardBean bean = dao.getOneBoard(num);
-
+	
+	int ref = 0;
+	if(request.getParameter("num") != null)
+		ref = Integer.parseInt(request.getParameter("num"));
+	if(ref == 0){
+		PrintWriter script=response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않은 글입니다.')");
+		script.println("location.href = 'boardlist.jsp'");
+		script.println("</script>");
+	}
+	
+	CommentBean bID = new BoardDAO().getref(ref);
+	
+	int commentid = 0;
+	if(request.getParameter("commentid") != null)
+		commentid = Integer.parseInt(request.getParameter("commentid"));
+	CommentBean comment = new BoardDAO().getCommnet(commentid);
 %>
 <style>
 @font-face {
@@ -156,6 +173,7 @@ button a:hover{
    if(level == 99){
    
 %>
+	<input type="hidden" name="ref" value="<%=ref %>">
    <input type="hidden" name="id" value="<%=id %>">
             <div class="do-commentbox">
                 <div class="do-left">

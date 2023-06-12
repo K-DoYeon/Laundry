@@ -1,7 +1,7 @@
 package board;
 
 public class CommentBean {
-	private int num;
+	private int commentid;
 	private String uid;
 	private String upass;
 	private String content;
@@ -9,12 +9,13 @@ public class CommentBean {
 	private int ref;
 	private int like;
 	
-	public int getNum() {
-		return num;
+	public int getCommentid() {
+		return commentid;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setCommentid(int commentid) {
+		this.commentid = commentid;
 	}
+
 	public String getUid() {
 		return uid;
 	}

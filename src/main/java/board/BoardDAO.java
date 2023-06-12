@@ -148,18 +148,45 @@ public class BoardDAO {
 		
 		/****************************list********************************/
 		/**************************comment*******************************/
-				
+				public CommentBean getref(int ref) {
+					String sql = "select * from comment where ref = ?";
+					
+					try {
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, ref);
+						
+						rs= pstmt.executeQuery();
+						
+						while(rs.next()) {
+							CommentBean comment = new CommentBean();
+							comment.setCommentid(rs.getInt(1));
+							comment.setUid(rs.getString(2));
+							comment.setUpass(rs.getString(3));
+							comment.setContent(rs.getString(4));
+							comment.setWdate(rs.getString(5));
+							comment.setRef(rs.getInt(6));
+							comment.setLike(rs.getInt(7));
+							
+							return comment;
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return null;
+				}
 		
-				public int write(String content, String upass, String uid) {
+				public int write(String content, String upass, String uid, int ref) {
 					getCon();
 					
 					try {
-						String sql = "insert into comment values(num,?,?,?,sysdate(),0,0)";
+						String sql = "insert into comment values(commentid,?,?,?,sysdate(),?,0)";
 						pstmt = con.prepareStatement(sql);
 						
 						pstmt.setString(1, uid);
 						pstmt.setString(2, upass);
 						pstmt.setString(3, content);
+						pstmt.setInt(4, ref);
 						
 						System.out.println(pstmt);
 						
@@ -171,19 +198,20 @@ public class BoardDAO {
 					return -1;
 				}
 				
-				public ArrayList<CommentBean> getList(int num){
+				public ArrayList<CommentBean> getList(int ref){
 					getCon();
-					
+					String sql = "select * from comment where ref = ? order by commentid desc";
 					ArrayList<CommentBean> list = new ArrayList<CommentBean>();
 					try {
-						String sql = "select * from comment order by num desc";
+						
 						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, ref);
 						rs = pstmt.executeQuery();
 						
 						while(rs.next()) {
 							CommentBean comment = new CommentBean();
 							
-							comment.setNum(rs.getInt(1));
+							comment.setCommentid(rs.getInt(1));
 							comment.setUid(rs.getString(2));
 							comment.setUpass(rs.getString(3));
 							comment.setContent(rs.getString(4));
@@ -199,6 +227,35 @@ public class BoardDAO {
 					}
 					
 					return list;
+				}
+				
+				public CommentBean getCommnet(int commentid) {
+					getCon();
+					
+					try {
+						String sql = "select * from comment where commentid = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, commentid);
+						rs = pstmt.executeQuery();
+						
+						System.out.println(pstmt);
+						
+						while(rs.next()) {
+							CommentBean comment = new CommentBean();
+							comment.setCommentid(rs.getInt(1));
+							comment.setUid(rs.getString(2));
+							comment.setUpass(rs.getString(3));
+							comment.setContent(rs.getString(4));
+							comment.setWdate(rs.getString(5));
+							comment.setRef(rs.getInt(6));
+							comment.setLike(rs.getInt(7));
+							
+							return comment;
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return null;
 				}
 				
 		/**************************search*******************************/
