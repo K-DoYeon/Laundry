@@ -1,20 +1,23 @@
 package board;
 
 public class CommentBean {
-	private int num;
+	private int commentid;
 	private String uid;
 	private String upass;
 	private String content;
 	private String wdate;
 	private int ref;
 	private int like;
+	private int commentAvailable;
 	
-	public int getNum() {
-		return num;
+	
+	public int getCommentid() {
+		return commentid;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setCommentid(int commentid) {
+		this.commentid = commentid;
 	}
+
 	public String getUid() {
 		return uid;
 	}
@@ -50,6 +53,12 @@ public class CommentBean {
 	}
 	public void setLike(int like) {
 		this.like = like;
+	}
+	public int getCommentAvailable() {
+		return commentAvailable;
+	}
+	public void setCommentAvailable(int commentAvailable) {
+		this.commentAvailable = commentAvailable;
 	}
 	
 }

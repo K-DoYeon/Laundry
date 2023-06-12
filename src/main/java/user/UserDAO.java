@@ -295,5 +295,47 @@ public class UserDAO {
 			}
 			return level;
 		}
+		
+		public int userVip(String uid) {
+			int vip = 0;
+			try {
+				getCon();
+				String sql = "select vip from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					vip = rs.getInt("level");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return vip;
+		}
+		
+		public boolean changePass(String uid, String newpass) {
+			boolean flag = false;
+			try {
+				getCon();
+				String sql = "update user set upass=?, upasscheck=? where uid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, newpass);
+				pstmt.setString(2, newpass);
+				pstmt.setString(3, uid);
+				
+				int i = pstmt.executeUpdate();
+
+				if(i == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return flag; //DB 오류 
+		}
+		
 	
 }//userDAO

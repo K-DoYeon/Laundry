@@ -24,7 +24,7 @@
 
 <%
 
-	int num = Integer.parseInt(request.getParameter("num").trim());
+	int num = Integer.parseInt(request.getParameter("num"));
 
    BoardDAO dao = new BoardDAO();
    BoardBean bean = dao.getOneBoard(num);
