@@ -24,12 +24,12 @@
 
 <%
 
-	int num = Integer.parseInt(request.getParameter("num").trim());
+   int num = Integer.parseInt(request.getParameter("num").trim());
 
-	BoardDAO dao = new BoardDAO();
-	BoardBean bean = dao.getOneBoard(num);
-	
-	
+   BoardDAO dao = new BoardDAO();
+   BoardBean bean = dao.getOneBoard(num);
+   
+   
 %>
 <style>
 @font-face {
@@ -78,10 +78,9 @@ button a:hover{
 <%
 
 
-
 int commentid = 0;
 if(request.getParameter("commentid") != null)
-	commentid = Integer.parseInt(request.getParameter("commentid"));
+   commentid = Integer.parseInt(request.getParameter("commentid"));
 CommentBean comment = new BoardDAO().getCommnet(commentid);
 
 CommentBean cmt = new CommentBean();
@@ -96,7 +95,6 @@ CommentBean cmt = new CommentBean();
 <jsp:include page="/include/header.jsp" />
    <article>
    
-
       <div class="container" role="main">
          <h2 class = "text-center">QnA</h2>
             <div class="mb-3 mt-4 subject">
@@ -126,26 +124,30 @@ CommentBean cmt = new CommentBean();
       
       <!-- 댓글  -->
       <div class="container">
-      	<div class="do-comment">
-			<span>Comments</span>
+         <div class="do-comment">
+         <span>Comments</span>
         </div>
 
 
       
    <div class="container">
     <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
+
 	<input type="hidden" name="ref" value="bean.getNum()">
+
+   <input type="hidden" name="ref" value="<%=ref %>">
+
 
 <%
 
    if(level == 99){
    
 %>
-	
-   
+
+   <input type="hidden" name="id" value="<%=id %>">
             <div class="do-commentbox">
                 <div class="do-left">
-               		<p>ID : <span class="id"><%=id%></span></p>
+                     <p>ID : <span class="id"><%=id%></span></p>
                    <p>PW : <span class="pw"><%=pw%></span></p>
                 </div>
                 <div class="do-right">
@@ -166,35 +168,37 @@ CommentBean cmt = new CommentBean();
 <div>
 
 <%
-	BoardDAO cdao = new BoardDAO();
+   BoardDAO cdao = new BoardDAO();
     ArrayList<CommentBean> list = cdao.getList(bean.getNum());
-    for(int i = 0; i<list.size(); i++){	   
+    for(int i = 0; i<list.size(); i++){      
 %>
             <div class="do-reply-con">
-            	<div class="do-reply">
-            		<div class="do-re-left">
-	            		<span><%=list.get(i).getUid() %> / </span>
-	            		<span><%=list.get(i).getWdate().substring(0,11) %></span>
-            		</div>
-            		<div class="do-re-right">
-	            		<a href="#" class="edit">수정
-                  			<input type="hidden" name="userID" value="">
-                  		</a>
-                  		<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="" class="delete">삭제
-                  			<input type="hidden" name="userID" value="">
-                  		</a>
-            		</div>
-            	</div>
-            	<div class="do-reply-item">
-            		<p><%=list.get(i).getContent() %></p>
-            	</div>
-            	
+               <div class="do-reply">
+                  <div class="do-re-left">
+                     <span><%=list.get(i).getUid() %> / </span>
+                     <span><%=list.get(i).getWdate().substring(0,11) %></span>
+                  </div>
+                  <div class="do-re-right">
+                     <a href="#" class="edit">수정
+                           <input type="hidden" name="userID" value="">
+                        </a>
+                        <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="" class="delete">삭제
+                           <input type="hidden" name="userID" value="">
+                        </a>
+                  </div>
+               </div>
+               <div class="do-reply-item">
+                  <p><%=list.get(i).getContent() %></p>
+               </div>
+               
             </div>
 <%
     }
 %>
-</div>
+
 		</div>
+		
+      </div>
 
       </div>
    </article>
