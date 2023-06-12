@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
 
 
 
@@ -74,6 +76,69 @@ public class UserDAO {
 			level = 2;
 		}
 		return level;
+	}
+	
+	// select
+	public Vector<UserBean> getSelect(int limitNum, int listNum) {
+		Vector<UserBean> data = new Vector<>();
+		getCon();
+		try {
+			String sql = "select * from user order by num desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, limitNum);
+			pstmt.setInt(2, listNum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				UserBean ubean = new UserBean();
+				ubean.setNum(rs.getInt("num"));
+				ubean.setUid(rs.getString("uid"));
+				ubean.setUpass(rs.getString("upass"));
+				ubean.setUpasscheck(rs.getString("upasscheck"));
+				ubean.setUname(rs.getString("uname"));
+				ubean.setUemail(rs.getString("uemail"));
+				ubean.setTel(rs.getString("tel"));
+				ubean.setPostcode(rs.getInt("postcode"));
+				ubean.setAddr(rs.getString("addr"));
+				ubean.setDetailaddr(rs.getString("detailaddr"));
+				ubean.setGender(rs.getString("gender"));
+				ubean.setBirth(rs.getInt("birth"));
+				ubean.setLevel(rs.getInt("level"));
+				ubean.setVip(rs.getInt("vip"));
+				ubean.setImg(rs.getString("img"));
+				data.add(ubean);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+	}
+	
+	// AllSelect
+	public int getAllSelect() {
+		Connection conn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		String sql = null;
+		int allCount = 0;
+		sql = "select count(*) from user";
+		
+		try {
+			getCon();
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while (rs.next()) {
+				allCount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return allCount;
+		
 	}
 	
 	

@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <jsp:useBean id="bean" class="user.UserBean" scope="page" />
-<jsp:useBean id="dao" class="user.UserDAO" scope="page" />
+<jsp:useBean id="udao" class="user.UserDAO" scope="page" />
 <%!
 	int listNum = 10; // 한 페이지당 보여줄 목록 수
 	int pageNum = 15; // 한 블럭당 보여줄 페이지 수	
@@ -25,9 +25,9 @@
 	}
 	int limitNum = (mypg - 1) * listNum;
 	
-   Vector data = bean.getSelect(limitNum, listNum);
+   Vector data = udao.getSelect(limitNum, listNum);
    
-	int maxColumn = bean.getAllSelect();
+	int maxColumn = udao.getAllSelect();
 	int size = data.size();
 	
 	/*
@@ -42,13 +42,15 @@
 
 %>   
 
+<link rel="stylesheet" href="../css/bootstrap.css" />
+<jsp:include page="../include/header.jsp"></jsp:include>
 <div class="container lmember">
 	<h1 class="mt-3 mb-3 text-center">회원목록 (관리자 전용)</h1>
 	<div class="text-end">
-		총 회원 : <%=maxColumn %>명/<%=totalPage %>페이지
+		총 회원 : <%=maxColumn %>명
 	</div>
 	<div class="row">
-		<table class="table table-striped memberstbl">
+		<table class="table  memberstbl">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -87,7 +89,7 @@ for(int i=0; i < size; i++){
 				if (level == 99) {
 			%>
 			
-			<span class="badge bg-danger px-4 py-2">관리자</span>
+			<span class="badge bg-primary px-4 py-2">관리자</span>
 			
 			<%
 				} else {	
@@ -110,10 +112,10 @@ for(int i=0; i < size; i++){
 				}
 			%>
 			<select name="level" class="level" onchange="memLevel(this, <%=level %>, <%=num %>);">
-				<option value="0" <%=selected1 %> >탈퇴회원</option>
-				<option value="1" <%=selected2 %> >일반회원</option>
-				<option value="2" <%=selected3 %> >유료회원</option>
-				<option value="3" <%=selected4 %> >VIP회원</option>
+				<option value="0" <%=selected1 %> >서울지역</option>
+				<option value="1" <%=selected2 %> >타지역</option>
+				<option value="2" <%=selected3 %> >VIP회원</option>
+				<option value="3" <%=selected4 %> >관리자</option>
 			</select>
 		</td>
 	
