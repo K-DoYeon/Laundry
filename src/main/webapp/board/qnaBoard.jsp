@@ -132,11 +132,7 @@ CommentBean cmt = new CommentBean();
       
    <div class="container">
     <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
-
-	<input type="hidden" name="ref" value="bean.getNum()">
-
-   <input type="hidden" name="ref" value="">
-
+   <input type="hidden" name="ref" value="<%=bean.getNum()%>">
 
 <%
 
@@ -144,7 +140,6 @@ CommentBean cmt = new CommentBean();
    
 %>
 
-   <input type="hidden" name="id" value="<%=id %>">
             <div class="do-commentbox">
                 <div class="do-left">
                      <p>ID : <span class="id"><%=id%></span></p>
@@ -196,8 +191,6 @@ CommentBean cmt = new CommentBean();
     }
 %>
 
-		</div>
-		
       </div>
 
       </div>
