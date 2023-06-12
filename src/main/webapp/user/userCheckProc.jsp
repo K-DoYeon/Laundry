@@ -23,7 +23,7 @@
 		if(result == 1){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("opener.location.href='uerInfo.jsp'");
+			script.println("opener.location.href='userInfo.jsp'");
 			script.println("window.close()");
 			script.println("</script>");
 		}

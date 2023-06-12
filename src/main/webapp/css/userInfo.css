@@ -1,0 +1,34 @@
+@charset "UTF-8";
+.container-info {
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+.userImgBox-info {
+	position: relative;
+}
+.userImg-info {
+	width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+#img {
+	display: none;
+}
+i.ri-settings-3-fill {
+	font-size: 26px;
+}
+.imgBox-info {
+	position: absolute;
+    right: 5px;
+    bottom: 15px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #000;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
