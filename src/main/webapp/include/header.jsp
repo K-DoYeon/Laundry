@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 	<%
@@ -54,7 +55,7 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
-						<a class="user-admin" href="../user/memberlist.jsp">
+						<a class="user-admin" href="../user/memberList.jsp">
 							회원관리
 						</a>
 					<%
