@@ -21,7 +21,9 @@
 	%>
 	<header>
 		<div class="container-header">
-				<a href="../main/main.jsp"> <img src="../img/logo.png" alt="logo">
+				<a href="../main/main.jsp"> 
+				<!-- <img src="../img/logo.png" alt="logo"> -->
+				<span class="logo-l">세탁의</span>&nbsp;<span class="logo-r">당신</span>
 				</a>
 
 				<ul class="gnb-header">
