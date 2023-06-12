@@ -87,5 +87,6 @@
 		</div>
 	</div>
 
+	<script src="../js/pwCheck.js"></script>
 </body>
 </html>
