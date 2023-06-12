@@ -13,6 +13,11 @@ $(function(){
 		e.preventDefault();
 		location.reload();
 	});
+	
+	$('#tab-bbs').click(function(e){
+		e.preventDefault();
+		location.reload();
+	});
 });
 
 const toggles = document.querySelectorAll(".faq-toggle");

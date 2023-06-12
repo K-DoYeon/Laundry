@@ -47,6 +47,9 @@ li{
 .tab a:first-child{
 	margin: 0px 10px;
 }
+.tab a:nth-child(2){
+	margin: 0px 10px 0px 0px;
+}
 .tab a{
 	border-radius: 10px;
 }

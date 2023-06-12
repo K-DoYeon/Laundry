@@ -259,6 +259,38 @@ public class BoardDAO {
                return null;
             }
             
+            public int update(int commentid, int ref, String content) {
+            	getCon();
+            	String sql="update comment set content = ? where ref = ? and commentid = ?";
+            	try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, content);
+					System.out.println(pstmt);
+					pstmt.setInt(2, ref);
+					pstmt.setInt(3, commentid);
+					
+					return pstmt.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+            	
+            	return -1;
+            }
+            
+            public int delete(int commentid) {
+            	getCon();
+            	String sql = "delete from comment where commentid = ?";
+            	try {
+            		pstmt = con.prepareStatement(sql);
+            		pstmt.setInt(1, commentid);
+            		
+            		return pstmt.executeUpdate();
+            	}catch (Exception e) {
+					e.printStackTrace();
+				}
+            	return -1;
+            }
+            
       /**************************search*******************************/
       
       //게시글 검색
