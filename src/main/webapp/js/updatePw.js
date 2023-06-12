@@ -1,4 +1,4 @@
-$('.submitBtn-upPw').on('click', function registerProc() {
+$('.submitBtn-upPw').on('click', function updatePwProc() {
 	var newpass = document.getElementById("newpass").value;
   	var newpasscheck = document.getElementById("newpasscheck").value;
 

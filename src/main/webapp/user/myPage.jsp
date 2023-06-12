@@ -19,7 +19,7 @@
 				</div>
 				<div class="userBtn-my">
 					<a href="updatePw.jsp" class="updatePw-my">비밀번호 수정</a>
-					<a onclick="pwCheck()" class="updateUser-my">회원정보 수정</a>
+					<a onclick="userCheck()" class="updateUser-my">회원정보 수정</a>
 				</div>
 			</div>
 			<div class="stamp-my">
@@ -87,6 +87,6 @@
 		</div>
 	</div>
 
-	<script src="../js/pwCheck.js"></script>
+	<script src="../js/myPage.js"></script>
 </body>
 </html>
