@@ -79,25 +79,25 @@ button a:hover{
    
 <%
 
-	int ref = 0;
-	if(request.getParameter("num") != null)
-		ref = Integer.parseInt(request.getParameter("num"));
-	if(ref == 0){
-		PrintWriter script=response.getWriter();
-		script.println("<script>");
-		script.println("alert('유효하지 않은 글입니다.')");
-		script.println("location.href = 'boardlist.jsp'");
-		script.println("</script>");
-	}
-	
-	CommentBean bID = new BoardDAO().getref(ref);
-	
-	int commentid = 0;
-	if(request.getParameter("commentid") != null)
-		commentid = Integer.parseInt(request.getParameter("commentid"));
-	CommentBean comment = new BoardDAO().getCommnet(commentid);
-	
-	CommentBean cmt = new CommentBean();
+int ref = 0;
+if(request.getParameter("num") != null)
+	ref = Integer.parseInt(request.getParameter("num"));
+if(ref == 0){
+	PrintWriter script=response.getWriter();
+	script.println("<script>");
+	script.println("alert('유효하지 않은 글입니다.')");
+	script.println("location.href = 'boardlist.jsp'");
+	script.println("</script>");
+}
+
+CommentBean bID = new BoardDAO().getref(ref);
+
+int commentid = 0;
+if(request.getParameter("commentid") != null)
+	commentid = Integer.parseInt(request.getParameter("commentid"));
+CommentBean comment = new BoardDAO().getCommnet(commentid);
+
+CommentBean cmt = new CommentBean();
 
    String id = (String) session.getAttribute("uid");
    String pw = (String) session.getAttribute("upass");
@@ -137,6 +137,40 @@ button a:hover{
       	<div class="do-comment">
 			<span>Comments</span>
         </div>
+
+
+      
+   <div class="container">
+    <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
+	<input type="hidden" name="ref" value="<%=ref %>">
+
+<%
+
+   if(level == 99){
+   
+%>
+	
+   <input type="hidden" name="id" value="<%=id %>">
+            <div class="do-commentbox">
+                <div class="do-left">
+               		<p>ID : <span class="id"><%=id%></span></p>
+                   <p>PW : <span class="pw"><%=pw%></span></p>
+                </div>
+                <div class="do-right">
+                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
+                </div>
+            </div>
+            
+            <div class ="choi-qna">
+            <input type="submit" id="cmtCnt-btn" value="등록">
+            <!-- <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button> -->
+         </div>    
+    </form>
+</div>
+<%
+   }
+%>
+
 <%
 	BoardDAO cdao = new BoardDAO();
     ArrayList<CommentBean> list = cdao.getList(bean.getNum());
@@ -166,38 +200,6 @@ button a:hover{
     }
 %>
 		</div>
-
-      
-   <div class="container">
-    <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
-            
-
-<%
-
-   if(level == 99){
-   
-%>
-	<input type="hidden" name="ref" value="<%=ref %>">
-   <input type="hidden" name="id" value="<%=id %>">
-            <div class="do-commentbox">
-                <div class="do-left">
-               		<p>ID : <span class="id"><%=id%></span></p>
-                   <p>PW : <span class="pw"><%=pw%></span></p>
-                </div>
-                <div class="do-right">
-                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
-                </div>
-            </div>
-            
-            <div class ="choi-qna">
-            <input type="submit" id="cmt">
-            <!-- <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button> -->
-         </div>    
-    </form>
-</div>
-<%
-   }
-%>
 
       </div>
    </article>
