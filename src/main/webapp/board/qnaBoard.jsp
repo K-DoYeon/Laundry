@@ -78,7 +78,6 @@ button a:hover{
 <%
 
 
-
 int commentid = 0;
 if(request.getParameter("commentid") != null)
    commentid = Integer.parseInt(request.getParameter("commentid"));
@@ -96,7 +95,6 @@ CommentBean cmt = new CommentBean();
 <jsp:include page="/include/header.jsp" />
    <article>
    
-
       <div class="container" role="main">
          <h2 class = "text-center">QnA</h2>
             <div class="mb-3 mt-4 subject">
@@ -141,8 +139,7 @@ CommentBean cmt = new CommentBean();
    if(level == 99){
    
 %>
-   
-   
+
             <div class="do-commentbox">
                 <div class="do-left">
                      <p>ID : <span class="id"><%=id%></span></p>
@@ -193,7 +190,7 @@ CommentBean cmt = new CommentBean();
 <%
     }
 %>
-</div>
+
       </div>
 
       </div>
