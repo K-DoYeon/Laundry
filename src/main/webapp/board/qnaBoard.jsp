@@ -24,7 +24,7 @@
 
 <%
 
-   int num = Integer.parseInt(request.getParameter("num").trim());
+	int num = Integer.parseInt(request.getParameter("num").trim());
 
    BoardDAO dao = new BoardDAO();
    BoardBean bean = dao.getOneBoard(num);
@@ -74,23 +74,10 @@ button a:hover{
 </style>
 </head>
 <body class = "choi-body">
-<jsp:include page="/include/header.jsp" />
-   <article>
-   
+
 <%
 
-int ref = 0;
-if(request.getParameter("num") != null)
-   ref = Integer.parseInt(request.getParameter("num"));
-if(ref == 0){
-   PrintWriter script=response.getWriter();
-   script.println("<script>");
-   script.println("alert('유효하지 않은 글입니다.')");
-   script.println("location.href = 'boardlist.jsp'");
-   script.println("</script>");
-}
 
-CommentBean bID = new BoardDAO().getref(ref);
 
 int commentid = 0;
 if(request.getParameter("commentid") != null)
@@ -105,6 +92,11 @@ CommentBean cmt = new CommentBean();
    int level = (levelObj != null) ? levelObj.intValue() : 0;
 
 %>
+
+<jsp:include page="/include/header.jsp" />
+   <article>
+   
+
       <div class="container" role="main">
          <h2 class = "text-center">QnA</h2>
             <div class="mb-3 mt-4 subject">
@@ -142,7 +134,7 @@ CommentBean cmt = new CommentBean();
       
    <div class="container">
     <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
-   <input type="hidden" name="ref" value="<%=ref %>">
+   <input type="hidden" name="ref" value="<%=bean.getNum()%>">
 
 <%
 
@@ -150,7 +142,7 @@ CommentBean cmt = new CommentBean();
    
 %>
    
-   <input type="hidden" name="id" value="<%=id %>">
+   
             <div class="do-commentbox">
                 <div class="do-left">
                      <p>ID : <span class="id"><%=id%></span></p>
@@ -170,6 +162,8 @@ CommentBean cmt = new CommentBean();
 <%
    }
 %>
+
+<div>
 
 <%
    BoardDAO cdao = new BoardDAO();
@@ -199,6 +193,7 @@ CommentBean cmt = new CommentBean();
 <%
     }
 %>
+</div>
       </div>
 
       </div>

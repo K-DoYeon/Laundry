@@ -24,6 +24,7 @@
         script.println("history.back()");
         script.println("</script>");
 	}else{
+		comment.setRef(Integer.parseInt(request.getParameter("ref")));
 		int rs = bdao.write(comment.getContent(), upass, uid, comment.getRef());	
 		if(rs == -1){
 			PrintWriter script = response.getWriter();
