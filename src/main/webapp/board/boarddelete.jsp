@@ -70,9 +70,10 @@ body{
             </div>
 			<div class="do-del">
 				<button type="submit">확인</button>
-				<button onclick="location.href=''">취소</button>
+				<button onclick="windowClose();">취소</button>
 			</div>
 		</form> 
 	</div>
+<script src="../js/boardlist.js"></script>
 </body>
 </html>

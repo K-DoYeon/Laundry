@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="board.BoardDAO, board.BoardBean"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,18 +63,23 @@ body{
 </head>
 <body>
 
+
 	<div class="choi-container">
 		<h2 class="choi-title">게시글 수정</h2>
 		<form class="choi-form" name="mod" action="" method="post">
 			<div class="del">
                 <label class="form-label-rgi"> 비밀번호 :</label>
-                <input type="text" id="upass" name="upass" size="35" style="text-align:center; width:200px; height:20px;" placeholder="비밀번호를 입력해주세요." />
+                <input type="password" id="upass" name="upass" size="35" style="text-align:center; width:200px; height:20px;" placeholder="비밀번호를 입력해주세요." />
             </div>
+            
 			<div class="choi-mod">
 				<button type="submit">확인</button>
-				<button onclick="location.href='qnaUpdate.jsp'">취소</button>
+				<button onclick="windowClose();">취소</button>
 			</div>
+
 		</form> 
 	</div>
+
+
 </body>
 </html>

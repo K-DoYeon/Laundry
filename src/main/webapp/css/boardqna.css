@@ -27,3 +27,73 @@ button a:hover{
 .choi-menu{
 	justify-content : space-between;
 }
+/***********************reply********************************/
+.do-reply-con{
+	margin-bottom: 30px;
+}
+.do-reply{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.edit{
+	margin-right: 10px;
+}
+.edit:hover{
+	color: blue;
+}
+.delete:hover{
+	color: red;
+}
+.do-reply-item{
+	border-bottom: 1px solid #aaa;
+}
+
+
+/***********************comment********************************/
+
+.do-comment{
+	border-bottom: 1px solid #8AC4D0; 
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+.do-commentbox{
+	display: flex;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #888; 
+}
+.do-left{
+	border-right: 1px solid #888;
+	padding: 0px 20px;
+	padding-top: 10px;
+}
+.do-left p{
+	margin: 5px 0;
+	
+}
+.id{
+	display: inline-block;
+	border-bottom: 1px solid #888;
+	padding: 1px 16px 1px 2px;
+	margin-left: 10px;
+	color: #555;
+}
+.pw{
+	display: inline-block;
+	border-bottom: 1px solid #888;
+	padding: 1px 20px 1px 2px;
+	margin-left: 3px;
+	color: #555;
+}
+.do-right{
+	width: 900px;
+	margin: 5px 2px 5px 5px;
+}
+.do-right textarea{
+	border: none;
+	font-family: sans-serif;
+}
+.choi-qna{
+	margin-top: 20px;
+}

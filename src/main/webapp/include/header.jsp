@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@page import="user.UserDAO"%>
 <%@page import="user.UserBean"%>
 <!DOCTYPE html>
@@ -20,7 +21,9 @@
 	%>
 	<header>
 		<div class="container-header">
-				<a href="../main/main.jsp"> <img src="../img/logo.png" alt="logo">
+				<a href="../main/main.jsp"> 
+				<!-- <img src="../img/logo.png" alt="logo"> -->
+				<span class="logo-l">세탁의</span>&nbsp;<span class="logo-r">당신</span>
 				</a>
 
 				<ul class="gnb-header">
@@ -51,6 +54,9 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
+						<a class="user-admin" href="../user/memberlist.jsp">
+							회원관리
+						</a>
 					<%
 						} else {
 					%>
@@ -58,6 +64,7 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
+						
 					<%
 						}
 					%>

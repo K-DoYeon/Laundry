@@ -14,6 +14,14 @@
 	crossorigin="anonymous" />
 
 <title>Q&A Update</title>
+<script>
+	$(document).on('click', '#btnSave', function(e){
+		e.preventDefault();	
+		$("#form").submit();
+	});
+
+
+</script>
 <style>
 @font-face {
     font-family: 'IM_Hyemin-Bold';
@@ -58,7 +66,6 @@ button a:hover{
 </head>
 <body>
 <%
-	//.trim을 이용해 공백 제거 정수 이용
 	int num = Integer.parseInt(request.getParameter("num"));
 	
 	BoardDAO dao = new BoardDAO();
@@ -66,6 +73,7 @@ button a:hover{
 	
 %>
 <article>
+<form action ="qnaUpdateProc.jsp" id = "form" method = "post">
 		<div class="container" role="main">
 			<h2 class = "text-center">QnA</h2>
 				<div class="mb-3 mt-4 subject">
@@ -85,13 +93,14 @@ button a:hover{
 				
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" readonly><%=bean.getContent() %></textarea>
+					<textarea class="form-control" rows="5" name="content" id="content" ><%=bean.getContent() %></textarea>
 				</div>		
 				
 			<div class ="choi-qna">
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit" onclick = "choimod();">수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" onclick="dodel();">삭제</button>
 			</div>			
-
+</form>	
+    <script src="../js/boardlist.js"></script>
 </body>
 </html>
