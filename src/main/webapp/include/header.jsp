@@ -12,6 +12,7 @@
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 	<%
