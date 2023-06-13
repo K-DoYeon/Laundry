@@ -33,7 +33,6 @@
 %>
 <style>
 @font-face {
-    font-family: 'IM_Hyemin-Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -81,7 +80,7 @@ button a:hover{
 int commentid = 0;
 if(request.getParameter("commentid") != null)
    commentid = Integer.parseInt(request.getParameter("commentid"));
-CommentBean comment = new BoardDAO().getCommnet(commentid);
+CommentBean comment = new BoardDAO().getComment(commentid);
 
 CommentBean cmt = new CommentBean();
 
@@ -128,7 +127,7 @@ CommentBean cmt = new CommentBean();
          <span>Comments</span>
         </div>
 
-<div>
+<div class="doco">
 
 <%
    BoardDAO cdao = new BoardDAO();
@@ -147,11 +146,11 @@ CommentBean cmt = new CommentBean();
    
 %>
                   <div class="do-re-right">
-                     <a href="commentUpdate.jsp?ref=<%=bean.getNum() %>&commentid=<%=list.get(i).getCommentid() %>" class="edit">수정
+                     <a href="CommentUpdate.jsp?num=<%=bean.getNum()%>&commentid=<%=list.get(i).getCommentid() %>" class="edit">수정
                            <input type="hidden" name="uid" value="<%= id %>">
                         </a>
-                        <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="" class="delete">삭제
-                           <input type="hidden" name="userID" value="">
+                        <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?num=<%=bean.getNum()%>&commentid=<%=list.get(i).getCommentid() %>" class="delete">삭제
+                           <input type="hidden" name="uid" value="<%= list.get(i).getUid() %>">
                         </a>
                   </div>
 <%
@@ -187,12 +186,12 @@ CommentBean cmt = new CommentBean();
                    <p>PW : <span class="pw"><%=pw%></span></p>
                 </div>
                 <div class="do-right">
-                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
+                   <textarea rows="5" cols="120" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
                 </div>
             </div>
             
             <div class ="choi-qna">
-            <input type="submit" id="cmtCnt-btn" value="등록">
+            <input type="submit" class="btn btn-sm choi-qna-btn" id="cmtCnt-btn" value="등록">
             <!-- <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button> -->
          </div>    
     </form>

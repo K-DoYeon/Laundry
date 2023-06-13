@@ -230,7 +230,7 @@ public class BoardDAO {
                return list;
             }
             
-            public CommentBean getCommnet(int commentid) {
+            public CommentBean getComment(int commentid) {
                getCon();
                
                try {
@@ -259,9 +259,9 @@ public class BoardDAO {
                return null;
             }
             
-            public int update(int ref,int commentid, String content) {
+            public int update(int ref, int commentid, String content) {
             	getCon();
-            	String sql="update comment set content = ? where ref = ? and commentid = ?";
+            	String sql = "update comment set content = ? where ref = ? and commentid = ?";
             	try {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, content);
@@ -275,6 +275,32 @@ public class BoardDAO {
 				}
             	
             	return -1;
+            }
+            
+            public CommentBean getOneUpdateComment(int commentid) {
+            	CommentBean comment = new CommentBean();
+            	getCon();
+            	
+            	try {
+					String sql = "select * from comment where Commentid = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, commentid);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						comment.setCommentid(rs.getInt(1));
+	                    comment.setUid(rs.getString(2));
+	                    comment.setUpass(rs.getString(3));
+	                    comment.setContent(rs.getString(4));
+	                    comment.setWdate(rs.getString(5));
+	                    comment.setRef(rs.getInt(6));
+	                    comment.setLike(rs.getInt(7));
+					}
+					con.close();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+            	return comment;
             }
             
             public int delete(int commentid) {
