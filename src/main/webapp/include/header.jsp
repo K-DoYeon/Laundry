@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 	<%
@@ -21,14 +22,17 @@
 	%>
 	<header>
 		<div class="container-header">
-				<a href="../main/main.jsp"> <img src="../img/logo.png" alt="logo">
+				<a href="../main/main.jsp"> 
+				<!-- <img src="../img/logo.png" alt="logo"> -->
+				<span class="logo-l">세탁의</span>&nbsp;<span class="logo-r">당신</span>
 				</a>
 
 				<ul class="gnb-header">
 					<li><a href="#">예약</a></li>
-					<li><a href="#">PR</a></li>
-					<li><a href="../board/boardlist.jsp">커뮤니티</a></li>
+					<li><a href="../board/boardlist.jsp">문의게시판</a></li>
+					<li><a href="#">후기게시판</a></li>
 					<li><a href="#">회사소개</a></li>
+					<li><a href="#">PR</a></li>
 				</ul>
 
 				<%
@@ -52,7 +56,7 @@
 							<img class="userImg-header" src="<%=img %>">
 							<span><%=uid%></span>
 						</a>
-						<a class="user-admin" href="../user/memberlist.jsp">
+						<a class="user-admin" href="../user/memberList.jsp">
 							회원관리
 						</a>
 					<%

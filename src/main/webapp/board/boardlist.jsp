@@ -86,14 +86,18 @@ String wdateStr = bean.getWdate();
 SimpleDateFormat sdfInput = new SimpleDateFormat("yyyy-MM-dd"); // 현재 형식
 Date wdate = sdfInput.parse(wdateStr); // 문자열을 Date 객체로 변환
 
-SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy.MM.dd"); // 변경하고자 하는 형식
+SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy.MM"); // 변경하고자 하는 형식
 String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
+
+SimpleDateFormat sdfBigOutput = new SimpleDateFormat("dd"); // 변경하고자 하는 형식 ("dd")
+String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
+
 %>
  	<div class="active" id="QA">
       <div class="faq">
       	<div class="do-title">
 	      	<div class="do-day">
-	      		<span class="big">01</span>
+	      		<span class="big"><%=formattedBigWdate%></span>
 	      		<span><%=formattedWdate%></span>
 	      	</div>
 	      	<div><h3 class="faq-title"><%=bean.getSubject() %></h3></div>
@@ -178,8 +182,8 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 			    </div>
 		        <div class="ans-item">
 		        	<ul>
-		        		<li>일반적으로 고객은 세탁 배송 업체의 웹사이트를 방문하여 주문을 할 수 있습니다.</li>
-		        		<li>거기에는 주문 양식이 제공되며, 필요한 세탁물의 종류와 수량, 배송 주소 등을 입력 후 제출 해 주세요.</li>
+		        		<li>세탁의 당신 웹사이트를 방문하여 주문 하실 수 있습니다.</li>
+		        		<li>예약페이지를 통해 주문 양식이 제공되며, 필요한 세탁물의 종류와 수량, 주소 등을 입력 후 제출 해 주세요.</li>
 		        	</ul>
 		        </div>
 			</div>
@@ -207,8 +211,8 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 		        <div class="ans-item">
 		        	<ul>
 		        		<li>배송 시간은 고객님의 거주 위치에 따라 다를 수 있습니다.</li>
-		        		<li>보통은 제품 수거 후 1~2일 안으로 받아보실 수 있습니다.</li>
-		        		<li>주문 폭주, 천재지변으로 인한 배송 지연은 미리 안내해드리며 최대 1주 정도 지연 될 수 있습니다.</li>
+		        		<li>보통은 제품 수거 후 1~2일 안으로 받아보실 수 있으며,</li>
+		        		<li>주문 폭주, 천재지변으로 인한 배송 지연은 미리 안내문자를 통해 고지되며 최대 1주 정도 지연 될 수 있습니다.</li>
 		        	</ul>
 		        </div>
 			</div>
@@ -236,7 +240,7 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 		        <div class="ans-item">
 		        	<ul>
 		        		<li>세탁의 당신에서 제공 된 박스가방에 세탁물을 넣고 신청하신 수거날짜에 맞춰 지정된 장소에 놓아주시면<br>
-		        		 업체의 택배기사가 신속하게 수거합니다.</li>
+		        		 업체의 택배기사가 신속하게 수거해갑니다.</li>
 		        		
 		        	</ul>
 		        </div>
@@ -309,12 +313,6 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 	
 	
  </div>
-    
-
-    
-	<div class="">
-    	<button onclick="dodel()">삭제</button>
-	</div>
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

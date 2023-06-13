@@ -21,7 +21,8 @@
 		int result = udao.login(ubean.getUid(), ubean.getUpass());
 		String img = udao.userImg(ubean.getUid(), ubean.getUpass());
 		int level = udao.userLevel(ubean.getUid());
-		
+		int vip = udao.userVip(ubean.getUid());
+		String upass = udao.userPass(ubean.getUid());
 		
 		String rememberId = request.getParameter("rememberId");
 		String uid = request.getParameter("uid");
@@ -49,7 +50,8 @@
 			session.setAttribute("uid",ubean.getUid());//세션부여
 			session.setAttribute("img", img);
 			session.setAttribute("level", level);
-			session.setAttribute("upass", ubean.getUpass());
+			session.setAttribute("vip", vip);
+			session.setAttribute("upass", upass);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href='../main/main.jsp'");//로그인에 성공하면 main페이지로

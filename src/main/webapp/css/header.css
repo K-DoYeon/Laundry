@@ -16,7 +16,7 @@ ul {
 
 .container-header {
 	width: 1300px;
-    height: 80px;
+    height: 100px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -27,6 +27,7 @@ ul {
 .welcome-header {
 	display: flex;
     align-items: center;
+    padding: 0;
 }
 .user-header {
 	margin: 4px 10px 0 0;
@@ -35,6 +36,7 @@ ul {
 }
 .gnb-header li {
 	width: 150px;
+	text-align: center;
 }
 .userImg-header {
 	border: 1px solid rgba(0, 0, 0, 0.01);
@@ -46,4 +48,19 @@ ul {
 
 .user-admin {
 	padding-right: 10px;
+}
+
+
+
+.logo-l, .logo-r{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.logo-l{
+	margin-left: 30px;
+}
+
+.logo-r{
+	color: #58a3bc;
 }

@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+
+
 
 
 
@@ -74,6 +79,89 @@ public class UserDAO {
 			level = 2;
 		}
 		return level;
+	}
+	
+	// 멤버 수정
+	public int update(int level, int num) {
+		int flag = 0;
+		getCon();
+		try {
+			String sql = "update user set level=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, level);
+			pstmt.setInt(2, num);
+			
+			flag = pstmt.executeUpdate();
+			
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+	
+	// select
+	public Vector<UserBean> getSelect(int limitNum, int listNum) {
+		Vector<UserBean> data = new Vector<>();
+		getCon();
+		try {
+			String sql = "select * from user order by num desc limit ?, ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, limitNum);
+			pstmt.setInt(2, listNum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				UserBean ubean = new UserBean();
+				ubean.setNum(rs.getInt("num"));
+				ubean.setUid(rs.getString("uid"));
+				ubean.setUpass(rs.getString("upass"));
+				ubean.setUpasscheck(rs.getString("upasscheck"));
+				ubean.setUname(rs.getString("uname"));
+				ubean.setUemail(rs.getString("uemail"));
+				ubean.setTel(rs.getString("tel"));
+				ubean.setPostcode(rs.getInt("postcode"));
+				ubean.setAddr(rs.getString("addr"));
+				ubean.setDetailaddr(rs.getString("detailaddr"));
+				ubean.setGender(rs.getString("gender"));
+				ubean.setBirth(rs.getInt("birth"));
+				ubean.setLevel(rs.getInt("level"));
+				ubean.setVip(rs.getInt("vip"));
+				ubean.setImg(rs.getString("img"));
+				data.add(ubean);
+			}
+			
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return data;
+	}
+	
+	//AllSelect
+	public int getAllSelect() {
+		int allCount = 0;
+		Statement st = null;
+		getCon();
+		
+		try {
+			
+			String sql = "select count(*) from user";
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			while (rs.next()) {
+				allCount = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return allCount;
 	}
 	
 	
@@ -207,5 +295,64 @@ public class UserDAO {
 			}
 			return level;
 		}
-	
+		
+		public int userVip(String uid) {
+			int vip = 0;
+			try {
+				getCon();
+				String sql = "select vip from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					vip = rs.getInt("level");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return vip;
+		}
+		
+		public boolean changePass(String uid, String newpass) {
+			boolean flag = false;
+			try {
+				getCon();
+				String sql = "update user set upass=?, upasscheck=? where uid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, newpass);
+				pstmt.setString(2, newpass);
+				pstmt.setString(3, uid);
+				
+				int i = pstmt.executeUpdate();
+
+				if(i == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return flag; //DB 오류 
+		}
+		
+		public String userPass(String uid) {
+			String upass = null;
+			try {
+				getCon();
+				String sql = "select upass from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					upass = rs.getString("upass");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return upass;
+		}
+		
 }//userDAO

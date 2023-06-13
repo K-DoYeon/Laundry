@@ -13,6 +13,11 @@ $(function(){
 		e.preventDefault();
 		location.reload();
 	});
+	
+	$('#tab-bbs').click(function(e){
+		e.preventDefault();
+		location.reload();
+	});
 });
 
 const toggles = document.querySelectorAll(".faq-toggle");
@@ -70,4 +75,11 @@ function choimod(){
 
 function windowClose(){
 	window.close();
+}
+
+function emulAcceptCharset(form) {
+    if (form.canHaveHTML) { // detect IE
+        document.charset = form.acceptCharset;
+    }
+    return true;
 }
