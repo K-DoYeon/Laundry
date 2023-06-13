@@ -8,32 +8,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<jsp:useBean id="bean" class ="board.BoardBean">
-	<jsp:setProperty name = "bean" property ="*" />
+<jsp:useBean id="bean" class= "board.BoardBean">
+	<jsp:setProperty name = "bean" property = "*" />
 </jsp:useBean>
 <%
-	//데베연결
-	BoardDAO dao = new BoardDAO();
-	//정보 수정 메소드
-	int result = dao.modifyBoard(bean);
+	int num = Integer.parseInt(request.getParameter("num"));
+	String upass = request.getParameter("upass");
 	
-	//수정완료일때
-	if(result == 1){ 	
+	BoardDAO dao = new BoardDAO();
+	int result = dao.deleteBoard(num, upass);
+	
+	if(result == 1){
 %>
 <script type = "text/javascript">
-		alert("게시글 수정이 완료되었습니다.");
+		alert("게시글 삭제가 완료되었습니다.");
 		location.href = 'boardlist.jsp';
 </script>	
-<% }else if(result == 0){ %>
+<% }else if(result ==0){ %>
 <script type = "text/javascript">
-		alert("비밀번호가 틀렸습니다. 다시 확인해주세요!");
-		history.go(-1);
+		alert("비밀번호오류푱푱푱.");
+		history.back();
 </script>	
-<% }else{ %>	
+<%}else{ %>
 <script type = "text/javascript">
-		alert("다시 시도해주세요.");
-		history.go(-1);
+		alert("게시글이 업슴요.");
+		history.back();
 </script>	
 <% } %>
 </body>
