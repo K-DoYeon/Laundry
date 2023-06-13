@@ -13,7 +13,7 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
 	crossorigin="anonymous" />
 
-<title>Q&A Update</title>
+<title>Q&A Delete</title>
 <script>
 	$(document).on('click', '#btnSave', function(e){
 		e.preventDefault();	
@@ -72,9 +72,9 @@ button a:hover{
 	
 %>
 <article>
-<form action ="qnaUpdateProc.jsp" id = "form" method = "post">
+<form action ="qnaDeleteProc.jsp" id = "form" method = "post">
 		<div class="container" role="main">
-			<h2 class = "text-center">QnA</h2>
+			<h2 class = "text-center">삭제하기</h2>
 				<div class="mb-3 mt-4 subject">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="<%=bean.getSubject() %>" readonly>
@@ -100,8 +100,9 @@ button a:hover{
 				
 			<div class ="choi-qna">
 			<input type="hidden" name="num" value="<%=bean.getNum() %>" />
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" >삭제</button>
+			<input type="hidden" name="upass" value="<%=bean.getUpass() %>" />
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" >수정</button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value="submit">삭제</button>
 			</div>
 	
 </form>	

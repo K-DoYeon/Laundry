@@ -48,7 +48,12 @@
 <div class="do-list-title">
 	<h1>게시판</h1>
 </div>
-
+<%
+	String uid = null;
+	if(session.getAttribute("uid") != null){
+	uid = (String)session.getAttribute("uid");
+		}
+%>
 <div class="top-tab">
 	<ul class="tab">
 		<a href="#" id="tab-QA" class="active n" data-idx="#QA"><li>Q&A</li></a>
@@ -103,10 +108,17 @@ String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로
 	      	<div><h3 class="faq-title"><%=bean.getSubject() %></h3></div>
       	</div>
 		
+<% if(uid == null) { %>		
+		<div>
+        	<p class="faq-text"><%=bean.getContent() %></p>
+			<p class="faq-plus"><a href="#" onclick = "loginalert();">더보기..</a></p>
+		</div>
+<% }else{ %>
 		<div>
         	<p class="faq-text"><%=bean.getContent() %></p>
 			<p class="faq-plus"><a href="qnaBoard.jsp?num=<%=bean.getNum()%>">더보기..</a></p>
 		</div>
+<% } %>
         <button class="faq-toggle">
           <i class="fas fa-chevron-down"></i>
           <i class="fas fa-times"></i>
@@ -162,10 +174,16 @@ String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로
 <%
 	}
 %>
+<% if(uid == null) { %>
+<div class="write-button active">
+	<button onclick="loginalert();">글쓰기</button>
+</div>
+<% }else{ %>
 <div class="write-button active">
 	<button onclick="location.href='qnaWrite.jsp'">글쓰기</button>
 </div>
-	
+<%  } %>	
+
 	<div id="notice">
       <div class="faq">
       	<div class="do-title-a">

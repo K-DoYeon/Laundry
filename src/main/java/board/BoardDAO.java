@@ -460,45 +460,89 @@ public class BoardDAO {
          }      
          
          
-      //update시 필요한 패스워드값
-         public String uPass(int num) {
-            String pass = "";
-            getCon();
-            
-            try {
-               String sql = "select*from board where num = ?";
-               pstmt=con.prepareStatement(sql);
-               pstmt.setInt(1, num);
-               rs= pstmt.executeQuery();
-               
-               if(rs.next()) {
-                  pass=rs.getString(1);
-               }
-               con.close();
-            } catch (Exception e) {
-               e.printStackTrace();
-            }
-            return pass;
-            
-         }
-         
-      //게시글 수정 메소드
-         public void updateBoard(BoardBean bean) {
-            getCon();
-            
-            try {
-               String sql = "update board set subject =?, content =?, where num =? ";
-               pstmt = con.prepareStatement(sql);
-               pstmt.setString(1, bean.getSubject());
-               pstmt.setString(2, bean.getContent());
-               pstmt.setInt(3, bean.getNum());
-               
-               pstmt.executeUpdate();
-               con.close();
-            } catch (Exception e) {
-               e.printStackTrace();
-            }
-         }
-         
-      
+			/*
+			 * //update시 필요한 패스워드값 public String uPass(int num) { String pass = "";
+			 * getCon();
+			 * 
+			 * try { String sql = "select*from board where num = ?";
+			 * pstmt=con.prepareStatement(sql); pstmt.setInt(1, num); rs=
+			 * pstmt.executeQuery();
+			 * 
+			 * if(rs.next()) { pass=rs.getString(1); } con.close(); } catch (Exception e) {
+			 * e.printStackTrace(); } return pass;
+			 * 
+			 * }
+			 * 
+			 * //게시글 수정 메소드 public void updateBoard(BoardBean bean) { getCon();
+			 * 
+			 * try { String sql = "update board set subject =?, content =?, where num =? ";
+			 * pstmt = con.prepareStatement(sql); pstmt.setString(1, bean.getSubject());
+			 * pstmt.setString(2, bean.getContent()); pstmt.setInt(3, bean.getNum());
+			 * 
+			 * pstmt.executeUpdate(); con.close(); } catch (Exception e) {
+			 * e.printStackTrace(); } }
+			 */
+     	//게시글 수정 메소드
+			public int modifyBoard (BoardBean bean) {
+				int result = -1;
+				getCon();
+				try {
+					String sql = "select upass from board where num=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, bean.getNum());
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						if(bean.getUpass().equals(rs.getString("upass"))) {
+							//게시판에 글이 있으면 수정 가능
+							String qeury = "update board set content=? where num=?";
+							pstmt = con.prepareStatement(qeury);
+							pstmt.setString(1, bean.getContent());
+							pstmt.setInt(2, bean.getNum());
+							result = pstmt.executeUpdate();
+						}else {
+							//게시판 비밀번호가 다를 시
+							result = 0;
+						}
+					}else {
+						//게시판 글이 없을 시
+						result = -1;
+					}
+					System.out.println("게시글 수정 완료"+result);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return result;
+			}
+			
+		
+		//게시글 삭제 메소드
+			public int deleteBoard(int num, String upass) {
+				int result = -1;
+				getCon();
+				try {
+					String sql = "select upass from board where num=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						if(upass.equals(rs.getString("upass"))) {
+							String query = "delete from board where num=?";
+							pstmt=con.prepareStatement(query);
+							pstmt.setInt(1, num);
+							result = pstmt.executeUpdate();
+						}else {
+							//비밀번호 오류 시
+							result = 0;
+						}
+					}else {
+						//게시글 없을 시
+						return -1;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return result;
+			}
 }
