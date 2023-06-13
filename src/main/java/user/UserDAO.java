@@ -306,7 +306,7 @@ public class UserDAO {
 				rs = pstmt.executeQuery(); 
 				System.out.println(pstmt);
 				if(rs.next()) {
-					vip = rs.getInt("level");
+					vip = rs.getInt("vip");
 				}
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -354,5 +354,221 @@ public class UserDAO {
 			}
 			return upass;
 		}
+		
+		public String userName(String uid) {
+			String uname = null;
+			try {
+				getCon();
+				String sql = "select uname from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					uname = rs.getString("uname");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return uname;
+		}
+		
+		public String userEmail(String uid) {
+			String uemail = null;
+			try {
+				getCon();
+				String sql = "select uemail from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					uemail = rs.getString("uemail");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return uemail;
+		}
+		
+		public String userTel(String uid) {
+			String tel = null;
+			try {
+				getCon();
+				String sql = "select tel from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					tel = rs.getString("tel");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return tel;
+		}
+		
+		public int userPostcode(String uid) {
+			int postcode = 0;
+			try {
+				getCon();
+				String sql = "select postcode from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					postcode = rs.getInt("postcode");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return postcode;
+		}
+		
+		public String userAddr(String uid) {
+			String addr = null;
+			try {
+				getCon();
+				String sql = "select addr from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					addr = rs.getString("addr");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return addr;
+		}
+		
+		public String userDetailaddr(String uid) {
+			String detailaddr = null;
+			try {
+				getCon();
+				String sql = "select detailaddr from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					detailaddr = rs.getString("detailaddr");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return detailaddr;
+		}
+		
+		public String userGender(String uid) {
+			String gender = null;
+			try {
+				getCon();
+				String sql = "select gender from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					gender = rs.getString("gender");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return gender;
+		}
+		
+		public int userBirth(String uid) {
+			int birth = 0;
+			try {
+				getCon();
+				String sql = "select birth from user where uid = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uid);
+				rs = pstmt.executeQuery(); 
+				System.out.println(pstmt);
+				if(rs.next()) {
+					birth = rs.getInt("birth");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return birth;
+		}
+		
+		
+		public boolean updateInfo(String uname, String uemail, String tel, int postcode, String addr,
+				String detailaddr, int birth, String uid) {
+			boolean flag = false;
+			try {
+				getCon();
+				String sql = "update user set uname=?, uemail=?, tel=?, postcode=?, addr=?"
+						+ ", detailaddr=?, birth=?, level=? where uid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, uname);
+				pstmt.setString(2, uemail);
+				pstmt.setString(3, tel);
+				pstmt.setInt(4, postcode);
+				pstmt.setString(5, addr);
+				pstmt.setString(6, detailaddr);
+				pstmt.setInt(7, birth);
+				
+				int level = Level(addr);
+				pstmt.setInt(8, level);
+				
+				pstmt.setString(9, uid);
+				
+				int i = pstmt.executeUpdate();
+
+				if(i == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return flag; //DB 오류 
+		}
+		
+		
+		private int Level(String addr) {
+			int level = 0;
+			
+			if (addr.contains("서울")) {
+				level = 1;
+			} else {
+				level = 2;
+			}
+			return level;
+		}
+		
+		public boolean updateImg(String uid, String img) {
+			boolean flag = false;
+			try {
+				getCon();
+				String sql = "update user set img=? where uid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, img);
+				pstmt.setString(2, uid);
+					
+				int i = pstmt.executeUpdate();
+				
+				System.out.println(pstmt);
+				
+				if(i == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return flag; //DB 오류 
+		}
+		
 		
 }//userDAO

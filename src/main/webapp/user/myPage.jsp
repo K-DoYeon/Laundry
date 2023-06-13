@@ -14,7 +14,7 @@
 		<div class="userInfoBox-my">
 			<div class="userImg-my">
 				<div class="userImgTop-my">
-					<img alt="userImg" src="<%=img %>" class="userImgScale-my">
+					<img alt="userImg" src="../img/<%=img %>" class="userImgScale-my">
 					<h3 class="userName-my"> <span><%= uid %></span> 님</h3>
 				</div>
 				<div class="userBtn-my">
