@@ -25,7 +25,7 @@
 			</div>
 		</form>
 		<div class="cancleBox-upPw">
-			<a href="updatePw.jsp" class="cancle-upPw">취소</a>
+			<a href="myPage.jsp" class="cancle-upPw">취소</a>
 		</div>
 	</div>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

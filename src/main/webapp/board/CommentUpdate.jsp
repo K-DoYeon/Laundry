@@ -24,10 +24,11 @@
 
 <%
 
-	int num = Integer.parseInt(request.getParameter("num"));
+	int num = Integer.parseInt(request.getParameter("num").trim());
 
    BoardDAO dao = new BoardDAO();
    BoardBean bean = dao.getOneBoard(num);
+   
    
    
 %>
@@ -81,9 +82,18 @@ button a:hover{
 int commentid = 0;
 if(request.getParameter("commentid") != null)
    commentid = Integer.parseInt(request.getParameter("commentid"));
-CommentBean comment = new BoardDAO().getCommnet(commentid);
+if(commentid == 0){
+	   PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않은 글입니다.')");
+		script.println("history.back()");
+		script.println("</script>");
+	}
+CommentBean comment = new BoardDAO().getComment(commentid);
 
 CommentBean cmt = new CommentBean();
+
+CommentBean be = dao.getOneUpdateComment(commentid);
 
    String id = (String) session.getAttribute("uid");
    String pw = (String) session.getAttribute("upass");
@@ -128,53 +138,11 @@ CommentBean cmt = new CommentBean();
          <span>Comments</span>
         </div>
 
-<div>
-
-<%
-   BoardDAO cdao = new BoardDAO();
-    ArrayList<CommentBean> list = cdao.getList(bean.getNum());
-    for(int i = 0; i<list.size(); i++){      
-%>
-            <div class="do-reply-con">
-               <div class="do-reply">
-                  <div class="do-re-left">
-                     <span><%=list.get(i).getUid() %> / </span>
-                     <span><%=list.get(i).getWdate().substring(0,11) %></span>
-                  </div>
-<%
-
-   if(level == 99){
-   
-%>
-                  <div class="do-re-right">
-                     <a href="commentUpdate.jsp?ref=<%=bean.getNum() %>&commentid=<%=list.get(i).getCommentid() %>" class="edit">수정
-                           <input type="hidden" name="uid" value="<%= id %>">
-                        </a>
-                        <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="" class="delete">삭제
-                           <input type="hidden" name="userID" value="">
-                        </a>
-                  </div>
-<%
-   }
-%>
-         
-               </div>
-               <div class="do-reply-item">
-                  <p><%=list.get(i).getContent() %></p>
-               </div>
-               
-            </div>
-<%
-    }
-%>
-
-      </div>
-
       
    <div class="container">
-    <form id="commentForm" name="commentForm" method="post" action="submitAction.jsp" accept-charset="UTF-8">
+    <form id="commentForm" name="commentForm" method="post" action="commentUpdateAction.jsp" accept-charset="UTF-8">
    <input type="hidden" name="ref" value="<%=bean.getNum()%>">
-
+	<input type="hidden" name="commentid" value="<%=be.getCommentid() %>">
 <%
 
    if(level == 99){
@@ -183,16 +151,16 @@ CommentBean cmt = new CommentBean();
 
             <div class="do-commentbox">
                 <div class="do-left">
-                     <p>ID : <span class="id"><%=id%></span></p>
-                   <p>PW : <span class="pw"><%=pw%></span></p>
+                     <p>ID : <span class="id"><%=be.getUid()%></span></p>
+                   <p>PW : <span class="pw"><%=be.getUpass()%></span></p>
                 </div>
                 <div class="do-right">
-                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"></textarea>
+                   <textarea rows="5" cols="110" name="content" placeholder="관리자만 쓸수있습니다." maxlength="100"><%=be.getContent()%></textarea>
                 </div>
             </div>
             
             <div class ="choi-qna">
-            <input type="submit" id="cmtCnt-btn" value="등록">
+            <input type="submit" id="cmtCnt-btn" value="수정">
             <!-- <button type="submit" class="btn btn-sm choi-qna-btn" id="btnSave">등록</button> -->
          </div>    
     </form>

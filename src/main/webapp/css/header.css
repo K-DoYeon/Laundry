@@ -27,6 +27,7 @@ ul {
 .welcome-header {
 	display: flex;
     align-items: center;
+    padding: 0;
 }
 .user-header {
 	margin: 4px 10px 0 0;
@@ -35,6 +36,7 @@ ul {
 }
 .gnb-header li {
 	width: 150px;
+	text-align: center;
 }
 .userImg-header {
 	border: 1px solid rgba(0, 0, 0, 0.01);
