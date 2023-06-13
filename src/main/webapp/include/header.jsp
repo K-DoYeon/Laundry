@@ -12,6 +12,8 @@
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
 
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 	<%
@@ -29,9 +31,10 @@
 
 				<ul class="gnb-header">
 					<li><a href="#">예약</a></li>
-					<li><a href="#">PR</a></li>
-					<li><a href="../board/boardlist.jsp">커뮤니티</a></li>
+					<li><a href="../board/boardlist.jsp">문의게시판</a></li>
+					<li><a href="#">후기게시판</a></li>
 					<li><a href="#">회사소개</a></li>
+					<li><a href="#">PR</a></li>
 				</ul>
 
 				<%

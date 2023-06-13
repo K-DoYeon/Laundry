@@ -83,3 +83,8 @@ function emulAcceptCharset(form) {
     }
     return true;
 }
+
+function loginalert(){
+	alert("회원 전용 입니다. 로그인 해주세요!");
+	location.href='../user/login.jsp';
+}
