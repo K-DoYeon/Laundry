@@ -48,12 +48,16 @@
 <div class="do-list-title">
 	<h1>게시판</h1>
 </div>
-
+<%
+	String uid = null;
+	if(session.getAttribute("uid") != null){
+	uid = (String)session.getAttribute("uid");
+		}
+%>
 <div class="top-tab">
 	<ul class="tab">
 		<a href="#" id="tab-QA" class="active n" data-idx="#QA"><li>Q&A</li></a>
 		<a href="#" class="n" data-idx ="#notice"><li>FAQ</li></a>
-		<a href="#" class="n" data-idx ="#bbs"><li>BBS</li></a>
 	</ul>
 </div>
 
@@ -100,10 +104,17 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 	      	<div><h3 class="faq-title"><%=bean.getSubject() %></h3></div>
       	</div>
 		
+<% if(uid == null) { %>		
+		<div>
+        	<p class="faq-text"><%=bean.getContent() %></p>
+			<p class="faq-plus"><a href="#" onclick = "loginalert();">더보기..</a></p>
+		</div>
+<% }else{ %>
 		<div>
         	<p class="faq-text"><%=bean.getContent() %></p>
 			<p class="faq-plus"><a href="qnaBoard.jsp?num=<%=bean.getNum()%>">더보기..</a></p>
 		</div>
+<% } %>
         <button class="faq-toggle">
           <i class="fas fa-chevron-down"></i>
           <i class="fas fa-times"></i>
@@ -159,10 +170,16 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 <%
 	}
 %>
+<% if(uid == null) { %>
+<div class="write-button active">
+	<button onclick="loginalert();">글쓰기</button>
+</div>
+<% }else{ %>
 <div class="write-button active">
 	<button onclick="location.href='qnaWrite.jsp'">글쓰기</button>
 </div>
-	
+<%  } %>	
+
 	<div id="notice">
       <div class="faq">
       	<div class="do-title-a">
@@ -179,8 +196,8 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 			    </div>
 		        <div class="ans-item">
 		        	<ul>
-		        		<li>일반적으로 고객은 세탁 배송 업체의 웹사이트를 방문하여 주문을 할 수 있습니다.</li>
-		        		<li>거기에는 주문 양식이 제공되며, 필요한 세탁물의 종류와 수량, 배송 주소 등을 입력 후 제출 해 주세요.</li>
+		        		<li>세탁의 당신 웹사이트를 방문하여 주문 하실 수 있습니다.</li>
+		        		<li>예약페이지를 통해 주문 양식이 제공되며, 필요한 세탁물의 종류와 수량, 주소 등을 입력 후 제출 해 주세요.</li>
 		        	</ul>
 		        </div>
 			</div>
@@ -208,8 +225,8 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 		        <div class="ans-item">
 		        	<ul>
 		        		<li>배송 시간은 고객님의 거주 위치에 따라 다를 수 있습니다.</li>
-		        		<li>보통은 제품 수거 후 1~2일 안으로 받아보실 수 있습니다.</li>
-		        		<li>주문 폭주, 천재지변으로 인한 배송 지연은 미리 안내해드리며 최대 1주 정도 지연 될 수 있습니다.</li>
+		        		<li>보통은 제품 수거 후 1~2일 안으로 받아보실 수 있으며,</li>
+		        		<li>주문 폭주, 천재지변으로 인한 배송 지연은 미리 안내문자를 통해 고지되며 최대 1주 정도 지연 될 수 있습니다.</li>
 		        	</ul>
 		        </div>
 			</div>
@@ -237,7 +254,7 @@ String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날�
 		        <div class="ans-item">
 		        	<ul>
 		        		<li>세탁의 당신에서 제공 된 박스가방에 세탁물을 넣고 신청하신 수거날짜에 맞춰 지정된 장소에 놓아주시면<br>
-		        		 업체의 택배기사가 신속하게 수거합니다.</li>
+		        		 업체의 택배기사가 신속하게 수거해갑니다.</li>
 		        		
 		        	</ul>
 		        </div>
