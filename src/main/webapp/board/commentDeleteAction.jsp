@@ -16,15 +16,14 @@
 BoardBean bean = new BoardBean();
 BoardDAO bdao = new BoardDAO();
 
-comment.setRef(Integer.parseInt(request.getParameter("ref")));
-comment.setCommentid(Integer.parseInt(request.getParameter("commentid")));
-comment.setContent(request.getParameter("content"));
 
-int rs = bdao.update(comment.getRef(), comment.getCommentid(), comment.getContent());
+comment.setCommentid(Integer.parseInt(request.getParameter("commentid")));
+
+int rs = bdao.delete(comment.getCommentid());
 if (rs == -1) {
    PrintWriter script = response.getWriter();
    script.println("<script>");
-   script.println("alert('댓글 수정에 실패했습니다.');");
+   script.println("alert('댓글삭제에 실패했습니다.');");
    script.println("history.back();");
    script.println("</script>");
    script.close();
@@ -32,7 +31,7 @@ if (rs == -1) {
   
    PrintWriter script = response.getWriter();
    script.println("<script>");
-   script.println("location.href = \"qnaBoard.jsp?num=" + comment.getRef() + "\";");
+   script.println("location.href=document.referrer;");
    script.println("</script>");
    script.close();
 }

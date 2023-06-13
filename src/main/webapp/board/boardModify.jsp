@@ -61,12 +61,14 @@ body{
 }
 </style>
 </head>
+
+
 <body>
 
 
 	<div class="choi-container">
 		<h2 class="choi-title">게시글 수정</h2>
-		<form class="choi-form" name="mod" action="" method="post">
+		<form action="BoardUpdateProc.jsp" method="post">
 			<div class="del">
                 <label class="form-label-rgi"> 비밀번호 :</label>
                 <input type="password" id="upass" name="upass" size="35" style="text-align:center; width:200px; height:20px;" placeholder="비밀번호를 입력해주세요." />
