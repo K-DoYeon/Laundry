@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="board.ReviewBean, board.ReviewDAO" %>
+<%@ page import ="review.ReviewBean,review.ReviewDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
