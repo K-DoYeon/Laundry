@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
+
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/footer.css">
 </head>
@@ -29,7 +30,7 @@
 				</a>
 
 				<ul class="gnb-header">
-					<li><a href="#">예약</a></li>
+					<li><a href="../reservation/reservation.jsp">예약</a></li>
 					<li><a href="../board/boardlist.jsp">문의게시판</a></li>
 					<li><a href="#">후기게시판</a></li>
 					<li><a href="#">회사소개</a></li>
@@ -54,7 +55,7 @@
 						if(level == 99){
 					%>
 						<a class="user-header" href="#">
-							<img class="userImg-header" src="<%=img %>">
+							<img class="userImg-header" src="../img/<%=img %>">
 							<span><%=uid%></span>
 						</a>
 						<a class="user-admin" href="../user/memberList.jsp">
@@ -64,7 +65,7 @@
 						} else {
 					%>
 						<a class="user-header" href="../user/myPage.jsp">
-							<img class="userImg-header" src="<%=img %>">
+							<img class="userImg-header" src="../img/<%=img %>">
 							<span><%=uid%></span>
 						</a>
 						

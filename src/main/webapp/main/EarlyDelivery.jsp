@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*, user.UserDAO " %>
     
 <jsp:include page="../include/header.jsp"></jsp:include>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="../css/EarlyDelivery.css" />
 
     <body>
@@ -9,7 +10,7 @@
             <img src="../img/EDbanner.jpg" alt="banner">
             <div class="content-k">
                 <h1>LAUNDRY</h1>
-                <h1>새벽배송</h1>
+                <h1>반짝배송</h1>
                 <p>문 앞에 내놓기만 하면</p>
                 <p>깨끗해진 세탁물이 아침에 도착합니다</p>
             </div>
@@ -19,7 +20,7 @@
             <div class="container-k">
                 <div class="title-k">
                     <h1>아침이 밝을 때가 가장 깨끗할때</h1>
-                    <h1>새벽배송</h1>
+                    <h1>반짝배송</h1>
                 </div>
                 <div class="box-k">
                     <div class="top-k">
@@ -35,7 +36,7 @@
                 </div>
                 <div class="box-k">
                     <div class="top-k">
-                        <p>100% 새벽배송</p>
+                        <p>100% 반짝배송</p>
                     </div>
                     <div class="bottom-k">
                         <p>
@@ -60,18 +61,43 @@
             </div>
         </div>
         <!-- /첫번째 content -->
+        
+        <div class="search-k">
+        	<div class="container-k">
+        		<div class="search-content">
+		        	<h1>우리집이 반짝배송 지역인지</h1>
+		        	<h1>확인해보세요</h1>
+	        	</div>
+	        	<button onclick="Postcode();">배송 지역 검색하기 <i class="fa-solid fa-magnifying-glass"></i></button>
+	        	<form onsubmit="checkAddress(event)">
+		        	<input type="text" id="postcode" class="postcode-k" placeholder="우편번호" readonly/> <br />
+		        	<input type="text" id="address" class="address-k" placeholder="주소" readonly/> <br />
+		        	<input type="submit" value="확인" class="submit-k"/>        	
+		       	</form>
+        	</div>
+        </div>
+        
+	  <div id="myModal" class="modal">
+  		<div class="modal-content">
+    		<p id="modal-content"></p>
+    		<img src="../img/delivery2.png" alt="delivery" /> <br />
+    		<p>매일매일 깨끗한 세탁을 위해 <br /> 노력하겠습니다.</p>
+    		<button id="modal-close-btn">확인</button>
+  		</div>
+	  </div>
+        
         <div class="second-k">
             <div class="container-k">
                 <div class="title-k2">
-                    <h1>세벽&택배배송</h1>
+                    <h1>반짝&택배배송</h1>
                     <h1>일정 보기</h1>
                 </div>
                 <div class="box-k2">
                     <div class="top-k2">
-                        <p>새벽 배송</p>
+                        <p>반짝 배송</p>
                     </div>
                     <div class="bottom-k2">
-                      <h1>주 7일 새벽배송</h1>
+                      <h1>주 7일 반짝배송⚡</h1>
                       <p>오늘 밤 예약하면 새벽이면 도착!</p>
                       <p>런드리 기사님이 직접 배송해드려요.</p>
                       <div class="row-k">
@@ -100,7 +126,7 @@
                         <p>일반 배송</p>
                     </div>
                     <div class="bottom-k2">
-                      <h1>주 6일 일반배송</h1>
+                      <h1>주 6일 일반배송🚛</h1>
                       <p>오늘 예약하면 내일 도착!</p>
                       <p>새벽배송 불가 지역은 일반 배송으로 배송해드려요.</p>
                       <div class="row-k">
@@ -128,5 +154,8 @@
         </div>
 
           <!-- /세번째 content -->
-    </body>
-</html>
+          
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../js/EarlyDelivery.js"></script>
+
+<jsp:include page="../include/footer.jsp"></jsp:include>

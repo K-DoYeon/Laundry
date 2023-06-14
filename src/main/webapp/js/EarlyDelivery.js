@@ -1,13 +1,3 @@
-function fileName(){
-	var preview = new FileReader();
-        preview.onload = function (e) {
-        // img id 값 
-        document.getElementById("imgFile").src = e.target.result;
-    };
-    // input id 값 
-    preview.readAsDataURL(document.getElementById("img").files[0]);
-};
-
 function Postcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -39,25 +29,50 @@ function Postcode() {
                 document.getElementById("address").value += extraRoadAddr;
                 // 커서를 상세주소 필드로 이동한다.
                 //document.getElementById("detailaddr").focus();
+                
+               
             }
         }).open();
 
 }
 
-function imgSelect(){
-	const url = "imgSelect.jsp";
-	const width=900, height=450;
-	let left = (document.body.offsetWidth / 2) - (width / 2);
-	let top = 200;
-	left += window.screenLeft;
-	
-	//새창 만들기
-	window.open(
-		url, 
-		"idchk", 
-		`width=${width}, 
-		 height=${height}, 
-		 left=${left}, 
-		 top=${top}`
-	);
+
+function Modal(content) {
+  var modal = document.getElementById('myModal');
+  var modalContent = document.getElementById('modal-content');
+  var closeBtn = document.getElementById('modal-close-btn');
+
+  modal.style.display = "block";
+  modalContent.textContent = content;
+  
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 }
+
+
+  function checkAddress(event) {
+        event.preventDefault(); // 폼의 기본 제출 동작을 막음
+
+        var addressInput = document.getElementById('address');
+        var addressValue = addressInput.value;
+
+         // 주소 값이 없는지 확인
+    	if (addressValue.trim() === '') {
+        	alert("주소를 입력해주세요!");
+    	} else if (addressValue.includes("서울")) {
+	        // 팝업 창을 띄움
+	        Modal("해당 주소는 반짝배송⚡ 지역입니다");
+	    } else {
+	        Modal("해당 주소는 일반배송🚛 지역입니다");
+	    }
+		
+	
+    }

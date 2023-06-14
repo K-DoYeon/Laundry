@@ -27,28 +27,38 @@
 	<div class="main-banner">
 		<div class="banner-inside">
 			<div class="main-delivery">
-				<p class="delivery-p">우리집이<span> 새벽 배송 </span>지역인지<br>확인해보세요!</p>
-				<p class="delivery-p-s">남들보다 빠르게, 신속한 새벽배송을 받아보세요.</p>
-				<input type="search" id="delivery-search" placeholder="거주지의 지역명을 검색해보세요." class="delivery-search" name="searchText" autocomplete="off">
+				<p class="delivery-p">우리집이<span> 반짝 배송 </span>지역인지<br>확인해보세요!</p>
+				<p class="delivery-p-s">남들보다 빠르게, 신속한 반짝배송을 받아보세요.</p>
+				<a href="EarlyDelivery.jsp">
+				<input type="search" id="delivery-search" placeholder="거주지의 지역명을 검색해보세요." class="delivery-search" name="searchText" autocomplete="off" disabled>
+				</a>
 				<span class="delevery-search-btn"><i class="ri-search-line"></i></span>
 				<p class="delivery-hashtag">
 					<span>#</span>
-					&nbsp;&nbsp;새벽 배송
+					&nbsp;&nbsp;반짝 배송
 					&nbsp;&nbsp;전날 수거
 					&nbsp;&nbsp;다음날 배송
 					&nbsp;&nbsp;깔끔하고
 					&nbsp;&nbsp;신속하게
 				</p>
 			</div>
-			<div class="main-reservation">
+			<a href="../reservation/reservation.jsp" class="main-reservation">
+				<img alt="smallBanner" src="../img/smallbanner2.png">
+			</a>
+			<!-- <div class="main-reservation">
 				<p class="reservation-p">지금<span> 세탁의 민족 </span>을<br>이용해보세요!</p>
-				<form action="" method="post" name="main-reservation-form">
-					<input type="text" id="reservation-name" class="reservation-name" name="reservation-name" placeholder="이름">
-					<input type="text" id="reservation-tel" class="reservation-tel" name="reservation-tel" placeholder="연락처">
-					<input type="text" id="reservation-addr" class="reservation-addr" name="reservation-addr" placeholder="주소">
+				<form action="../reservation/reservation.jsp" method="post" name="main-reservation-form" class="mainReservation-main">
+					<div class="userInfoBox-main">
+						<label>이름</label>
+						<input type="text" id="reservation-name" class="reservation-name" name="rname" placeholder="이름을 적어주세요">
+					</div>
+					<div class="userInfoBox-main">
+						<label>연락처</label>
+						<input type="text" id="reservation-tel" class="reservation-tel" name="rtel" placeholder="숫자만 입력해주세요">
+					</div>
 					<input type="submit" class="reservation-submit" onsubmit='#' value="세탁 예약하기" />
 				</form>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	

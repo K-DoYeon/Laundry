@@ -16,6 +16,7 @@
 		
 		ubean.setUid((String) request.getParameter("uid"));
 		ubean.setUpass((String) request.getParameter("upass"));
+		ubean.setUname((String) request.getParameter("uname"));
 		ubean.setImg((String) request.getParameter("img"));
 		
 		int result = udao.login(ubean.getUid(), ubean.getUpass());
@@ -23,6 +24,14 @@
 		int level = udao.userLevel(ubean.getUid());
 		int vip = udao.userVip(ubean.getUid());
 		String upass = udao.userPass(ubean.getUid());
+		String uname = udao.userName(ubean.getUid());
+		String uemail = udao.userEmail(ubean.getUid());
+		String tel = udao.userTel(ubean.getUid());
+		int postcode = udao.userPostcode(ubean.getUid());
+		String addr = udao.userAddr(ubean.getUid());
+		String detailaddr = udao.userDetailaddr(ubean.getUid());
+		String gender = udao.userGender(ubean.getUid());
+		int birth = udao.userBirth(ubean.getUid());
 		
 		String rememberId = request.getParameter("rememberId");
 		String uid = request.getParameter("uid");
@@ -52,6 +61,15 @@
 			session.setAttribute("level", level);
 			session.setAttribute("vip", vip);
 			session.setAttribute("upass", upass);
+			session.setAttribute("uname", uname);
+			session.setAttribute("uemail", uemail);
+			session.setAttribute("tel", tel);
+			session.setAttribute("postcode", postcode);
+			session.setAttribute("addr", addr);
+			session.setAttribute("detailaddr", detailaddr);
+			session.setAttribute("gender", gender);
+			session.setAttribute("birth", birth);
+			
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href='../main/main.jsp'");//로그인에 성공하면 main페이지로
