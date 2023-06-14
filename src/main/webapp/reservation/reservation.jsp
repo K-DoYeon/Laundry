@@ -33,7 +33,7 @@
 					<input type="text" name="uname" class="infoVal-reser" value="<%= uname %>"  placeholder="이름을 입력해주세요" required />
 				</div>
 				<div class="infoBox-reser">
-					<label class="infoName-reser">휴대폰</label>
+					<label class="infoName-reser">연락처</label>
 					<input type="text" name="tel" class="infoVal-reser" value="<%= tel %>" placeholder="숫자만 입력해주세요" required />
 				</div>
 				<div class="infoBox-reser">

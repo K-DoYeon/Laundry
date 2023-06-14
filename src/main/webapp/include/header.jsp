@@ -30,7 +30,7 @@
 				</a>
 
 				<ul class="gnb-header">
-					<li><a href="#">예약</a></li>
+					<li><a href="../reservation/reservation.jsp">예약</a></li>
 					<li><a href="../board/boardlist.jsp">문의게시판</a></li>
 					<li><a href="#">후기게시판</a></li>
 					<li><a href="#">회사소개</a></li>
