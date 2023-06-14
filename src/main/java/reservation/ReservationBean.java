@@ -11,7 +11,7 @@ public class ReservationBean {
 	private String detailaddr;
 	private String comment;
 	private String selectdate;
-	private String selecttime;
+	private int count;
 	
 	
 	public int getNum() {
@@ -74,10 +74,10 @@ public class ReservationBean {
 	public void setSelectdate(String selectdate) {
 		this.selectdate = selectdate;
 	}
-	public String getSelecttime() {
-		return selecttime;
+	public int getCount() {
+		return count;
 	}
-	public void setSelecttime(String selecttime) {
-		this.selecttime = selecttime;
+	public void setCount(int count) {
+		this.count = count;
 	}
 }
