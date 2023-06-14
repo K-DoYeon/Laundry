@@ -70,12 +70,21 @@
 	        	</div>
 	        	<button onclick="Postcode();">배송 지역 검색하기 <i class="fa-solid fa-magnifying-glass"></i></button>
 	        	<form onsubmit="checkAddress(event)">
-		        	<input type="text" id="postcode" />
-		        	<input type="text" id="address" />
-		        	<input type="submit" value="확인" />        	
+		        	<input type="text" id="postcode" class="postcode-k" placeholder="우편번호" readonly/> <br />
+		        	<input type="text" id="address" class="address-k" placeholder="주소" readonly/> <br />
+		        	<input type="submit" value="확인" class="submit-k"/>        	
 		       	</form>
         	</div>
         </div>
+        
+	  <div id="myModal" class="modal">
+  		<div class="modal-content">
+    		<p id="modal-content"></p>
+    		<img src="../img/delivery2.png" alt="delivery" /> <br />
+    		<p>매일매일 깨끗한 세탁을 위해 <br /> 노력하겠습니다.</p>
+    		<button id="modal-close-btn">확인</button>
+  		</div>
+	  </div>
         
         <div class="second-k">
             <div class="container-k">
@@ -88,7 +97,7 @@
                         <p>반짝 배송</p>
                     </div>
                     <div class="bottom-k2">
-                      <h1>주 7일 반짝배송</h1>
+                      <h1>주 7일 반짝배송⚡</h1>
                       <p>오늘 밤 예약하면 새벽이면 도착!</p>
                       <p>런드리 기사님이 직접 배송해드려요.</p>
                       <div class="row-k">
@@ -117,7 +126,7 @@
                         <p>일반 배송</p>
                     </div>
                     <div class="bottom-k2">
-                      <h1>주 6일 일반배송</h1>
+                      <h1>주 6일 일반배송🚛</h1>
                       <p>오늘 예약하면 내일 도착!</p>
                       <p>새벽배송 불가 지역은 일반 배송으로 배송해드려요.</p>
                       <div class="row-k">
@@ -148,5 +157,5 @@
           
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js/EarlyDelivery.js"></script>
-    </body>
-</html>
+
+<jsp:include page="../include/footer.jsp"></jsp:include>

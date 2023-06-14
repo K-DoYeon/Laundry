@@ -36,17 +36,43 @@ function Postcode() {
 
 }
 
+
+function Modal(content) {
+  var modal = document.getElementById('myModal');
+  var modalContent = document.getElementById('modal-content');
+  var closeBtn = document.getElementById('modal-close-btn');
+
+  modal.style.display = "block";
+  modalContent.textContent = content;
+  
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
+
+
   function checkAddress(event) {
         event.preventDefault(); // 폼의 기본 제출 동작을 막음
 
         var addressInput = document.getElementById('address');
         var addressValue = addressInput.value;
 
-        // 주소가 "서울"을 포함하는지 확인
-        if (addressValue.includes("서울")) {
-            // 팝업 창을 띄움
-            alert("서울 지역입니다!");
-        } else {
-			alert("타 지역입니다!");
-		}
+         // 주소 값이 없는지 확인
+    	if (addressValue.trim() === '') {
+        	alert("주소를 입력해주세요!");
+    	} else if (addressValue.includes("서울")) {
+	        // 팝업 창을 띄움
+	        Modal("해당 주소는 반짝배송⚡ 지역입니다");
+	    } else {
+	        Modal("해당 주소는 일반배송🚛 지역입니다");
+	    }
+		
+	
     }
