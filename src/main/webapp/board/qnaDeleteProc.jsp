@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="board.BoardDAO, board.BoardBean, java.io.*"%>
+<jsp:useBean id="comment" class="board.CommentBean" scope="page"/>
+<jsp:setProperty name="comment" property="content"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 <jsp:useBean id="bean" class= "board.BoardBean">
 	<jsp:setProperty name = "bean" property = "*" />
 </jsp:useBean>
+
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
 	String upass = request.getParameter("upass");
@@ -35,5 +38,6 @@
 		history.back();
 </script>	
 <% } %>
+
 </body>
 </html>
