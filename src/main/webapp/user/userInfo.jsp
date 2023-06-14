@@ -40,17 +40,17 @@
 			
 			<div class="select-info">
 				<label class="selectName-info">이름</label>
-				<input type="text" class="selectVal-info" value="<%= uname %>" name="uname"/>
+				<input type="text" class="selectVal-info" value="<%= uname %>" placeholder="이름을 입력해주세요" name="uname"/>
 			</div>
 			
 			<div class="select-info">
 				<label class="selectName-info">이메일</label>
-				<input type="email" class="selectVal-info" value="<%= uemail %>" name="uemail"/>
+				<input type="email" class="selectVal-info" value="<%= uemail %>" placeholder="이메일형식으로 입력해주세요"  name="uemail"/>
 			</div>
 			
 			<div class="select-info">
 				<label class="selectName-info">휴대폰</label>
-				<input type="text" class="selectVal-info" value="<%= tel %>" name="tel"/>
+				<input type="text" class="selectVal-info" value="<%= tel %>" placeholder="숫자만 입력해주세요"  name="tel"/>
 			</div>
 			
 			<div class="select-info">
@@ -63,7 +63,7 @@
 				<label class="selectName-info addrName-info">주소</label>
 				<div class="selectValBox-info">
 					<input type="text" class="selectVal-info readonly-info addrVal-info" value="<%= addr %>" name="addr" id="address" readonly />
-					<input type="text" class="selectVal-info" value="<%= detailaddr %>"  name="detailaddr" id="detailaddr"/>
+					<input type="text" class="selectVal-info" value="<%= detailaddr %>" placeholder="상세주소를 입력해주세요" name="detailaddr" id="detailaddr"/>
 				</div>
 			</div>
 			

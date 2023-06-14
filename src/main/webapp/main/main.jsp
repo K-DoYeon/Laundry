@@ -42,7 +42,7 @@
 			</div>
 			<div class="main-reservation">
 				<p class="reservation-p">지금<span> 세탁의 민족 </span>을<br>이용해보세요!</p>
-				<form action="" method="post" name="main-reservation-form">
+				<form action="../reservation/reservation.jsp" method="post" name="main-reservation-form">
 					<input type="text" id="reservation-name" class="reservation-name" name="reservation-name" placeholder="이름">
 					<input type="text" id="reservation-tel" class="reservation-tel" name="reservation-tel" placeholder="연락처">
 					<input type="text" id="reservation-addr" class="reservation-addr" name="reservation-addr" placeholder="주소">
