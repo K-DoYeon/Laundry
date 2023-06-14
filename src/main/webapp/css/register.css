@@ -14,7 +14,7 @@ h1.title-regi {
 .select-regi {	height: 50px;
 	display: flex;
 	align-items: center;
-	    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .select-regi.addr-regi {
 	height: 100px;
@@ -96,6 +96,6 @@ h1.title-regi {
     cursor: pointer;
 }
 
-.readonly-regi{
+.readonly-regi {
 	outline: none;
 }

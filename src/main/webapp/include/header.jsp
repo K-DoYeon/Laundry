@@ -11,7 +11,9 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/header.css">
+
 <link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 	<%
@@ -53,7 +55,7 @@
 						if(level == 99){
 					%>
 						<a class="user-header" href="#">
-							<img class="userImg-header" src="<%=img %>">
+							<img class="userImg-header" src="../img/<%=img %>">
 							<span><%=uid%></span>
 						</a>
 						<a class="user-admin" href="../user/memberList.jsp">
@@ -63,7 +65,7 @@
 						} else {
 					%>
 						<a class="user-header" href="../user/myPage.jsp">
-							<img class="userImg-header" src="<%=img %>">
+							<img class="userImg-header" src="../img/<%=img %>">
 							<span><%=uid%></span>
 						</a>
 						
