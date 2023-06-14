@@ -1,4 +1,4 @@
-package board;
+package review;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,5 +26,28 @@ public class ReviewDAO {
 	         e.printStackTrace();
 	         System.out.println("DB 연결 실패");
 	      }
+	   }
+	   
+	   //게시들 데베로 저장되는 메소드
+	   public void insertReview(ReviewBean bean) {
+		   getCon();
+		   try {
+			String sql = "insert into review values(num, ?, ?, ?, ?, 0, sysdate(), 0, 0)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bean.getUid());
+			pstmt.setString(2, bean.getUpass());
+			pstmt.setString(3, bean.getSubject());
+			pstmt.setString(4, bean.getContent());
+//			pstmt.setString(5, bean.getImg());
+			
+			pstmt.executeUpdate();
+			
+			
+			System.out.println("데베연결성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("데베연결실패");
+		}
 	   }
 }
