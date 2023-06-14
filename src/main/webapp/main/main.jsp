@@ -42,15 +42,23 @@
 					&nbsp;&nbsp;신속하게
 				</p>
 			</div>
-			<div class="main-reservation">
+			<a href="../reservation/reservation.jsp" class="main-reservation">
+				<img alt="smallBanner" src="../img/smallbanner2.png">
+			</a>
+			<!-- <div class="main-reservation">
 				<p class="reservation-p">지금<span> 세탁의 민족 </span>을<br>이용해보세요!</p>
-				<form action="" method="post" name="main-reservation-form">
-					<input type="text" id="reservation-name" class="reservation-name" name="reservation-name" placeholder="이름">
-					<input type="text" id="reservation-tel" class="reservation-tel" name="reservation-tel" placeholder="연락처">
-					<input type="text" id="reservation-addr" class="reservation-addr" name="reservation-addr" placeholder="주소">
+				<form action="../reservation/reservation.jsp" method="post" name="main-reservation-form" class="mainReservation-main">
+					<div class="userInfoBox-main">
+						<label>이름</label>
+						<input type="text" id="reservation-name" class="reservation-name" name="rname" placeholder="이름을 적어주세요">
+					</div>
+					<div class="userInfoBox-main">
+						<label>연락처</label>
+						<input type="text" id="reservation-tel" class="reservation-tel" name="rtel" placeholder="숫자만 입력해주세요">
+					</div>
 					<input type="submit" class="reservation-submit" onsubmit='#' value="세탁 예약하기" />
 				</form>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	
