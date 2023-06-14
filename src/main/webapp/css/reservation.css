@@ -66,6 +66,9 @@
     cursor: pointer;
     font-family: 'RemixIcon';
 }
+.searchBtn-reser:hover{
+	background: #3E83A8;
+}
 .infoBox-reser.addr-reser {
 	height: 100px;
 	align-items: flex-start;
@@ -79,4 +82,62 @@
 .infoValBox-reser {
 	width: 300px;
 	padding-top: 15px;
+}
+/***********************calendar***************************/
+.do-calendar{
+	width: 460px;
+}
+/***********************confirm****************************/
+.do-confirm{
+	height: 450px;
+	padding-left: 20px;
+	border-left: 1px solid #989898;
+}
+.do-confirm h1{
+	margin-top: 80px;
+	font-size: 25px;
+	font-family: TheJamsil;
+	font-weight: 500;
+	margin-bottom: 30px;
+}
+.do-confirm h1 span{
+	color: #58A3BC;
+}
+.do-res{
+	font-size: 20px;
+	margin: 10px 0px 2px;
+	font-family: TheJamsil;
+	font-weight: 300;
+}
+.do-confirm input{
+	border: none;
+	font-size: 20px;
+	font-family: 'SUITE Variable';
+	margin-bottom: 15px;
+}
+.do-information p{
+	font-size: 18px;
+	color: #58A3BC;
+	font-family: TheJamsil;
+	font-weight: 300;
+	margin-bottom: 5px;
+}
+.do-information p:last-child {
+	font-family: 'SUITE Variable';
+	padding-bottom: 15px;
+	margin-bottom: 40px;
+	border-bottom: 5px solid #58A3BC;
+}
+.do-reser{
+	width: 300px;
+	height: 50px;
+	border: none;
+	background-color: #58A3BC;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 18px;
+	cursor: pointer;
+}
+.do-reser:hover {
+	background-color: #3E83A8;
 }

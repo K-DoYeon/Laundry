@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.io.PrintWriter"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reservation</title>
 <jsp:include page="../include/header.jsp"></jsp:include>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/reservation.css">
+<link rel="stylesheet" href="../css/datetimepicker.css">
+<body>
 	<%
 		String uid = (String) session.getAttribute("uid");
 		if(uid == null){
@@ -54,5 +62,26 @@
 					<textarea name="comment" class="infoVal-reser" placeholder="세탁물 갯수 및 정보를 입력해주세요" required></textarea>
 				</div>
 			</div>
+		
+		<div class="do-calendar">
+			
+		</div>
+		<div class="do-confirm">
+			<h1>"<span><%= uname %></span>"님 예약 상세 정보</h1>
+			<p class="do-res">예약 날짜</p>
+			<input name="selectdate" class="datetimepicker" type="text" id="inputValue" onchange="inputValueChange()">
+			<div class="do-information">
+				<p><%= addr %></p> 
+				<p><%= detailaddr %></p>
+				<p><%= tel %></p>
+			</div>
+			<button type="button" class="do-reser" value ="submit">예약하기</button>
+		</div>
 		</form>
 	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
+	<script src="../js/datetimepicker.js"></script>
+</body>
+</html>	
