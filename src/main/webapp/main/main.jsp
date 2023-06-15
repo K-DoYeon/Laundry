@@ -43,6 +43,7 @@
 				</p>
 			</div>
 			<a href="../reservation/reservation.jsp" class="main-reservation">
+				<i class="ri-arrow-right-s-line sBannerBtn-main"></i>
 				<img alt="smallBanner" src="../img/smallbanner2.png">
 			</a>
 			<!-- <div class="main-reservation">
