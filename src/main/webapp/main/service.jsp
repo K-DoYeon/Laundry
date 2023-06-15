@@ -35,7 +35,7 @@
 						<tbody>
 							<tr>
 								<th>생활빨래</th>
-								<th>0,000원</th>
+								<th>900원</th>
 							</tr>
 						</tbody>
 					</table>
@@ -58,7 +58,7 @@
 						<tbody>
 							<tr>
 								<th>이불</th>
-								<th>0,000원</th>
+								<th>10,000원</th>
 							</tr>
 						</tbody>
 					</table>
@@ -81,7 +81,7 @@
 						<tbody>
 							<tr>
 								<th>셔츠</th>
-								<th>0,000원</th>
+								<th>2,000원</th>
 							</tr>
 						</tbody>
 					</table>
@@ -104,7 +104,7 @@
 						<tbody>
 							<tr>
 								<th>드라이</th>
-								<th>0,000원</th>
+								<th>5,000원</th>
 							</tr>
 						</tbody>
 					</table>
@@ -127,7 +127,7 @@
 						<tbody>
 							<tr>
 								<th>개별 클리닉</th>
-								<th>0,000원</th>
+								<th>1,500원</th>
 							</tr>
 						</tbody>
 					</table>
