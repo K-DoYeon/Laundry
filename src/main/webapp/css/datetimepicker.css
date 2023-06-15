@@ -17,7 +17,8 @@
     -moz-box-sizing:border-box;
     box-sizing:border-box;
     top: 200px;
-    right: calc(100% - 65.5%);
+    right: 50%;
+    transform: translate(50%);
     width: 435px;
     height: 412px;
 }
