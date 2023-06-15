@@ -37,10 +37,22 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
 .choi-body {
   padding-top: 70px;
   padding-bottom: 30px;
-  font-family: 'IM_Hyemin-Bold';
+  font-family: 'SUITE-Regular';
 }
 .form-control:disabled, .form-control[readonly]{
    backgrond-color : #fff;
@@ -60,12 +72,12 @@ button a:hover{
 .choi-qna-btn{
    background-color : #58A3BC;
    color : #fff;
-  font-family: 'IM_Hyemin-Bold';
+  font-family: 'SUITE-Regular';
 }
 .choi-qna-btn:hover{
    background-color : #3E83A8;
    color : #fff;
-   font-family: 'IM_Hyemin-Bold';
+   font-family: 'SUITE-Regular';
 }
 .menu{
    justify-content : space-between;
