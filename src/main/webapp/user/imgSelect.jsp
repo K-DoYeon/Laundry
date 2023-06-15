@@ -12,23 +12,23 @@
 		<div class="imgForm-select">
 			<div class="imgBox-select">
 				<img alt="avt01" src="../img/avt01.jpg" class="img-select" >
-				<input type="checkbox" name="img" value="avt01.jpg">
+				<input type="radio" name="img" value="avt01.jpg">
 			</div>
 			<div class="imgBox-select">
 				<img alt="avt02" src="../img/avt02.jpg" class="img-select" >
-				<input type="checkbox" name="img" value="avt02.jpg">
+				<input type="radio" name="img" value="avt02.jpg">
 			</div>
 			<div class="imgBox-select">
 				<img alt="avt03" src="../img/avt03.jpg" class="img-select" >
-				<input type="checkbox" name="img" value="avt03.jpg">
+				<input type="radio" name="img" value="avt03.jpg">
 			</div>
 			<div class="imgBox-select">
 				<img alt="avt04" src="../img/avt04.jpg" class="img-select" >
-				<input type="checkbox" name="img" value="avt04.jpg">
+				<input type="radio" name="img" value="avt04.jpg">
 			</div>
 			<div class="imgBox-select">
 				<img alt="avt05" src="../img/avt05.jpg" class="img-select" >
-				<input type="checkbox" name="img" value="avt05.jpg">
+				<input type="radio" name="img" value="avt05.jpg">
 			</div>
 		</div>
 		<div>

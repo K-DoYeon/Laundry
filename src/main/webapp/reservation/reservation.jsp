@@ -81,9 +81,11 @@
 		</form>
 	</div>
 	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
 	<script src="../js/datetimepicker.js"></script>
+	<script src="../js/reservation.js"></script>
 	<script>
         function showText() {
             var commentTextarea = document.getElementById("commentTextarea");
