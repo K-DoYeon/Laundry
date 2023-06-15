@@ -4,7 +4,6 @@ public class ReservationBean {
 	private int num;
 	private String uid;
 	private String uname;
-	private String uemail;
 	private String tel;
 	private int postcode;
 	private String addr;
@@ -12,6 +11,13 @@ public class ReservationBean {
 	private String comment;
 	private String selectdate;
 	private int count;
+	private String wdate;
+	private int daily;
+	private int blanket;
+	private int shirt;
+	private int dry;
+	private int care;
+	private int totalprice;
 	
 	
 	public int getNum() {
@@ -31,12 +37,6 @@ public class ReservationBean {
 	}
 	public void setUname(String uname) {
 		this.uname = uname;
-	}
-	public String getUemail() {
-		return uemail;
-	}
-	public void setUemail(String uemail) {
-		this.uemail = uemail;
 	}
 	public String getTel() {
 		return tel;
@@ -79,5 +79,47 @@ public class ReservationBean {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public String getWdate() {
+		return wdate;
+	}
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+	public int getDaily() {
+		return daily;
+	}
+	public void setDaily(int daily) {
+		this.daily = daily;
+	}
+	public int getBlanket() {
+		return blanket;
+	}
+	public void setBlanket(int blanket) {
+		this.blanket = blanket;
+	}
+	public int getShirt() {
+		return shirt;
+	}
+	public void setShirt(int shirt) {
+		this.shirt = shirt;
+	}
+	public int getDry() {
+		return dry;
+	}
+	public void setDry(int dry) {
+		this.dry = dry;
+	}
+	public int getCare() {
+		return care;
+	}
+	public void setCare(int care) {
+		this.care = care;
+	}
+	public int getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(int totalprice) {
+		this.totalprice = totalprice;
 	}
 }
