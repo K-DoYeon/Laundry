@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body{
+	position: relative;
+}
 .container-reser {
 	width: 1300px;
     height: 600px;
@@ -69,6 +72,9 @@
 .searchBtn-reser:hover{
 	background: #3E83A8;
 }
+.infoBox-reser textarea{
+	padding-top: 8px;
+}
 .infoBox-reser.addr-reser {
 	height: 100px;
 	align-items: flex-start;
@@ -114,6 +120,7 @@
 	font-size: 20px;
 	font-family: 'SUITE Variable';
 	margin-bottom: 15px;
+	pointer-events: none;
 }
 .do-information p{
 	font-size: 18px;

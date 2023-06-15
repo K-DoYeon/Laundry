@@ -58,8 +58,8 @@
 					</div>
 				</div>
 				<div class="infoBox-reser">
-					<label class="infoName-reser">세탁물 정보</label>
-					<textarea name="comment" class="infoVal-reser" placeholder="세탁물 갯수 및 정보를 입력해주세요" required></textarea>
+					<label class="infoName-reser">특이사항</label>
+					<textarea name="comment" id="commentTextarea" class="infoVal-reser" placeholder="ex:청바지 물빠짐이 있어요" required oninput="showText()"></textarea>
 				</div>
 			</div>
 		
@@ -74,6 +74,7 @@
 				<p><%= addr %></p> 
 				<p><%= detailaddr %></p>
 				<p><%= tel %></p>
+				<span>특이사항 :  </span><p id="commentText"></p>
 			</div>
 			<button type="button" class="do-reser" value ="submit">예약하기</button>
 		</div>
@@ -83,5 +84,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
 	<script src="../js/datetimepicker.js"></script>
+	<script>
+        function showText() {
+            var commentTextarea = document.getElementById("commentTextarea");
+            var commentText = document.getElementById("commentText");
+            commentText.textContent = commentTextarea.value;
+        }
+    </script>
 </body>
 </html>	
