@@ -82,9 +82,6 @@
 			<img alt="banner" src="../img/banner.png" class="bannerImg-my">
 		</div>
 		
-		<div class="reviewList-my">
-			<h2 class="reviewTitle-my">내가 쓴 후기</h2>
-		</div>
 	</div>
 
 	<script src="../js/myPage.js"></script>

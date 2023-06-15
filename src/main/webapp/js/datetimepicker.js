@@ -134,7 +134,7 @@ var advancedListAvailable = function(dayIndex) {
 */
 var maxDays = function() {
   var initial = new Date(); // FROM value
-  var addDays = 5; // TO value
+  var addDays = 6; // TO value
   return initial.setDate(initial.getDate() + addDays); 
 } // Source => http://stackoverflow.com/questions/3818193/how-to-add-number-of-days-to-todays-date
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="review.ReviewBean,review.ReviewDAO" %>
+<%@ page import ="review.ReviewBean,review.ReviewDAO, java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +11,26 @@
 <link rel="stylesheet" href="../css/review.css">
 <body>
 <%
+	//전체 게시물의 내용을 jsp 쪽으로 가져와야함
 	ReviewDAO rdao = new ReviewDAO();
-	rdao.getCon();
+	
+	// 전체 게시글을 리턴 받아주는 소스
+	Vector<ReviewBean> vec = rdao.getAllBoard();
+	
+	ArrayList<ReviewBean> reviewlist = null;
+	int cnt = rdao.getReviewCount();
+	
+	int pageSize = 10;   // 한 페이지당 10개씩
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum == null){
+		pageNum = "1";
+	}
+	int currentPage = Integer.parseInt(pageNum);
+	int startRow = (currentPage - 1) * pageSize + 1;
+	int endRow = currentPage * pageSize;
+	if(cnt != 0){
+		reviewlist = rdao.getReviewList(startRow, pageSize);
+	}
 %>
 <section class="notice">
   <div class="page-title">
@@ -37,6 +55,7 @@
     </div>
    
   <!-- board list area -->
+
     <div id="board-list">
         <div class="container">
             <table class="board-table">
@@ -48,12 +67,18 @@
                 </tr>
                 </thead>
                 <tbody>
-
+  <%
+  		for (int i = 0; i < reviewlist.size(); i++) {
+		ReviewBean bean = reviewlist.get(i); // 백터에 저장되어있는 빈클래스를 하나씩 추출
+  %>
                 <tr>
-                    <td>1</td>
-                    <th><a href="#!">공지사항 안내입니다. 이용해주셔서 감사합니다</a></th>
-                    <td>2017.06.15</td>
+                    <td><%=bean.getNum() %></td>
+                    <th><a href="reviewInfo.jsp?num=<%=bean.getNum()%>"><%=bean.getSubject() %></a></th>
+                    <td><%=bean.getWdate() %></td>
                 </tr>
+ <%
+  		}
+ %>
                 </tbody>
             </table>
             <a href="reviewWrite.jsp" class="write-review">글쓰기</a>
