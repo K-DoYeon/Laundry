@@ -29,12 +29,13 @@
 		String detailaddr = (String) session.getAttribute("detailaddr");
 	%>
 	<div class="container-reser">
-		<form class="reservation-reser" name="reservaionForm">
+		<form class="reservation-reser" name="reservaionForm" action="reservationProc.jsp" method="post">
 			<div class="userInfo-reser">
 				<h2>정보를 입력해 주세요</h2>
 				<div class="userID-reser">
 					<img alt="user" src="../img/<%= img%>" class="userImg-reser">
 					<p><%= uid %></p>
+					<input type="hidden" name="uid" value="<%=uid%>">
 				</div>
 				<div class="infoBox-reser">
 					<label class="infoName-reser">이름</label>
@@ -133,10 +134,10 @@
 			</div>			
 			
 			<div class="totalPriceBox-reser">
-				<h2 class="sizeDown-reser">총</h2> <input type="text" name="total" id="total" value="0" size="11"> <h2>원</h2>
+				<h2 class="sizeDown-reser">총</h2> <input type="text" name="totalprice" id="total" value="0" size="11"> <h2>원</h2>
 			</div>
 			
-			<button type="button" class="do-reser" value ="submit">예약하기</button>
+			<button type="submit" class="do-reser" value ="submit">예약하기</button>
 		</div>
 		
 		</form>
