@@ -47,8 +47,7 @@
 				<div class="infoBox-reser">
 					<label class="infoName-reser">우편번호</label>
 					<input type="number" name="postcode" class="infoVal-reser" value="<%= postcode %>" id="postcode" readonly >
-	                <button type="button" onclick="Postcode();" class="searchBtn-reser"><i class="ri-search-line"></i> 찾기</button>
-				</div>
+	            </div>
 				
 				<div class="infoBox-reser addr-reser">
 					<label class="infoName-reser addrName-reser">주소</label>
@@ -59,25 +58,21 @@
 				</div>
 				<div class="infoBox-reser">
 					<label class="infoName-reser">특이사항</label>
-					<textarea name="comment" id="commentTextarea" class="infoVal-reser" placeholder="ex:청바지 물빠짐이 있어요" required oninput="showText()"></textarea>
+					<textarea name="comment" class="infoVal-reser" placeholder="ex:청바지 물빠짐이 있어요" required></textarea>
 				</div>
 			</div>
 		
 		<div class="do-calendar">
-			
+			<input name="selectdate" class="datetimepicker" type="hidden" id="inputValue" onchange="inputValueChange()">
 		</div>
 		<div class="do-confirm">
-			<h1>"<span><%= uname %></span>"님 예약 상세 정보</h1>
-			<p class="do-res">예약 날짜</p>
-			<input name="selectdate" class="datetimepicker" type="text" id="inputValue" onchange="inputValueChange()">
-			<div class="do-information">
-				<p><%= addr %></p> 
-				<p><%= detailaddr %></p>
-				<p><%= tel %></p>
-				<span>특이사항 :  </span><p id="commentText"></p>
-			</div>
+			
+			
+			
+			
 			<button type="button" class="do-reser" value ="submit">예약하기</button>
 		</div>
+		
 		</form>
 	</div>
 	
@@ -85,13 +80,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
 	<script src="../js/datetimepicker.js"></script>
-	<script src="../js/reservation.js"></script>
-	<script>
-        function showText() {
-            var commentTextarea = document.getElementById("commentTextarea");
-            var commentText = document.getElementById("commentText");
-            commentText.textContent = commentTextarea.value;
-        }
-    </script>
-</body>
-</html>	
+	
+<jsp:include page="../include/footer.jsp"></jsp:include>
+
+
+
+
+
+
+<%-- <h1>"<span><%= uname %></span>"님 예약 상세 정보</h1>
+		<p class="do-res">예약 날짜</p>
+		<input name="selectdate" class="datetimepicker" type="text" id="inputValue" onchange="inputValueChange()">
+		<div class="do-information">
+			<p><%= addr %></p> 
+			<p><%= detailaddr %></p>
+			<p><%= tel %></p>
+			<p>특이사항 : </p>
+		</div> --%>
