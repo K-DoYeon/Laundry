@@ -55,9 +55,9 @@
 			
 			<div class="select-regi">
 				<label class="selectName-regi">성별</label>
-				<input type="checkbox" name="gender" value="female"/> <span class="chVal-regi">여성</span>
-				<input type="checkbox" name="gender" value="male"/> <span class="chVal-regi">남성</span>
-				<input type="checkbox" name="gender" value="none"/> <span class="chVal-regi">선택안함</span>
+				<input type="radio" name="gender" value="female"/> <span class="chVal-regi">여성</span>
+				<input type="radio" name="gender" value="male"/> <span class="chVal-regi">남성</span>
+				<input type="radio" name="gender" value="none"/> <span class="chVal-regi">선택안함</span>
 			</div>
 			
 			<div class="select-regi formLine-regi">
