@@ -168,4 +168,42 @@ public class ReviewDAO {
 			}
 			return count;
 		}
-}
+		
+		//review info 게시글 리턴 
+		   public ReviewBean getOneReview(int num) { 
+			   ReviewBean bean = new ReviewBean(); 
+			   getCon();
+			 
+			  try { 
+				  String sql = "update review set readcount = readcount + 1 where num=?";
+				  pstmt=con.prepareStatement(sql); 
+				  pstmt.setInt(1, num); 
+				  pstmt.executeUpdate();
+				  pstmt.clearParameters(); 
+				  
+				  String query = "select*from review where num=?";
+				  pstmt = con.prepareStatement(query);
+				  pstmt.setInt(1, num);
+				  rs = pstmt.executeQuery();
+			  
+				  if(rs.next()) {
+					  bean.setNum(rs.getInt(1)); 
+					  bean.setUid(rs.getString(2));
+					  bean.setUpass(rs.getString(3)); 
+					  bean.setSubject(rs.getString(4));
+					  bean.setContent(rs.getString(5)); 
+					  bean.setImg(rs.getString(6));
+					  bean.setWdate(rs.getString(7)); 
+					  bean.setReadCount(rs.getInt(8));
+					  bean.setReplyCount(rs.getInt(9)); 
+					  } 
+				  System.out.println("게시글 읽기 연결 성공"); }
+			  catch (Exception e) { 
+				  e.printStackTrace();
+				  System.out.println("게시글 읽기 연결 실패"); 
+				  } 
+			  return bean; 
+			  }
+			 
+	}
+
