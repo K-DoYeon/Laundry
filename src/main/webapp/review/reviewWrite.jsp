@@ -68,6 +68,9 @@ button a{
 	justify-content : space-between;
 
 }
+.review textarea{
+	resize : none;
+}
 </style>
 </head>
 <body>
@@ -88,12 +91,14 @@ button a{
 					</div>
 					<div>
 						<label for="upass">비밀번호</label>
-						<input type="passowrd" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
+						<input type="password" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
 					</div>
 				
 				</div>			
-				<div class="mb-3">
-					<textarea rows="10" cols="10" name = "content"></textarea>
+				<div class="mb-3 mt-4 review">
+					<label for="content">내용</label>
+					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"  ></textarea>
+					<input type = "file" name = "img" id = "img" class = "img mt-4"/>
 				</div>
 				<!--1. int 값들과 level input type hidden으로 해서 넣기 
 				2. pass 넣기 -->
