@@ -222,6 +222,29 @@ $(document).ready(function() {
 });
 
 function inputValueChange(){
-    var inputValue = document.getElementById('inputValue').value;
+    var inputValue = document.getElementsByClassName('xdsoft_datetimepicker').
     console.log(inputValue);
 }
+
+const absoluteDiv = document.querySelector('.xdsoft_datetimepicker');
+
+function fixDivPosition() {
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  const divWidth = absoluteDiv.offsetWidth;
+  const divHeight = absoluteDiv.offsetHeight;
+
+  const desiredLeft = (windowWidth - divWidth) / 2;
+  const desiredTop = (windowHeight - divHeight) / 2 + scrollTop;
+
+  absoluteDiv.style.left = desiredLeft + 'px';
+  absoluteDiv.style.top = desiredTop + 'px';
+}
+
+window.addEventListener('resize', fixDivPosition);
+window.addEventListener('scroll', fixDivPosition);
+
+// 초기 위치 설정
+fixDivPosition();
