@@ -33,8 +33,8 @@
 					<li><a href="../reservation/reservation.jsp">예약</a></li>
 					<li><a href="../board/boardlist.jsp">문의게시판</a></li>
 					<li><a href="#">후기게시판</a></li>
-					<li><a href="#">회사소개</a></li>
-					<li><a href="#">PR</a></li>
+					<li><a href="#">서비스안내</a></li>
+					<li><a href="#">명품관</a></li>
 				</ul>
 
 				<%

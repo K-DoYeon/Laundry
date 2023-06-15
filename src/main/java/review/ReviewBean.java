@@ -1,4 +1,4 @@
-package board;
+package review;
 
 public class ReviewBean {
 	private int num;

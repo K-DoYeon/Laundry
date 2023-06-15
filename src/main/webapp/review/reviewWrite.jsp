@@ -24,7 +24,7 @@
 	crossorigin="anonymous" />
 
 
-<title>Q&A Write</title>
+<title>Review Write</title>
 
 <style>
 @font-face {
@@ -68,6 +68,9 @@ button a{
 	justify-content : space-between;
 
 }
+.review textarea{
+	resize : none;
+}
 </style>
 </head>
 <body>
@@ -75,8 +78,8 @@ button a{
 
 	<article>
 		<div class="container">
-			<h2 class = "text-center">QnA</h2>
-			<form action="qnaWriteProc.jsp" id = "form" name = "form" method="post">
+			<h2 class = "text-center">Review</h2>
+			<form action="reviewWriteProc.jsp" id = "form" name = "form" method="post">
 				<div class="mb-3 mt-4">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요">
@@ -88,13 +91,14 @@ button a{
 					</div>
 					<div>
 						<label for="upass">비밀번호</label>
-						<input type="passowrd" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
+						<input type="password" class="form-control" name="upass" id="upass" placeholder="비밀번호를 입력하세요"  />
 					</div>
 				
 				</div>			
-				<div class="mb-3">
+				<div class="mb-3 mt-4 review">
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"  ></textarea>
+					<input type = "file" name = "img" id = "img" class = "img mt-4"/>
 				</div>
 				<!--1. int 값들과 level input type hidden으로 해서 넣기 
 				2. pass 넣기 -->
@@ -105,7 +109,7 @@ button a{
 					<input type = "hidden" name = "replycount" id="replycount"/>
 					<input type = "hidden" name = "like" id="like" />
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">저장</button>
-				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "boardlist.jsp">목록</a></button>
+				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList"><a href = "review.jsp">목록</a></button>
 			</div>
 			
 		</div>

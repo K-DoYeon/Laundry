@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import user.UserBean;
+
 
 
 
@@ -32,4 +34,36 @@ public class ReservationDAO {
 			System.out.println("DB 연결 실패");
 		}
 	}
+	
+	
+	// 회원가입 메소드
+		public void insert(ReservationBean bean) {
+			getCon();
+			try {
+				
+				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, bean.getUid());
+				pstmt.setString(2, bean.getUname());
+				pstmt.setString(3, bean.getTel());
+				pstmt.setInt(4, bean.getPostcode());
+				pstmt.setString(5, bean.getAddr());
+				pstmt.setString(6, bean.getDetailaddr());
+				pstmt.setString(7, bean.getComment());
+				pstmt.setString(8, bean.getSelectdate());
+				pstmt.setInt(9, bean.getDaily());
+				pstmt.setInt(10, bean.getBlanket());
+				pstmt.setInt(11, bean.getShirt());
+				pstmt.setInt(12, bean.getDry());
+				pstmt.setInt(13, bean.getCare());
+				pstmt.setInt(14, bean.getTotalprice());
+				pstmt.executeUpdate();
+				System.out.println(pstmt);
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+	
 }
