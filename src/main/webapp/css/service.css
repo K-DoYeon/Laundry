@@ -133,9 +133,97 @@
 	line-height: 30px;
 }
 .pr-three{
-	margin: 0 50px;
-}
-.ppr-three{
 	background: #000;
 	color: #fff;
+	padding: 130px 50px 50px;
+	font-family: "TheJamsil";
+}
+.pr-three h1{
+	margin: 0;
+	margin-bottom: 10px;
+	font-size: 40px;
+}
+.pr-icon{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.icon{
+	margin-bottom: 20px;
+}
+.icon img{
+	margin: 0 15px;
+}
+.laun{
+	width: 105px;
+}
+.icon-name span{
+	font-size: 20px;
+	margin-left: 40px;
+}
+.icon-name .wash{
+	margin-left: 50px;
+}
+.icon-name .thread{
+	margin-left: 55px;
+}
+.icon-name .cloth{
+	margin-left: 75px;
+}
+.icon-name .iron{
+	margin-left: 75px;
+}
+.icon-name{
+	margin-bottom: 80px;
+}
+.pr-icon p{
+	font-size: 20px;
+	font-weight: 300;
+}
+.pr-delivery{
+	font-family: "TheJamsil";
+	margin: 100px 0;
+}
+.pr-delivery h1{
+	margin: 0;
+	margin-bottom: 10px;
+	padding-left: 50px;
+	font-size: 40px;
+}
+.pr-delivery img{
+	width: 1300px;
+	height: 500px;
+	object-fit: cover;
+}
+.pr-delivery p{
+	font-size: 23px;
+	font-weight: 300;
+	margin: 50px 0 0px;
+}
+.pr-last{
+	position: relative;
+}
+.last-text{
+	position: absolute;
+	color: #fff;
+	top: 100px;
+	left: 50px;
+	font-family: "TheJamsil";
+	font-size: 50px;
+}
+.last-text p{
+	margin-bottom: 20px;
+}
+.last-go{
+	margin-top: 30px;
+}
+.last-text a{
+	background: #fff;
+	margin-top: 20px;
+	border-radius: 30px;
+	font-size: 25px;
+	padding: 10px 20px;
+	font-family: "TheJamsil";
+}
+footer{
+	margin-top: 0px;
 }

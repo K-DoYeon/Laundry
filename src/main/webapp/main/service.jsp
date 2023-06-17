@@ -160,11 +160,44 @@
 			</div>
 			
 			<div class="pr-three">
-			<div class="ppr-three">
 				<h1>세탁의 모든 것을</h1>
 				<h1>한번에</h1>
+				<div class="pr-icon">
+					<div class="icon">
+						<img class="laun" alt="물세탁" src="../img/laundry.png">
+						<img alt="세탁기" src="../img/washing.png">
+						<img alt="실" src="../img/thread.png">
+						<img alt="옷" src="../img/clothes.png">
+						<img alt="다리미" src="../img/iron.png">
+					</div>
+					<div class="icon-name">
+						<span class="lau">손세탁</span>
+						<span class="wash">드라이클리닝</span>
+						<span class="thread">수선</span>
+						<span class="cloth">얼룩케어</span>
+						<span class="iron">프레스</span>
+					</div>
+					<p>누구보다 좋은 제품 품질을 위해 모든 세탁물을 철저한 단계별 클리닝 시스템으로 케어합니다.</p>
+				</div>
 			</div>
+			
+			<div class="pr-delivery">
+				<h1>반짝 배송으로 시작 한</h1>
+				<h1 class="pr-first">첫 걸음</h1>
+				<img alt="delivery" src="../img/delivery.jpg">
+				<p>눈 깜빡할 사이에 도착, 1인가구도 4인가구도 부담없이 배달가능한 서비스로 단숨에 모두를 사로잡은 반짝 배송</p>
 			</div>
+			
+			<div class="pr-last">
+				<img alt="" src="../img/drum.jpg">
+				<div class="last-text">
+					<p>당신의 삶,</p>
+					<p>귀찮은 세탁은</p>
+					<p>세탁의 당신에게</p>
+					<p class="last-go"><a href="../reservation/reservation.jsp">예약하기</a></p>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </div>
