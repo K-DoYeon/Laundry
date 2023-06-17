@@ -204,6 +204,27 @@ public class ReviewDAO {
 				  } 
 			  return bean; 
 			  }
+		 //게시글 추천
+			public int like(int num) {
+				getCon();
+				pstmt = null;
+				try {
+					String sql = "UPDATE review SET like_this = like_this + 1 WHERE num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					return pstmt.executeUpdate();
+				}catch(Exception e){
+					e.printStackTrace();
+				}finally {
+					try {
+						if(pstmt != null) pstmt.close();
+						if(con != null) con.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return -1;
+			}
 			 
 	}
 
