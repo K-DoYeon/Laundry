@@ -73,7 +73,7 @@
   %>
                 <tr>
                     <td><%=bean.getNum() %></td>
-                    <th><a href="#!"><%=bean.getSubject() %></a></th>
+                    <th><a href="reviewInfo.jsp?num=<%=bean.getNum()%>"><%=bean.getSubject() %></a></th>
                     <td><%=bean.getWdate() %></td>
                 </tr>
  <%
