@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="review.ReviewBean, review.ReviewDAO" %>
 <%@page import="java.util.*"%>
-
+<%
+ReviewDAO rdao = new ReviewDAO();
+ArrayList<ReviewBean> reviewlist = null;
+reviewlist = rdao.getReviewList();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +34,9 @@
 
 	ReviewDAO dao = new ReviewDAO();
 	ReviewBean bean = dao.getOneReview(num);
+%>
+<%
+	String subject = bean.getSubject();
 %>
 <style>
 @font-face {
@@ -106,7 +113,8 @@ button a{
 					<textarea class="form-control" rows="5" name="content" id="content" readonly><%=bean.getImg()%> <%=bean.getContent() %></textarea>
 					<input type = "file" name = "img" id = "img" class = "img mt-4"/>
 				</div>
-
+					
+					
 			</form>									
 			<div class ="choi-qna">
 					<input type = "hidden" name = "level" id="level" />
@@ -115,8 +123,13 @@ button a{
 					<input type = "hidden" name = "like" id="like" />
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnSave" value ="submit">수정</button>
 				<button type="button" class="btn btn-sm choi-qna-btn" id="btnList" value = "submit">삭제</a></button>
+				<form action="LikeAction.jsp?num=<%= bean.getNum()%>" method="post">
+				<input type="hidden" name="subject" value="<%=bean.getSubject() %>" />
+				<input type="hidden" name="num" value="<%=bean.getNum() %>" />
+				<button type="submit" onclick="return confirm('추천하시겠습니까?')" class="btn btn-sm choi-qna-btn">좋아요</button>
+				</form>
 			</div>
-			
+
 		</div>
 	</article>
 </body>
