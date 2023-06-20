@@ -93,16 +93,12 @@ Date wdate = sdfInput.parse(wdateStr); // 문자열을 Date 객체로 변환
 
 SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy.MM"); // 변경하고자 하는 형식
 String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
-
-SimpleDateFormat sdfBigOutput = new SimpleDateFormat("dd"); // 변경하고자 하는 형식 ("dd")
-String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
-
 %>
  	<div class="active" id="QA">
       <div class="faq">
       	<div class="do-title">
 	      	<div class="do-day">
-	      		<span class="big"><%=formattedBigWdate%></span>
+	      		<span class="big">01</span>
 	      		<span><%=formattedWdate%></span>
 	      	</div>
 	      	<div><h3 class="faq-title"><%=bean.getSubject() %></h3></div>
@@ -331,6 +327,48 @@ String formattedBigWdate = sdfBigOutput.format(wdate); // 변경된 형식으로
 	
 	
  </div>
+    <% 
+	for(int i = 0; i < boardlist.size(); i++){
+		BoardBean bean = boardlist.get(i);
+%>
+<%
+String wdateStr = bean.getWdate();
+
+SimpleDateFormat sdfInput = new SimpleDateFormat("yyyy-MM-dd"); // 현재 형식
+Date wdate = sdfInput.parse(wdateStr); // 문자열을 Date 객체로 변환
+
+SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy.MM.dd"); // 변경하고자 하는 형식
+String formattedWdate = sdfOutput.format(wdate); // 변경된 형식으로 날짜를 문자열로 변환
+%>
+ 	<div class="active" id="bbs">
+      <div class="faq">
+      	<div class="do-title">
+	      	<div class="do-day">
+	      		<span class="big">01</span>
+	      		<span><%=formattedWdate%></span>
+	      	</div>
+	      	<div><h3 class="faq-title"><%=bean.getSubject() %></h3></div>
+      	</div>
+		
+		<div>
+        	<p class="faq-text"><%=bean.getContent() %></p>
+			<p class="faq-plus"><a href="qnaBoard.jsp?num=<%=bean.getNum()%>">더보기..</a></p>
+		</div>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+	   </div>
+	</div>
+	
+<%
+	}
+%>
+
+    
+	<div class="">
+    	<button onclick="dodel()">삭제</button>
+	</div>
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
