@@ -8,22 +8,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import user.UserDAO;
+import reservation.ReservationDAO;
 
 
-public class LevelUpdate extends HttpServlet {
+public class ConditionUpdate extends HttpServlet {
 
    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
       
-      UserDAO udao = new UserDAO();
-      int level = Integer.parseInt(req.getParameter("level"));
+      ReservationDAO rdao = new ReservationDAO();
+      int condition = Integer.parseInt(req.getParameter("condition"));
       int num = Integer.parseInt(req.getParameter("num"));
       
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
       req.setCharacterEncoding("UTF-8");
       
-      int rs = udao.update(level, num);
+      int rs = rdao.update(condition, num);
       out.print(rs);
 
    }

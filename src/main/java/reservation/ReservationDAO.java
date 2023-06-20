@@ -43,7 +43,7 @@ public class ReservationDAO {
 			getCon();
 			try {
 				
-				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?)";
+				String sql = "insert into reservation values (num, ?, ? ,? ,?, ?, ?, ?, ?, 0, sysdate(), ?, ?, ?, ?, ?, ?, 0)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, bean.getUid());
 				pstmt.setString(2, bean.getUname());
@@ -67,7 +67,8 @@ public class ReservationDAO {
 			}
 		}
 		
-		// select
+		
+		// 페이징 메소드, 제한된 갯수 불러옴
 		public Vector<ReservationBean> getSelect(int limitNum, int listNum) {
 			Vector<ReservationBean> data = new Vector<>();
 			getCon();
@@ -97,19 +98,19 @@ public class ReservationDAO {
 					rbean.setDry(rs.getInt("dry"));
 					rbean.setCare(rs.getInt("care"));
 					rbean.setTotalprice(rs.getInt("totalprice"));
+					rbean.setCondition(rs.getInt("condition"));
+					
 					data.add(rbean);
 				}
-				
 				con.close();
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 			return data;
 		}
 		
-		//AllSelect
+		
+		//페이징 메소드, 전체 목록 불러옴
 		public int getAllSelect() {
 			int allCount = 0;
 			Statement st = null;
@@ -130,6 +131,32 @@ public class ReservationDAO {
 			
 			return allCount;
 		}
+	
+		
+		// 예약관리 컨디션 변경
+		public int update(int condition, int num) {
+		    int flag = 0;
+		    getCon();
+		    try {
+		        String sql = "update reservation set `condition` = ? where num = ?";
+		        pstmt = con.prepareStatement(sql);
+		        pstmt.setInt(1, condition);
+		        pstmt.setInt(2, num);
+		        
+		        flag = pstmt.executeUpdate();
+
+		        con.close();
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+		    
+		    return flag;
+		}
+		
+		
+		
+		
+		
 		
 		
 		
@@ -201,6 +228,9 @@ public class ReservationDAO {
 			return allCount;
 		}
 		
+		
+		
+		// getSelectCountByUser
 		public int getSelectCountByUser(String userId) {
 		    int count = 0;
 		    getCon();
@@ -223,6 +253,6 @@ public class ReservationDAO {
 		    
 		    return count;
 		}
-	
+		
 	
 }
