@@ -6,8 +6,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
                 
         <property name="context-root" value="Laundry"/>
-                
-        <property name="java-output-path" value="/Laundry/build/classes"/>
+        <property name="java-output-path" value="/Laundry/bin"/>
             
     </wb-module>
     

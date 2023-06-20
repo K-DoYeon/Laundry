@@ -1,5 +1,5 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="javax.io.PrintWriter"%>
+<%@page import="javax.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="board.BoardDAO, board.BoardBean, board.CommentBean"%>
