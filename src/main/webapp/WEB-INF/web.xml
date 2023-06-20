@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+ xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" 
+ xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" 
+ id="WebApp_ID" version="5.0">
   <display-name>Laundry</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -9,6 +13,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
   
   <servlet>
   	<servlet-name>LevelUpdate</servlet-name>
@@ -20,5 +25,17 @@
   <servlet-mapping>
   	<servlet-name>LevelUpdate</servlet-name>
 	<url-pattern>/LevelUpdate</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ConditionUpdate</servlet-name>
+  	<display-name>ConditionUpdate</display-name>
+  	<description></description>
+  	<servlet-class>ConditionUpdate</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ConditionUpdate</servlet-name>
+	<url-pattern>/ConditionUpdate</url-pattern>
   </servlet-mapping>
 </web-app>

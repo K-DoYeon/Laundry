@@ -1,17 +1,15 @@
 <%@page import="user.UserBean"%>
 <%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, user.UserDAO " %>
+    pageEncoding="UTF-8" import="java.util.*, reservation.ReservationDAO, reservation.ReservationBean " %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
-
-<jsp:useBean id="bean" class="user.UserBean" scope="page" />
-<jsp:useBean id="udao" class="user.UserDAO" scope="page" />
+<jsp:useBean id="bean" class="reservation.ReservationBean" scope="page" />
+<jsp:useBean id="rdao" class="reservation.ReservationDAO" scope="page" />
 <%!
 	int listNum = 10; // 한 페이지당 보여줄 목록 수
 	int pageNum = 15; // 한 블럭당 보여줄 페이지 수	
 %>
-
-
 
 <%
 
@@ -25,9 +23,10 @@
 	}
 	int limitNum = (mypg - 1) * listNum;
 	
-   Vector data = udao.getSelect(limitNum, listNum);
+   String userId = (String) session.getAttribute("uid");
+   Vector<ReservationBean> data = rdao.getSelectByUser(userId, limitNum, listNum);
    
-	int maxColumn = udao.getAllSelect();
+	int maxColumn = rdao.getSelectCountByUser(userId);
 	int size = data.size();
 	
 	/*
@@ -45,9 +44,9 @@
 <link rel="stylesheet" href="../css/bootstrap.css" />
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="container lmember">
-	<h1 class="mt-3 mb-3 text-center">회원목록</h1>
+	<h1 class="mt-3 mb-3 text-center">예약목록</h1>
 	<div class="text-end">
-		총 회원 : <%=maxColumn %>명
+		총 예약 : <%=maxColumn %>건
 	</div>
 	<div class="row">
 		<table class="table  memberstbl">
@@ -55,73 +54,55 @@
 				<tr>
 					<th>번호</th>
 					<th>아이디</th>
-					<th>이름</th>
-					<th>주소</th>
 					<th>전화번호</th>
-					<th>이메일</th>
-					<th>회원등급</th>
+					<th>주소</th>
+					<th>생활빨래</th>
+					<th>이불빨래</th>
+					<th>셔츠</th>
+					<th>드라이</th>
+					<th>개별빨래</th>
+					<th>총 가격</th>
 				</tr>
 			</thead>
 			<tbody>
 <%
 for(int i=0; i < size; i++){
-    UserBean ubean = (UserBean) data.elementAt(i);
-    int num = ubean.getNum();
-    String userid = ubean.getUid();
-    String username = ubean.getUname();
-    int postcode = ubean.getPostcode();
-    String addr = ubean.getAddr();
-    String detailAddr = ubean.getDetailaddr();
-    String tel = ubean.getTel();
-    String email = ubean.getUemail();
-    int level = ubean.getLevel();
+    ReservationBean rbean = data.elementAt(i);
+    int num = rbean.getNum();
+    String uid = rbean.getUid();
+    String tel = rbean.getTel();
+    int postcode = rbean.getPostcode();
+    String addr = rbean.getAddr();
+    String detailaddr = rbean.getDetailaddr();
+    int daily = rbean.getDaily();
+    int blanket = rbean.getBlanket();
+    int shirt = rbean.getShirt();
+    int dry = rbean.getDry();
+    int care = rbean.getCare();
+    int totalprice = rbean.getTotalprice();
  
 %>
+
 	<tr>
-		<td><%=num %></td>
-		<td><%=userid %></td>
-		<td><%=username %></td>
-		<td>[<%=postcode %>] <%=addr %> <%=detailAddr %></td>
-		<td><%=tel %></td>
-		<td><%=email %></td>
-		<td>
-			<%
-				if (level == 99) {
-			%>
-			
-			<span class="badge bg-primary px-4 py-2">관리자</span>
-			
-			<%
-				} else {	
-			
-				String selected1 = "", selected2 = "", selected3 = "", selected4 = "", selected5 = "";
-				switch (level) {
-				case 0:
-					selected1 = "selected";
-					break;
-				case 1:
-					selected2 = "selected";
-					break;
-				case 2:
-					selected3 = "selected";
-					break;
-				case 3:
-					selected4 = "selected";
-					break;
-				
-				}
-			%>
-			<select name="level" class="level" onchange="memLevel(this, <%=level %>, <%=num %>);">
-				<option value="0" <%=selected1 %> >VIP회원</option>
-				<option value="1" <%=selected2 %> >서울지역</option>
-				<option value="2" <%=selected3 %> >타지역</option>
-				<option value="3" <%=selected4 %> >관리자</option>
-			</select>
-		</td>
 	
+		<td><%=num %></td>
+		<td><%=uid %></td>
+		<td><%=tel %></td>
+		<td>
+		<a href="DetailReservation.jsp?num=<%=num %>">
+		[<%=postcode %>] <%=addr %> <%=detailaddr %>
+		</a>
+		</td>
+		<td><%=daily %>개</td>
+		<td><%=blanket %>개</td>
+		<td><%=shirt %>개</td>
+		<td><%=dry %>개</td>
+		<td><%=care %>개</td>
+		<td><%=totalprice %>원</td>
+		
 	</tr>
+	
 <%
-				}
 }
 %>
 			</tbody>
@@ -148,7 +129,6 @@ for(int i=0; i < size; i++){
 				<li class="page-item <%=act %>"> <a href="?user/memberlist&page=<%=i %>" class="page-link"><%=i %></a></li>
 			<%
 				}
-				
 				// 다음페이지
 				if (endNum < totalPage) {
 					int nextPage = endNum + 1;
