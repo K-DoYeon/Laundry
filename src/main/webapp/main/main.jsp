@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <%
-		Cookie[] cookies = request.getCookies();
+	Cookie[] cookies = request.getCookies();
 		String loginStatus = null;
 		String rememberId = null;
 		String uid =  null;

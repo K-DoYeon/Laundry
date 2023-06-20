@@ -1,10 +1,10 @@
-<%@page import="javax.util.ArrayList"%>
-<%@page import="javax.util.Date"%>
-<%@page import="javax.util.Vector"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Vector"%>
 <%@page import="board.BoardDAO"%>
 <%@page import="board.BoardBean"%>
-<%@page import="javax.text.SimpleDateFormat"%>
-<%@page import="javax.io.PrintWriter" %>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

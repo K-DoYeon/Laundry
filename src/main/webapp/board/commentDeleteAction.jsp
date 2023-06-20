@@ -1,7 +1,7 @@
 <%@page import="board.CommentBean"%>
 <%@page import="board.BoardBean"%>
 <%@page import="board.BoardDAO"%>
-<%@page import="javax.io.PrintWriter"%>
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="comment" class="board.CommentBean" scope="page"/>
