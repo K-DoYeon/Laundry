@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <%
+	//잠시수정
 		Cookie[] cookies = request.getCookies();
 		String loginStatus = null;
 		String rememberId = null;
