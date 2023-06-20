@@ -23,15 +23,10 @@
 	}
 	int limitNum = (mypg - 1) * listNum;
 	
-	String userId = ""; // 수정: 사용자 아이디를 저장할 변수
-	UserBean user = (UserBean) session.getAttribute("user"); // 로그인된 사용자 정보 가져오기
-	if (user != null) {
-		userId = user.getUid(); // 로그인된 사용자의 아이디 저장
-	}
-	
-	Vector data = rdao.getSelectByUser(limitNum, listNum, userId); // 수정: 사용자 아이디 전달
+   String userId = (String) session.getAttribute("uid");
+   Vector<ReservationBean> data = rdao.getSelectByUser(userId, limitNum, listNum);
    
-	int maxColumn = rdao.getSelectCountByUser(userId); // 수정: 사용자 아이디 전달
+	int maxColumn = rdao.getSelectCountByUser(userId);
 	int size = data.size();
 	
 	/*
@@ -72,7 +67,7 @@
 			<tbody>
 <%
 for(int i=0; i < size; i++){
-    ReservationBean rbean = (ReservationBean) data.elementAt(i);
+    ReservationBean rbean = data.elementAt(i);
     int num = rbean.getNum();
     String uid = rbean.getUid();
     String tel = rbean.getTel();
@@ -87,11 +82,17 @@ for(int i=0; i < size; i++){
     int totalprice = rbean.getTotalprice();
  
 %>
+
 	<tr>
+	
 		<td><%=num %></td>
 		<td><%=uid %></td>
 		<td><%=tel %></td>
-		<td>[<%=postcode %>] <%=addr %> <%=detailaddr %></td>
+		<td>
+		<a href="DetailReservation.jsp?num=<%=num %>">
+		[<%=postcode %>] <%=addr %> <%=detailaddr %>
+		</a>
+		</td>
 		<td><%=daily %>개</td>
 		<td><%=blanket %>개</td>
 		<td><%=shirt %>개</td>
@@ -100,8 +101,8 @@ for(int i=0; i < size; i++){
 		<td><%=totalprice %>원</td>
 		
 	</tr>
+	
 <%
-				
 }
 %>
 			</tbody>
@@ -109,36 +110,35 @@ for(int i=0; i < size; i++){
 		</table>
 	</div> <!-- /row -->
 	<div class="mt-3 mb-5 row ">
-			<ul class="pagination justify-content-center mb-5">
-				<%
-					//이전페이지
-					if (startNum > 1)  {
-						int prevPage = startNum -1;
-						out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"?fname=member/memberlist&page="+prevPage+"\">이전</a></li>");
-					} else {
-						out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">이전</a></li>");
-					}
+		<ul class="pagination justify-content-center mb-5">
+			<%
+				//이전페이지
+				if (startNum > 1)  {
+					int prevPage = startNum -1;
+					out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"?fname=member/memberlist&page="+prevPage+"\">이전</a></li>");
+				} else {
+					out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">이전</a></li>");
+				}
+			
+				//페이지 출력
+				for(int i = startNum; i <= endNum; i++) {
+					String act = "";
+					if (mypg == i) act = "active";
 				
-					//페이지 출력
-					for(int i = startNum; i <= endNum; i++) {
-						String act = "";
-						if (mypg == i) act = "active";
-					
-				%>
-					<li class="page-item <%=act %>"> <a href="?user/memberlist&page=<%=i %>" class="page-link"><%=i %></a></li>
-				<%
-					}
-					
-					// 다음페이지
-					if (endNum < totalPage) {
-						int nextPage = endNum + 1;
-						out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"?fname=member/memberlist&page="+nextPage+"\">다음</a></li>");
-					} else {
-						out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">다음</a></li>");
-					}
-				%>
-			</ul>
-		</div>
+			%>
+				<li class="page-item <%=act %>"> <a href="?user/memberlist&page=<%=i %>" class="page-link"><%=i %></a></li>
+			<%
+				}
+				// 다음페이지
+				if (endNum < totalPage) {
+					int nextPage = endNum + 1;
+					out.print("<li class=\"page-item\"><a class=\"page-link\" href=\"?fname=member/memberlist&page="+nextPage+"\">다음</a></li>");
+				} else {
+					out.print("<li class=\"page-item\"><a class=\"page-link text-muted\" href=\"javascript:void(0)\">다음</a></li>");
+				}
+			%>
+		</ul>
+	</div>
 </div>
 
 <script src="../js/memberlist.js"></script>
