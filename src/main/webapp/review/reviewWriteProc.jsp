@@ -63,12 +63,11 @@
 	} else {
 				PrintWriter script = response.getWriter();
 				if(img != null){
-<<<<<<< HEAD
-					String real = "C:\\Users\\choinuri\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Laundry\\imgs";
-=======
-					String real = "Laundry\\src\\main\\webapp\\imgs";
+
 					//String real = "C:\\Users\\choinuri\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Laundry\\imgs";
->>>>>>> branch 'main' of https://github.com/K-DoYeon/Laundry.git
+					String real = "Laundry\\src\\main\\webapp\\imgs";
+					
+
 					File delFile = new File(real+"\\"+realuid+"사진.jpg");
 					if(delFile.exists()){
 						delFile.delete();
