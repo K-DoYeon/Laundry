@@ -61,7 +61,7 @@
 						<a class="user-admin" href="../user/memberList.jsp">
 							회원관리
 						</a>
-						<a class="user-admin" href="../user/reservationList.jsp">
+						<a class="user-admin" href="../reservation/reservationList.jsp">
 							예약관리
 						</a>
 					<%
