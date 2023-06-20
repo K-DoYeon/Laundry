@@ -152,5 +152,42 @@ public class ReservationDAO {
 		    
 		    return flag;
 		}
+		
+		//DB값 불러오기
+		public ReservationBean getOneReservation(int num) {
+			ReservationBean res = new ReservationBean();
+			getCon();
+			
+			try {
+				String sql = "select * from reservation where num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					res.setNum(rs.getInt("num"));
+					res.setUid(rs.getString("uid"));
+					res.setUname(rs.getString("uname"));
+					res.setTel(rs.getString("tel"));
+					res.setPostcode(rs.getInt("postcode"));
+					res.setAddr(rs.getString("addr"));
+					res.setDetailaddr(rs.getString("detailaddr"));
+					res.setComment(rs.getString("comment"));
+					res.setSelectdate(rs.getString("selectdate"));
+					res.setCount(rs.getInt("count"));
+					res.setWdate(rs.getString("wdate"));
+					res.setDaily(rs.getInt("daily"));
+					res.setBlanket(rs.getInt("blanket"));
+					res.setShirt(rs.getInt("shirt"));
+					res.setDry(rs.getInt("dry"));
+					res.setCare(rs.getInt("care"));
+					res.setTotalprice(rs.getInt("totalprice"));
+					res.setCondition(rs.getInt("condition"));
+				}
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return res;
+		}
 	
 }
