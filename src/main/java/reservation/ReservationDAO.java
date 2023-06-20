@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
-
-import user.UserBean;
 
 
 
@@ -190,97 +191,130 @@ public class ReservationDAO {
 			return res;
 		}
 		
-		// selectByUser
-				public Vector<ReservationBean> getSelectByUser(int limitNum, int listNum, String userId) {
-					Vector<ReservationBean> data = new Vector<>();
-					getCon();
-					try {
-						String sql = "SELECT * FROM reservation WHERE uid = ? ORDER BY num DESC LIMIT ?, ?";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, userId);
-						pstmt.setInt(2, limitNum);
-						pstmt.setInt(3, listNum);
-						rs = pstmt.executeQuery();
-						
-						while(rs.next()) {
-							ReservationBean rbean = new ReservationBean();
-							rbean.setNum(rs.getInt("num"));
-							rbean.setUid(rs.getString("uid"));
-							rbean.setUname(rs.getString("uname"));
-							rbean.setTel(rs.getString("tel"));
-							rbean.setPostcode(rs.getInt("postcode"));
-							rbean.setAddr(rs.getString("addr"));
-							rbean.setDetailaddr(rs.getString("detailaddr"));
-							rbean.setComment(rs.getString("comment"));
-							rbean.setSelectdate(rs.getString("selectdate"));
-							rbean.setCount(rs.getInt("count"));
-							rbean.setWdate(rs.getString("wdate"));
-							rbean.setDaily(rs.getInt("daily"));
-							rbean.setBlanket(rs.getInt("blanket"));
-							rbean.setShirt(rs.getInt("shirt"));
-							rbean.setDry(rs.getInt("dry"));
-							rbean.setCare(rs.getInt("care"));
-							rbean.setTotalprice(rs.getInt("totalprice"));
-							data.add(rbean);
-						}
-						
-						con.close();
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					
-					return data;
-				}
+		
+		
+		
+		
+		
+		
+		
+		
+		public Vector<ReservationBean> getSelectByUser(String userId, int limitNum, int listNum) {
+	        Vector<ReservationBean> data = new Vector<>();
+	        getCon();
+	        try {
+	            String sql = "SELECT * FROM reservation WHERE uid = ? ORDER BY num DESC LIMIT ?, ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, userId);
+	            pstmt.setInt(2, limitNum);
+	            pstmt.setInt(3, listNum);
+	            
+	            System.out.println(pstmt);
+	            rs = pstmt.executeQuery();
 
-				// getAllSelectByUser
-				public int getAllSelectByUser(String userId) {
-					int allCount = 0;
-					getCon();
-					
-					try {
-						String sql = "SELECT COUNT(*) FROM reservation WHERE uid = ?";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, userId);
-						rs = pstmt.executeQuery();
-						
-						if (rs.next()) {
-							allCount = rs.getInt(1);
-						}
-						
-						con.close();
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					
-					return allCount;
-				}
-				
-				
-				
-				// getSelectCountByUser
-				public int getSelectCountByUser(String userId) {
-				    int count = 0;
-				    getCon();
-				    
-				    try {
-				        String sql = "SELECT COUNT(*) FROM reservation WHERE uid = ?";
-				        pstmt = con.prepareStatement(sql);
-				        pstmt.setString(1, userId);
-				        rs = pstmt.executeQuery();
-				        
-				        if (rs.next()) {
-				            count = rs.getInt(1);
-				        }
-				        
-				        con.close();
-				        
-				    } catch (Exception e) {
-				        e.printStackTrace();
-				    }
-				    
-				    return count;
-				}
+	            while (rs.next()) {
+	                ReservationBean rbean = new ReservationBean();
+	                rbean.setNum(rs.getInt("num"));
+					rbean.setUid(rs.getString("uid"));
+					rbean.setUname(rs.getString("uname"));
+					rbean.setTel(rs.getString("tel"));
+					rbean.setPostcode(rs.getInt("postcode"));
+					rbean.setAddr(rs.getString("addr"));
+					rbean.setDetailaddr(rs.getString("detailaddr"));
+					rbean.setComment(rs.getString("comment"));
+					rbean.setSelectdate(rs.getString("selectdate"));
+					rbean.setCount(rs.getInt("count"));
+					rbean.setWdate(rs.getString("wdate"));
+					rbean.setDaily(rs.getInt("daily"));
+					rbean.setBlanket(rs.getInt("blanket"));
+					rbean.setShirt(rs.getInt("shirt"));
+					rbean.setDry(rs.getInt("dry"));
+					rbean.setCare(rs.getInt("care"));
+					rbean.setTotalprice(rs.getInt("totalprice"));
+					rbean.setCondition(rs.getInt("condition"));
+
+	                data.add(rbean);
+	            }
+	            con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return data;
+	    }
+	    
+	    
+	    public int getSelectCountByUser(String userId) {
+	        int count = 0;
+	        getCon();
+	        try {
+	            String sql = "SELECT COUNT(*) AS count FROM reservation WHERE uid = ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, userId);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                count = rs.getInt("count");
+	            }
+	            con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return count;
+	    }
+	    
+	    
+	    
+	    
+	    
+	    public ReservationBean getReservationByNum(String reservationNum) {
+	    	getCon();
+	        ReservationBean reservation = null;
+
+	        try {
+	            
+	            String query = "SELECT * FROM reservation WHERE num = ?";
+	            pstmt = con.prepareStatement(query);
+	            pstmt.setString(1, reservationNum);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                // Retrieve the reservation details from the result set
+	                int num = rs.getInt("num");
+	                String uid = rs.getString("uid");
+	                String tel = rs.getString("tel");
+	                int postcode = rs.getInt("postcode");
+	                String addr = rs.getString("addr");
+	                String detailaddr = rs.getString("detailaddr");
+	                int daily = rs.getInt("daily");
+	                int blanket = rs.getInt("blanket");
+	                int shirt = rs.getInt("shirt");
+	                int dry = rs.getInt("dry");
+	                int care = rs.getInt("care");
+	                int totalprice = rs.getInt("totalprice");
+
+	                // Create a ReservationBean object and set the retrieved values
+	                reservation = new ReservationBean();
+	                reservation.setNum(num);
+	                reservation.setUid(uid);
+	                reservation.setTel(tel);
+	                reservation.setPostcode(postcode);
+	                reservation.setAddr(addr);
+	                reservation.setDetailaddr(detailaddr);
+	                reservation.setDaily(daily);
+	                reservation.setBlanket(blanket);
+	                reservation.setShirt(shirt);
+	                reservation.setDry(dry);
+	                reservation.setCare(care);
+	                reservation.setTotalprice(totalprice);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } 
+
+	        return reservation;
+	    }
+	    
+	  
+	}
+		
 	
-}
