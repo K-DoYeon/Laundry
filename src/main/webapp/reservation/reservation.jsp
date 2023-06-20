@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <meta charset="UTF-8">
 <title>Reservation</title>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -142,6 +146,7 @@
 		
 		</form>
 	</div>
+
 	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

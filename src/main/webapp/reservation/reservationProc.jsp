@@ -14,7 +14,7 @@
 	ReservationDAO rdao = new ReservationDAO();
 	rdao.insert(bean);
 	
-	response.sendRedirect("../main/main.jsp");
+	response.sendRedirect("payment.jsp");
 %>
 </body>
 </html>
