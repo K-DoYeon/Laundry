@@ -32,9 +32,9 @@
 				<ul class="gnb-header">
 					<li><a href="../reservation/reservation.jsp">예약</a></li>
 					<li><a href="../board/boardlist.jsp">문의게시판</a></li>
-					<li><a href="#">후기게시판</a></li>
-					<li><a href="#">서비스안내</a></li>
-					<li><a href="#">명품관</a></li>
+					<li><a href="../review/review.jsp">후기게시판</a></li>
+					<li><a href="../main/service.jsp">서비스안내</a></li>
+					<li><a href="../main/BlackLaundry.jsp">명품관</a></li>
 				</ul>
 
 				<%
@@ -60,6 +60,9 @@
 						</a>
 						<a class="user-admin" href="../user/memberList.jsp">
 							회원관리
+						</a>
+						<a class="user-admin" href="../reservation/reservationList.jsp">
+							예약관리
 						</a>
 					<%
 						} else {
