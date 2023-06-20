@@ -1,12 +1,12 @@
-function memLevel(e, i, num) {
+function resCondition(e, i, num) {
    const val = e.value;
-   const mems = ["VIP회원", "서울지역", "타지역", "관리자"];
-   let y = confirm("회원정보를 " + mems[val] + "로 수정하시겠습니까?");
+   const reservation = ["입금대기", "입금완료", "수거준비", "수거완료", "배송완료"];
+   let y = confirm("예약상태를 " + reservation[val] + "로 수정하시겠습니까?");
    
    if(y){
       
       //회원정보 수정
-      fetch("/Laundry/LevelUpdate?level=" + val + "&num=" + num)
+      fetch("/Laundry/ConditionUpdate?condition=" + val + "&num=" + num)
          .then(res =>
             res.json())
             .then(data =>{
