@@ -1,12 +1,8 @@
 <%@page import="user.UserBean"%>
 <%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
     pageEncoding="UTF-8" import="java.util.*, user.UserDAO " %>
 
-=======
-    pageEncoding="UTF-8" import="java.util.*, user.UserDAO " %>  
->>>>>>> branch 'kang' of https://github.com/K-DoYeon/Laundry.git
 
 <jsp:useBean id="bean" class="user.UserBean" scope="page" />
 <jsp:useBean id="udao" class="user.UserDAO" scope="page" />
