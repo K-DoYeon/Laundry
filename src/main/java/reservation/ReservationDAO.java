@@ -189,5 +189,98 @@ public class ReservationDAO {
 			}
 			return res;
 		}
+		
+		// selectByUser
+				public Vector<ReservationBean> getSelectByUser(int limitNum, int listNum, String userId) {
+					Vector<ReservationBean> data = new Vector<>();
+					getCon();
+					try {
+						String sql = "SELECT * FROM reservation WHERE uid = ? ORDER BY num DESC LIMIT ?, ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, userId);
+						pstmt.setInt(2, limitNum);
+						pstmt.setInt(3, listNum);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							ReservationBean rbean = new ReservationBean();
+							rbean.setNum(rs.getInt("num"));
+							rbean.setUid(rs.getString("uid"));
+							rbean.setUname(rs.getString("uname"));
+							rbean.setTel(rs.getString("tel"));
+							rbean.setPostcode(rs.getInt("postcode"));
+							rbean.setAddr(rs.getString("addr"));
+							rbean.setDetailaddr(rs.getString("detailaddr"));
+							rbean.setComment(rs.getString("comment"));
+							rbean.setSelectdate(rs.getString("selectdate"));
+							rbean.setCount(rs.getInt("count"));
+							rbean.setWdate(rs.getString("wdate"));
+							rbean.setDaily(rs.getInt("daily"));
+							rbean.setBlanket(rs.getInt("blanket"));
+							rbean.setShirt(rs.getInt("shirt"));
+							rbean.setDry(rs.getInt("dry"));
+							rbean.setCare(rs.getInt("care"));
+							rbean.setTotalprice(rs.getInt("totalprice"));
+							data.add(rbean);
+						}
+						
+						con.close();
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					return data;
+				}
+
+				// getAllSelectByUser
+				public int getAllSelectByUser(String userId) {
+					int allCount = 0;
+					getCon();
+					
+					try {
+						String sql = "SELECT COUNT(*) FROM reservation WHERE uid = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, userId);
+						rs = pstmt.executeQuery();
+						
+						if (rs.next()) {
+							allCount = rs.getInt(1);
+						}
+						
+						con.close();
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					return allCount;
+				}
+				
+				
+				
+				// getSelectCountByUser
+				public int getSelectCountByUser(String userId) {
+				    int count = 0;
+				    getCon();
+				    
+				    try {
+				        String sql = "SELECT COUNT(*) FROM reservation WHERE uid = ?";
+				        pstmt = con.prepareStatement(sql);
+				        pstmt.setString(1, userId);
+				        rs = pstmt.executeQuery();
+				        
+				        if (rs.next()) {
+				            count = rs.getInt(1);
+				        }
+				        
+				        con.close();
+				        
+				    } catch (Exception e) {
+				        e.printStackTrace();
+				    }
+				    
+				    return count;
+				}
 	
 }
