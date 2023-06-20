@@ -2,7 +2,7 @@
 <%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, user.UserDAO " %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 
 <jsp:useBean id="bean" class="user.UserBean" scope="page" />
 <jsp:useBean id="udao" class="user.UserDAO" scope="page" />
