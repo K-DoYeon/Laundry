@@ -293,7 +293,7 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 			return level;
-		}
+	 	}
 		
 		public int userVip(String uid) {
 			int vip = 0;

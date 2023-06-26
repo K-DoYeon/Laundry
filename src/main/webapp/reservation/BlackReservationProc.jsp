@@ -12,7 +12,9 @@
 
 <%
 	ReservationDAO rdao = new ReservationDAO();
+	String uid = (String)session.getAttribute("uid");
 	rdao.insert(bean);
+	rdao.vipLevel(uid);
 	
 	response.sendRedirect("payment.jsp");
 %>
